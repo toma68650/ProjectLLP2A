@@ -1,0 +1,16 @@
+package projectlp2a;
+
+public class Case {
+	private Direction directionNext;
+	private boolean safe;
+	private Color startColor;
+	private Color finishCase;
+	
+	public Case(Direction dn, boolean s, Color startColor) {
+		this.directionNext = dn;
+		this.safe = s;
+		this.startColor = startColor;
+	}
+	
+	
+}

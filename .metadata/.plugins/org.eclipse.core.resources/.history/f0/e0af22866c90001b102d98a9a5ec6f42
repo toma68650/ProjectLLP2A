@@ -1,0 +1,15 @@
+package projectlp2a;
+import java.util.*;
+
+public class Player {
+	private List<Pawn> pawns;
+	private Case barn;
+	private List<Case> end;
+	
+	public Player(Case barn, Case end) {
+		pawns = new ArrayList<Pawn>();
+		this.barn = new Case(barn);
+		this.end = new ArrayList<Case>();
+		this.end.add(new Case(end));
+	}
+}
