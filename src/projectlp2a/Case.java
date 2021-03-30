@@ -1,4 +1,5 @@
 package projectlp2a;
+import java.awt.Color;
 
 public class Case {
 	private Direction directionNext;
@@ -9,18 +10,13 @@ public class Case {
 	private int coordY;
 	
 	
-	public Case(Direction dn, boolean s, Color startColor) {
+	public Case(Direction dn, boolean s, Color startColor, Color finishCase, int x, int y) {
 		this.directionNext = dn;
 		this.safe = s;
 		this.startColor = startColor;
-		this.finishCase = null;
-	}
-	
-	public Case(Direction dn, boolean s, Color finishCase) {
-		this.directionNext = dn;
-		this.safe = s;
 		this.finishCase = finishCase;
-		this.startColor = null;
+		coordX = x;
+		coordY = y;
 	}
 	
 	public Case(Direction dn, boolean s) {
