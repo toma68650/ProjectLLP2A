@@ -24,10 +24,12 @@ public class Pawn {
 		}
 	}
 	
-	public void eatPawn(Pawn p) {
+	public int eatPawn(Pawn p, Player b) {
 		if(this.color.equals(p.color)) {
 			this.position=p.position;
-			p.position=Case.startColor;
+			p.position=b.barn;
+		}else {
+			return -1;
 		}
 	}
 }
