@@ -1,5 +1,0 @@
-package projectlp2a;
-
-public class Case {
-	private Direction directionNext;
-}

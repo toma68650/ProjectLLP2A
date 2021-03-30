@@ -1,9 +1,0 @@
-package projectlp2a;
-import java.util.*;
-
-public class Die extends Random {
-	
-	public Die() {
-		super();
-	}
-}
