@@ -1,11 +1,22 @@
 package projectlp2a;
-import java.awt.*;
 import java.util.*;
 import javax.swing.*;
+import java.awt.BorderLayout;
 
-public class Board {
+public class Board extends JLabel {
+	
+	Icon plateau;
 	
 	ArrayList<Player> players = new ArrayList<Player>();
+	ArrayList<Case> cases = new ArrayList<Case>();
+	
+	public Board(JFrame f1) {
+		super("Board");
+		plateau = new ImageIcon("Image/plateauprojet_skin.png");
+		this.setIcon(plateau);
+		f1.add(this,BorderLayout.CENTER);
+		//Pawn p = new Pawn(f1);
+		}
 	
 	public void startGame() {
 		
@@ -14,16 +25,5 @@ public class Board {
 	public void isFinish() {
 		
 	}
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		JFrame f1 = new JFrame();
-		JLabel l1 = new JLabel();
-		f1.setSize(1090,780);
-		f1.setResizable(false);
-		Icon plateau = new ImageIcon("Image/plateauprojet.png");
-		l1.setIcon(plateau);
-	     f1.add(l1);
-	     f1.setVisible(true);
 
-	}
 }
