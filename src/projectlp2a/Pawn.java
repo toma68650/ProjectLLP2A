@@ -5,9 +5,9 @@ public class Pawn {
 	public Color color;
 	public boolean state;
 	public int number;
-	public int position;
+	public Position position;
 	
-	public Pawn(Color c, boolean s, int n, int p) {
+	public Pawn(Color c, boolean s, int n, Position p) {
 		this.color=c;
 		this.state=s;
 		this.number=n;
