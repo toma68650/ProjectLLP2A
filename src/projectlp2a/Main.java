@@ -1,22 +1,44 @@
 package projectlp2a;
-
+import javax.swing.*;
 import java.awt.Dimension;
 
-import javax.swing.*;
+@SuppressWarnings("serial")
+public class Main extends JFrame {
 
-public class Main {
-
+	JLayeredPane jl;
+	public Board board;
+	
+	public Main() {
+		initUI();
+	}
+	
+	private void initUI() {
+		jl = new JLayeredPane();
+		board = new Board(this);
+		
+		jl.add(board, new Integer(1));
+        add(jl);
+        
+        setTitle("Game of poney");
+        setSize(735,765);
+        setLocationRelativeTo(null);
+        setResizable(false);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		JFrame f1 = new JFrame("Game of poney");
+		Main main = new Main();
+		Pawn p = new Pawn();
+		main.jl.add(p, new Integer(2));
+		main.jl.setVisible(true);
+		main.setVisible(true);
 		
-		f1.setResizable(false);
-		Board b1 = new Board(f1);
-		
+				
 		//b1.setPreferredSize(new Dimension(300, 200));
 		
-		f1.pack();
-	    f1.setVisible(true);
+;
 	}
+	
+	
 
 }
