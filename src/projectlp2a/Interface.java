@@ -1,8 +1,13 @@
 package projectlp2a;
-import java.swing.*;
-import java.awt.EventQueue;
+
+import java.awt.*;
 
 import javax.swing.JFrame;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import projectlp2a.Player;
+
 
 public class Interface {
 
@@ -36,8 +41,50 @@ public class Interface {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 861, 693);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	}
+		frame.getContentPane().setLayout(null);
+		
+		JButton GREEN = new JButton("Green");
+		GREEN.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Player.color =Color.GREEN;
+				System.out.println("You're Green");
+			}
+		});
+		GREEN.setBounds(718, 156, 119, 115);
+		frame.getContentPane().add(GREEN);
+		
+		JButton RED = new JButton("Red");
+		RED.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Player.color =Color.RED;
+				System.out.println("You're Red");
+			}
+		});
+		RED.setBounds(718, 268, 119, 115);
+		frame.getContentPane().add(RED);
+		
+		JButton BLUE = new JButton("Blue");
+		BLUE.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Player.color =Color.BLUE;
+				System.out.println("You're Blue");
+			}
+		});
+		BLUE.setBounds(718, 380, 119, 115);
+		frame.getContentPane().add(BLUE);
+		
+		JButton YELLOW = new JButton("Yellow");
+		YELLOW.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Player.color =Color.YELLOW;
+				System.out.println("You're Yellow");
+			}
+		});
+		YELLOW.setBounds(718, 495, 119, 115);
+		frame.getContentPane().add(YELLOW);
+		
 
+	}
 }

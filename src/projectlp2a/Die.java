@@ -1,10 +1,25 @@
 package projectlp2a;
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import java.util.*;
 
 public class Die extends Random {
+	private JFrame frame;
 	
 	public Die() {
 		super();
+	
+	
+	JButton Die = new JButton("Launch Die");
+	Die.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			rollDice();
+		}
+	});
+	Die.setBounds(687, 33, 150, 126);
+	frame.getContentPane().add(Die);
 	}
 	
 	/**
