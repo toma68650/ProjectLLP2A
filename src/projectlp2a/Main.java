@@ -31,6 +31,8 @@ public class Main extends JFrame {
 		Pawn p = new Pawn();
 		main.jl.add(p, new Integer(2));
 		main.jl.setVisible(true);
+		p.move(7, 12);
+		p.move(8,8);
 		main.setVisible(true);
 		
 				
