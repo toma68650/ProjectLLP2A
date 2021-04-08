@@ -20,14 +20,14 @@ import java.awt.event.KeyListener;
 public class Pawn extends JPanel implements KeyListener {
 	
 	private Timer timer;
-	private final int NB_OF_IMAGES_PER_SECOND = 40;
+	private final int NB_OF_IMAGES_PER_SECOND = 45;
 	private Image pawnSprite;
 	
 	
 	private int targetx;
 	private int targety;
-	private int relativex;
-	private int relativey;
+	private int relativex=0;
+	private int relativey=0;
 	private int x=0;
 	private int y=0;
 	
@@ -37,10 +37,11 @@ public class Pawn extends JPanel implements KeyListener {
 	
 	public Pawn() {
 		color = "yellow";
-		relativex=1;
-		relativey=2;
+		relativex=14;
+		relativey=14;
 		x=(relativex%2)*25 + (relativex/2)*49;
 		y=(relativey%2)*25 + (relativey/2)*49;
+		System.out.println("Position is : "+x+" "+y);
 		loadImage();
 		setBackground(Color.black);
 		setBounds(0,0,735,735);
@@ -52,7 +53,7 @@ public class Pawn extends JPanel implements KeyListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(!((dx==0)&(dy==0))) {
-                	if(( x - targetx != 0)&( y - targety != 0)) {
+                	if(( x - targetx != 0)|( y - targety != 0)) {
                 		System.out.println("Valeur de realx : "+x+"; Valeur de realy : "+y+"; Valeur de targetx : "+targetx+"; Valeur de targety : "+targety);
                 		driveVector();
                 		step();
@@ -126,24 +127,31 @@ public class Pawn extends JPanel implements KeyListener {
    private void driveVector() {
 	   /* We create vector which observe the movement of the pawn */
 	   int xv = targetx-x;
-	   System.out.println("xv is : "+xv);
        int yv = targety-y;
-       System.out.println("yv is : "+yv);
-       /* We normalize the vector */
+       /* We "normalize" the vector */
        if(yv >= xv) {
     	   if(xv < 0) {
     		   dx=-1;
     	   } else {
         	   dx=1;
     	   }
-           dy=(int) Math.ceil((double) yv/((double) xv));
+    	   if (yv < 0) {
+    		   dy=(int) Math.floor((double) yv/(Math.abs((double) xv)));
+    	   } else {
+    		   dy=(int) Math.ceil((double) yv/(Math.abs((double) xv)));
+    	   }
+           
        } else {
     	   if(yv < 0) {
     		   dy=-1;
     	   } else {
         	   dy=1;
     	   }
-    	   dx=(int) Math.ceil((double) xv/((double) yv));
+    	   if (xv < 0) {
+    		   dx=(int) Math.floor(((double) xv)/(Math.abs((double) yv)));
+    	   } else {
+    		   dx=(int) Math.ceil(((double) xv)/(Math.abs((double) yv)));
+    	   }
        }
    }
    
