@@ -5,23 +5,26 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.*;
 
+@SuppressWarnings("serial")
 public class Die extends Random {
-	private JFrame frame;
+	private JButton die;
 	
 	public Die() {
 		super();
 	
 	
-	JButton Die = new JButton("Launch Die");
-	Die.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
-			rollDice();
-		}
-	});
-	Die.setBounds(687, 33, 150, 126);
-	frame.getContentPane().add(Die);
+		die = new JButton("Launch Die");
+		die.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Value of die : "+rollDice());
+			}
+		});
+		die.setBounds(687, 33, 150, 126);
 	}
 	
+	public JButton getButton() {
+		return die;
+	}
 	/**
 	 * @method rollDice()
 	 * @brief method to roll a dice
