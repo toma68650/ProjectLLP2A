@@ -18,7 +18,7 @@ public class Main extends JFrame {
 	private void initUI() {
 		jl = new JLayeredPane();
 		board = new Board(this);
-		
+        getContentPane().setLayout(null);
 		jl.add(board, new Integer(1));
         add(jl);
         
@@ -29,6 +29,7 @@ public class Main extends JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
     }
 	
 	public static void main(String[] args) {
@@ -42,6 +43,12 @@ public class Main extends JFrame {
 		p1.move(2, 2);
 		p.move(3,7);
 		p2.move(13,3);
+		
+		JButton b = new JButton();
+		b.setBounds(0,0, 25, 25);
+		b.setVisible(true);
+		main.jl.add(b);
+		
 		main.jl.setVisible(true);
 		//p.move(8, 3);
 		main.setVisible(true);
