@@ -24,12 +24,58 @@ public class Board extends JPanel{
 	//private final int DELAY = 10;
 	
 	ArrayList<Player> players = new ArrayList<Player>();
-	ArrayList<Case> cases = new ArrayList<Case>();
+	List<Case> cases = new ArrayList<Case>();
 	
-	public Board(JFrame f1) {
+	public Board(JFrame f1, JLayeredPane jl) {
 		super();
 		loadImage();
 		initBoard();
+		
+		/* Green part of the board */
+		cases.add(new Case(6, 14, true, Colorp.green, null, jl, 1));
+		for(int i=2; i <=7;i++) {
+			cases.add(new Case(6, 15-i, true, null, null, jl, i));
+		}
+		for(int i=1;i<=6;i++) {
+			cases.add(new Case(6-i, 8, true, null, null, jl, 7+i));
+		}
+		cases.add(new Case(0, 7, true, null, Colorp.blue, jl, 13));
+		
+		
+		
+		/* Blue part of the board*/
+		cases.add(new Case(0, 8, true, Colorp.blue, null, jl, 14));
+		for(int i=1; i <=6;i++) {
+			cases.add(new Case(i, 6, true, null, null, jl, 14+i));
+		}
+		for(int i=1;i<=6;i++) {
+			cases.add(new Case(6, 6-i, true, null, null, jl, 20+i));
+		}
+		cases.add(new Case(7, 0, true, null, Colorp.red, jl, 27));
+		
+		
+		
+		/* Red part of the board */
+		cases.add(new Case(8, 0, true, Colorp.red, null, jl, 28));
+		for(int i=1; i <=6;i++) {
+			cases.add(new Case(8, i, true, null, null, jl, 28+i));
+		}
+		for(int i=1;i<=6;i++) {
+			cases.add(new Case(8+i, 6, true, null, null, jl, 34+i));
+		}
+		cases.add(new Case(14, 7, true, null, Colorp.yellow, jl, 41));
+		
+		
+		
+		/* Yellow part of the board */
+		cases.add(new Case(14, 8, true, Colorp.yellow, null, jl, 42));
+		for(int i=1; i <=6;i++) {
+			cases.add(new Case(14-i, 8, true, null, null, jl, 42+i));
+		}
+		for(int i=1;i<=6;i++) {
+			cases.add(new Case(8, 8+i, true, null, null, jl, 48+i));
+		}
+		cases.add(new Case(7, 14, true, null, Colorp.green, jl, 55));
 		
 		//f1.add(this,BorderLayout.CENTER);
 		//Pawn p = new Pawn(f1);

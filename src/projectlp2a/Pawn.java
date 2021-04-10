@@ -37,7 +37,7 @@ public class Pawn extends JPanel {
 	private int dy=0;
 	private Colorp color;
 	
-	public Pawn(Colorp color) {
+	public Pawn(Colorp color, JLayeredPane jl, int i) {
 		this.color = color;
 		relativex=0;
 		relativey=0;
@@ -50,7 +50,7 @@ public class Pawn extends JPanel {
 		setOpaque(false);
 		setVisible(true);
 		
-		
+		jl.add(this, new Integer(i));
 
 		timer = new Timer(1000 / NB_OF_IMAGES_PER_SECOND, new ActionListener() {
 
@@ -70,6 +70,7 @@ public class Pawn extends JPanel {
         });
         timer.start();
 	}
+	
 	
 	private void loadImage() {
 		ImageIcon pawnSpriteIcon = new ImageIcon("Image/pawn_sprite_"+color+".png");

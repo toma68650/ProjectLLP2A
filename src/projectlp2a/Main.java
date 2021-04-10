@@ -17,10 +17,10 @@ public class Main extends JFrame {
 	
 	private void initUI() {
 		jl = new JLayeredPane();
-		board = new Board(this);
-        getContentPane().setLayout(null);
+		board = new Board(this, jl);
+        jl.setLayout(null);
 		jl.add(board, new Integer(1));
-        add(jl);
+        getContentPane().add(jl);
         
         setTitle("Game of poney");
         //setSize(735,765);
@@ -34,21 +34,18 @@ public class Main extends JFrame {
 	
 	public static void main(String[] args) {
 		Main main = new Main();
-		Pawn p = new Pawn(Colorp.yellow);
-		Pawn p1 = new Pawn(Colorp.blue);
-		Pawn p2 = new Pawn(Colorp.green);
-		main.jl.add(p, new Integer(2));
-		main.jl.add(p1, new Integer(3));
-		main.jl.add(p2, new Integer(4));
+		Pawn p = new Pawn(Colorp.yellow, main.jl, 2);
+		Pawn p1 = new Pawn(Colorp.blue, main.jl, 3);
+		Pawn p2 = new Pawn(Colorp.green, main.jl, 4);
 		p1.move(2, 2);
 		p.move(3,7);
 		p2.move(13,3);
 		
-		JButton b = new JButton();
-		b.setBounds(0,0, 25, 25);
-		b.setVisible(true);
-		main.jl.add(b);
-		
+		//JButton b = new JButton();
+		//b.setBounds(0,0, 49, 49);
+
+		//main.jl.add(b, new Integer(5));
+		//b.setVisible(true);
 		main.jl.setVisible(true);
 		//p.move(8, 3);
 		main.setVisible(true);

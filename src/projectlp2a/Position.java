@@ -3,7 +3,6 @@ package projectlp2a;
 public class Position {
 	int x;
 	int y;
-	int[][] positionsCase = {{}};
 	public Position() {
 		this.x=0;
 		this.y=0;
@@ -14,7 +13,7 @@ public class Position {
 		this.y=y;
 	}
 	
-	public Position CasePosition() {
+	public Position getPosition() {
 		return this;
 	}
 }
