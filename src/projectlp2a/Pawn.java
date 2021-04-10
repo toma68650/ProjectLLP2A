@@ -14,15 +14,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 // Here we use composition over inheritance because we don't want to keep the interface of an Image, which is pretty difficult to  
 @SuppressWarnings("serial")
-public class Pawn extends JPanel implements KeyListener {
+public class Pawn extends JPanel {
 	
 	private Timer timer;
 	private final int NB_OF_IMAGES_PER_SECOND = 45;
 	private Image pawnSprite;
-	
+	private JButton clicker;
 	
 	private int targetx;
 	private int targety;
@@ -33,12 +35,12 @@ public class Pawn extends JPanel implements KeyListener {
 	
 	private int dx=0;
 	private int dy=0;
-	private String color;
+	private Colorp color;
 	
-	public Pawn() {
-		color = "yellow";
-		relativex=14;
-		relativey=14;
+	public Pawn(Colorp color) {
+		this.color = color;
+		relativex=0;
+		relativey=0;
 		x=(relativex%2)*25 + (relativex/2)*49;
 		y=(relativey%2)*25 + (relativey/2)*49;
 		System.out.println("Position is : "+x+" "+y);
@@ -47,6 +49,8 @@ public class Pawn extends JPanel implements KeyListener {
 		setBounds(0,0,735,735);
 		setOpaque(false);
 		setVisible(true);
+		
+		
 
 		timer = new Timer(1000 / NB_OF_IMAGES_PER_SECOND, new ActionListener() {
 
@@ -73,6 +77,16 @@ public class Pawn extends JPanel implements KeyListener {
 		
 		pawnSprite.getWidth(null);
 		pawnSprite.getHeight(null);
+	}
+	
+	public int getRelativeX() {
+		relativex = x / 25;
+		return relativex;
+	}
+	
+	public int getRelativeY() {
+		relativey = y / 25;
+		return relativey;
 	}
 	
 	public int getX() {
@@ -160,24 +174,13 @@ public class Pawn extends JPanel implements KeyListener {
 	   y+=dy;
        repaint(x-10, y-10,this.getWidth()+2,this.getHeight()+2);     
    }
-   
 
-@Override
-public void keyPressed(KeyEvent e) {
-	if (e.getModifiers() == KeyEvent.BUTTON1_DOWN_MASK) {
-	}
+public JButton getClicker() {
+	return clicker;
 }
 
-@Override
-public void keyReleased(KeyEvent arg0) {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public void keyTyped(KeyEvent arg0) {
-	// TODO Auto-generated method stub
-	
+public void setClicker(JButton clicker) {
+	this.clicker = clicker;
 }
 
 }

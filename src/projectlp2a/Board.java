@@ -9,10 +9,13 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.Image;
+import java.awt.MouseInfo;
 
 @SuppressWarnings("serial")
-public class Board extends JPanel {
+public class Board extends JPanel{
 	
 	private Graphics2D g2d;
 
@@ -81,4 +84,6 @@ public class Board extends JPanel {
 	public void isFinish() {
 		
 	}
+	
+	
 }

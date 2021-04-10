@@ -1,6 +1,9 @@
 package projectlp2a;
 import javax.swing.*;
+
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.MouseInfo;
 
 @SuppressWarnings("serial")
 public class Main extends JFrame {
@@ -20,7 +23,9 @@ public class Main extends JFrame {
         add(jl);
         
         setTitle("Game of poney");
-        setSize(735,765);
+        //setSize(735,765);
+        setSize(1000,765);
+        setBackground(Color.black);
         setLocationRelativeTo(null);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -28,10 +33,17 @@ public class Main extends JFrame {
 	
 	public static void main(String[] args) {
 		Main main = new Main();
-		Pawn p = new Pawn();
+		Pawn p = new Pawn(Colorp.yellow);
+		Pawn p1 = new Pawn(Colorp.blue);
+		Pawn p2 = new Pawn(Colorp.green);
 		main.jl.add(p, new Integer(2));
+		main.jl.add(p1, new Integer(3));
+		main.jl.add(p2, new Integer(4));
+		p1.move(2, 2);
+		p.move(3,7);
+		p2.move(13,3);
 		main.jl.setVisible(true);
-		p.move(8, 3);
+		//p.move(8, 3);
 		main.setVisible(true);
 		
 				

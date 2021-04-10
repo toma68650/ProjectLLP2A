@@ -15,6 +15,6 @@ public class Position {
 	}
 	
 	public Position CasePosition() {
-		return 
+		return this;
 	}
 }
