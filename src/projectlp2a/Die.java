@@ -12,7 +12,6 @@ public class Die extends Random {
 	public Die() {
 		super();
 	
-	
 		die = new JButton("Launch Die");
 		die.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

@@ -15,18 +15,19 @@ public class Case extends JButton {
 	private int coordX;
 	private int coordY;
 	private int idCase;
-	private boolean actionDetected;
+	private Board b;
 	
 	
 	
-	public Case(int coordX, int coordY, boolean safe, Colorp startColor, Colorp finishColor, JLayeredPane jl, int i) {
+	public Case(int coordX, int coordY, boolean safe, Colorp startColor, Colorp finishColor, JLayeredPane jl, Board board, int i) {
 		super();
 		this.coordX = coordX;
 		this.coordY = coordY;
 		this.safe = safe;
 		this.startColor = startColor;
 		this.finishColor = finishColor;
-		actionDetected=false;
+		b = board;
+		
 		idCase = i;
 		this.setBounds(coordX*49, coordY*49, 49, 49);
 		this.setVisible(true);
@@ -37,10 +38,14 @@ public class Case extends JButton {
 		
 		this.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Position of this case  : x="+coordX+"; y="+coordY);
-				actionDetected=true;
+				//System.out.println("Position of this case  : x="+coordX+"; y="+coordY);
+				b.setFocusedCase(getCase());
 			}
 		});
+	}
+	
+	private Case getCase() {
+		return this;
 	}
 	
 	public int getIdCase() {
@@ -59,20 +64,12 @@ public class Case extends JButton {
 		return finishColor;
 	}
 	
-	public Colorp getstartColorColor() {
+	public Colorp getstartColor() {
 		return startColor;
 	}
 	
 	public boolean getSafe() {
 		return safe;
-	}
-
-	public boolean getActionDetected() {
-		return actionDetected;
-	}
-	
-	public void disableAction() {
-		actionDetected = false;
 	}
 	
 	

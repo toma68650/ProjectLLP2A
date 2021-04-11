@@ -24,10 +24,11 @@ public class Pawn extends JPanel {
 	private Timer timer;
 	private final int NB_OF_IMAGES_PER_SECOND = 45;
 	private Image pawnSprite;
-	private JButton clicker;
 	
 	private int targetx;
 	private int targety;
+	private int beginingx=0;
+	private int beginingy=0;
 	private int relativex=0;
 	private int relativey=0;
 	private int x=0;
@@ -37,10 +38,20 @@ public class Pawn extends JPanel {
 	private int dy=0;
 	private Colorp color;
 	
-	public Pawn(Colorp color, JLayeredPane jl, int i) {
+	
+	/**
+	 * @method public Pawn(Colorp color, JLayeredPane jl, int i)
+	 * @brief Constructor of Pawn
+	 * @param color - Colorp, color of the Pawn
+	 * @param jl - JLayeredPane, the container where the pawn will be stick to
+	 * @param i - index of the pawn in depth
+	 */
+	public Pawn(Colorp color, JLayeredPane jl, int i, Case c) {
 		this.color = color;
-		relativex=0;
-		relativey=0;
+		beginingx=c.getX();
+		beginingy=c.getY();
+		relativex=beginingx;
+		relativey=beginingy;
 		x=(relativex%2)*25 + (relativex/2)*49;
 		y=(relativey%2)*25 + (relativey/2)*49;
 		System.out.println("Position is : "+x+" "+y);
@@ -81,12 +92,10 @@ public class Pawn extends JPanel {
 	}
 	
 	public int getRelativeX() {
-		relativex = x / 25;
 		return relativex;
 	}
 	
 	public int getRelativeY() {
-		relativey = y / 25;
 		return relativey;
 	}
 	
@@ -175,13 +184,11 @@ public class Pawn extends JPanel {
 	   y+=dy;
        repaint(x-10, y-10,this.getWidth()+2,this.getHeight()+2);     
    }
+   
+   public void comeBackHome() {
+	   move(beginingx, beginingy);
+   }
 
-public JButton getClicker() {
-	return clicker;
-}
 
-public void setClicker(JButton clicker) {
-	this.clicker = clicker;
-}
 
 }

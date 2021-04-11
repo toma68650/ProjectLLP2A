@@ -22,6 +22,8 @@ public class Main extends JFrame {
 		jl.add(board, new Integer(1));
         getContentPane().add(jl);
         
+        
+        
         setTitle("Game of poney");
         //setSize(735,765);
         setSize(1000,765);
@@ -34,12 +36,12 @@ public class Main extends JFrame {
 	
 	public static void main(String[] args) {
 		Main main = new Main();
-		Pawn p = new Pawn(Colorp.yellow, main.jl, 2);
-		Pawn p1 = new Pawn(Colorp.blue, main.jl, 3);
-		Pawn p2 = new Pawn(Colorp.green, main.jl, 4);
-		p1.move(2, 2);
-		p.move(3,7);
-		p2.move(13,3);
+		//Pawn p = new Pawn(Colorp.yellow, main.jl, 2);
+		//Pawn p1 = new Pawn(Colorp.blue, main.jl, 3);
+		//Pawn p2 = new Pawn(Colorp.green, main.jl, 4);
+		//p1.move(2, 2);
+		//p.move(3,7);
+		//p2.move(13,3);
 		
 		//JButton b = new JButton();
 		//b.setBounds(0,0, 49, 49);
