@@ -32,18 +32,18 @@ public class Interface {
 	/**
 	 * Create the application.
 	 */
-	public Interface() {
-		initialize();
+	public Interface(JFrame frame) {
+		initialize(frame);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 861, 693);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+	private void initialize(JFrame frame) {
+		//frame = new JFrame();
+		//frame.setBounds(100, 100, 861, 693);
+		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//frame.getContentPane().setLayout(null);
 		
 		JButton GREEN = new JButton("Green");
 		GREEN.addActionListener(new ActionListener() {
