@@ -3,7 +3,10 @@ package projectlp2a;
 import java.awt.*;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JButton;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import projectlp2a.Player;
@@ -12,6 +15,7 @@ import projectlp2a.Player;
 public class Interface {
 
 	private JFrame frame;
+	private JLabel label;
 
 	/**
 	 * Launch the application.
@@ -20,7 +24,7 @@ public class Interface {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Interface window = new Interface();
+					Interface window = new Interface(frame);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -91,5 +95,23 @@ public class Interface {
 		
 		Die mydie = new Die();
 		frame.getContentPane().add(mydie.getButton());
+		
+		int resultDice;
+		switch (resultDice){
+		case 1 : 
+			Icon dice = new ImageIcon("Image/dice_2.jpg");
+		case 2 : 
+			 dice = new ImageIcon("Image/dice_2.jpg");
+		case 3 : 
+			 dice = new ImageIcon("Image/dice_3.jpg");
+		case 4 : 
+			 dice = new ImageIcon("Image/dice_4.jpg");
+		case 5 : 
+			 dice = new ImageIcon("Image/dice_5.jpg");
+		case 6 : 
+			 dice = new ImageIcon("Image/dice_6.jpg");
+		}
+		JLabel result = new JLabel();
+		result.setIcon(dice);
 	}
 }
