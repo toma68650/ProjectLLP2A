@@ -15,7 +15,7 @@ import projectlp2a.Player;
 public class Interface {
 
 	private JFrame frame;
-	private JLabel label;
+
 
 	/**
 	 * Launch the application.
@@ -24,7 +24,7 @@ public class Interface {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Interface window = new Interface(frame);
+					Interface window = new Interface();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -36,18 +36,18 @@ public class Interface {
 	/**
 	 * Create the application.
 	 */
-	public Interface(JFrame frame) {
-		initialize(frame);
+	public Interface() {
+		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize(JFrame frame) {
-		//frame = new JFrame();
-		//frame.setBounds(100, 100, 861, 693);
-		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//frame.getContentPane().setLayout(null);
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 861, 693);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
 		
 		JButton GREEN = new JButton("Green");
 		GREEN.addActionListener(new ActionListener() {
@@ -93,25 +93,8 @@ public class Interface {
 		YELLOW.setBounds(718, 495, 119, 115);
 		frame.getContentPane().add(YELLOW);
 		
-		Die mydie = new Die();
+		Die mydie = new Die(frame);
 		frame.getContentPane().add(mydie.getButton());
 		
-		int resultDice;
-		switch (resultDice){
-		case 1 : 
-			Icon dice = new ImageIcon("Image/dice_2.jpg");
-		case 2 : 
-			 dice = new ImageIcon("Image/dice_2.jpg");
-		case 3 : 
-			 dice = new ImageIcon("Image/dice_3.jpg");
-		case 4 : 
-			 dice = new ImageIcon("Image/dice_4.jpg");
-		case 5 : 
-			 dice = new ImageIcon("Image/dice_5.jpg");
-		case 6 : 
-			 dice = new ImageIcon("Image/dice_6.jpg");
-		}
-		JLabel result = new JLabel();
-		result.setIcon(dice);
 	}
 }
