@@ -55,7 +55,7 @@ public class Board extends JPanel{
 		
 		
 		/* Blue part of the board*/
-		Case startBlue = new Case(0, 8, true, Colorp.blue, null, jl, this, 14);
+		Case startBlue = new Case(0, 6, true, Colorp.blue, null, jl, this, 14);
 		cases.add(startBlue);
 		for(int i=1; i <=6;i++) {
 			cases.add(new Case(i, 6, true, null, null, jl, this, 14+i));
@@ -94,7 +94,6 @@ public class Board extends JPanel{
 		Case endGreen = new Case(7, 14, true, null, Colorp.green, jl, this, 55);
 		cases.add(endGreen);
 		
-		cases.add(startGreen);
 		
 		/********************************************************************************************************
 		 ***************** GENERATION OF THE ARRAY OF PLAYERS ***************************************************
@@ -122,29 +121,71 @@ public class Board extends JPanel{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(focusedCase != null) {
-                	System.out.println("Position of this case : x="+focusedCase.getX()+"; y="+focusedCase.getY());
-                	int dieResult = 6;
-                	Player focusedPlayer = redP;
-                	
-                	for(Pawn p : focusedPlayer.getPawns()) {
-                		if((p.getRelativeX() == focusedCase.getX()) && (p.getRelativeY() == focusedCase.getY())) {
-                			if(((focusedCase == focusedPlayer.getBarn().get(0)) && (dieResult == 6))||((focusedCase == focusedPlayer.getBarn().get(1)) && (dieResult == 6)) ||((focusedCase == focusedPlayer.getBarn().get(2)) && (dieResult == 6)) ||((focusedCase == focusedPlayer.getBarn().get(3)) && (dieResult == 6))) {
-                				p.move(focusedPlayer.getStartingCase().getX(), focusedPlayer.getStartingCase().getY());
-                			} else if(cases.contains(focusedCase)) {
-                				Case target = cases.get(cases.indexOf(focusedCase)+dieResult);
-                				p.move(target.getX(),target.getY());
-                			}
-                		} else {
-                			System.out.println("You haven't any horse on this case !!!");
-                		}
-                	}
-                	focusedCase= null;
-                }
+                process(6,greenP);
             }
         });
 		timer.start();
 		
+	}
+	/**
+	 * @method public void process(int dieResult, Player focusedPlayer)
+	 * @brief The method which will manage the movement of the pawns depending on the player who is playing
+	 * @param dieResult - integer, the result of the dieRoll
+	 * @param focusedPlayer - Player, the player who is playing
+	 */
+	public void process(int dieResult, Player focusedPlayer) {
+		/* We first check if a case is focused (clicked on), if it is not the case, we do nothing, else we manage the operation */
+		if(focusedCase != null) {
+        	System.out.println("Position of this case : x="+focusedCase.getX()+"; y="+focusedCase.getY());
+        	/* We check if one of player's pawn is on the case clicked, if not, we do nothing */
+        	for(Pawn p : focusedPlayer.getPawns()) {
+        		if((p.getRelativeX() == focusedCase.getX()) && (p.getRelativeY() == focusedCase.getY())) {
+        			/* We detected a horse on the case, we now check the position of this case. It is a case of the barn ? */
+        			if( ( (focusedCase == focusedPlayer.getBarn().get(0)) || (focusedCase == focusedPlayer.getBarn().get(1)) || (focusedCase == focusedPlayer.getBarn().get(2)) || (focusedCase == focusedPlayer.getBarn().get(3))) && (dieResult == 6) ) {
+        				
+        				p.move(focusedPlayer.getStartingCase().getX(), focusedPlayer.getStartingCase().getY());
+        			/* Or is it a case from the board ? */
+        			} else if(cases.contains(focusedCase)) {
+        				int  indexNextCase = (cases.indexOf(focusedCase)+dieResult); // The index of the next case if everything happen correctly
+        				int nbCaseBeforeEnd=-10; // The case before the beginning of the "stair" or "ladder" 
+        				Case target = null; // The case which will be targeted
+        				/* We check if a case is the end before the horse arrive. The horse must stand at the beginning of the ladder to climb to it, else he will go back */
+        				for(int i = cases.indexOf(focusedCase);i<indexNextCase;i++) {
+        					if(cases.get(i%56) == focusedPlayer.getEnd().get(0)) {
+        						nbCaseBeforeEnd = i-cases.indexOf(focusedCase);
+        						System.out.println("Value of nbCaseBeforeEnd : "+nbCaseBeforeEnd);
+        					}
+        				}
+        				/* The pawn arrive right on the bottom of the ladder, he can climb at the next turn */
+        				if(dieResult - nbCaseBeforeEnd == 0) {
+        					target = cases.get(indexNextCase%56);
+        				/* The result of the die is too big, we must go back */
+        				} else if ( nbCaseBeforeEnd > 0) {
+        					indexNextCase = cases.indexOf(focusedCase) +nbCaseBeforeEnd;
+        					dieResult -= nbCaseBeforeEnd;
+        					indexNextCase -= dieResult;
+        					indexNextCase = indexNextCase%56; // Normally this action is useless, but if the die has more than 55 sides, it could be a problem :] */
+        					target = cases.get(indexNextCase);
+        				/* We're at the bottom of the ladder, we can now climb to it */
+        				} else if(nbCaseBeforeEnd == 0) {
+        					if (dieResult == 6) {
+        						target = focusedPlayer.getEnd().get(dieResult-1);
+        					} else {
+        						target = focusedPlayer.getEnd().get(dieResult);
+        					}
+        				/* We are not close from the end,  we just make a classic move */
+        				} else {
+        					target = cases.get(indexNextCase%56);
+        				}
+        				p.move(target.getX(),target.getY());
+        				
+        			}
+        		} else {
+        			System.out.println("You haven't any horse on this case !!!");
+        		}
+        	}
+        	focusedCase= null; // We set the focusedCase to null so we stop our interest on it
+        }
 	}
 	
 	private void initBoard() {
@@ -163,7 +204,7 @@ public class Board extends JPanel{
     }
 	
 	private void loadImage() {
-		ImageIcon boardIcon = new ImageIcon("Image/plateauprojet.png");
+		ImageIcon boardIcon = new ImageIcon("Image/plateauprojet_skin.png");
 		boardImage = boardIcon.getImage();
 		
 		boardImage.getWidth(null);

@@ -67,32 +67,32 @@ public class Player {
 	private void initEnd(JLayeredPane jl) {
 		switch(color) {
 			case yellow :
-				barn.add(new Case(13, 7, true, null, Colorp.yellow, jl, b, 76));
-				barn.add(new Case(12, 7, true, null, Colorp.yellow, jl, b, 77));
-				barn.add(new Case(11, 7, true, null, Colorp.yellow, jl, b, 78));
-				barn.add(new Case(10, 7, true, null, Colorp.yellow, jl, b, 79));
-				barn.add(new Case(9, 7, true, null, Colorp.yellow, jl, b, 80));
+				end.add(new Case(13, 7, true, null, Colorp.yellow, jl, b, 76));
+				end.add(new Case(12, 7, true, null, Colorp.yellow, jl, b, 77));
+				end.add(new Case(11, 7, true, null, Colorp.yellow, jl, b, 78));
+				end.add(new Case(10, 7, true, null, Colorp.yellow, jl, b, 79));
+				end.add(new Case(9, 7, true, null, Colorp.yellow, jl, b, 80));
 				break;
 			case red :
-				barn.add(new Case(7, 1, true, null, Colorp.red, jl, b, 81));
-				barn.add(new Case(7, 2, true, null, Colorp.red, jl, b, 82));
-				barn.add(new Case(7, 3, true, null, Colorp.red, jl, b, 83));
-				barn.add(new Case(7, 4, true, null, Colorp.red, jl, b, 84));
-				barn.add(new Case(7, 5, true, null, Colorp.red, jl, b, 85));
+				end.add(new Case(7, 1, true, null, Colorp.red, jl, b, 81));
+				end.add(new Case(7, 2, true, null, Colorp.red, jl, b, 82));
+				end.add(new Case(7, 3, true, null, Colorp.red, jl, b, 83));
+				end.add(new Case(7, 4, true, null, Colorp.red, jl, b, 84));
+				end.add(new Case(7, 5, true, null, Colorp.red, jl, b, 85));
 				break;
 			case blue :
-				barn.add(new Case(1, 7, true, null, Colorp.blue, jl, b, 86));
-				barn.add(new Case(2, 7, true, null, Colorp.blue, jl, b, 87));
-				barn.add(new Case(3, 7, true, null, Colorp.blue, jl, b, 88));
-				barn.add(new Case(4, 7, true, null, Colorp.blue, jl, b, 89));
-				barn.add(new Case(5, 7, true, null, Colorp.blue, jl, b, 90));
+				end.add(new Case(1, 7, true, null, Colorp.blue, jl, b, 86));
+				end.add(new Case(2, 7, true, null, Colorp.blue, jl, b, 87));
+				end.add(new Case(3, 7, true, null, Colorp.blue, jl, b, 88));
+				end.add(new Case(4, 7, true, null, Colorp.blue, jl, b, 89));
+				end.add(new Case(5, 7, true, null, Colorp.blue, jl, b, 90));
 				break;
 			case green :
-				barn.add(new Case(7, 13, true, null, Colorp.green, jl, b, 91));
-				barn.add(new Case(7, 12, true, null, Colorp.green, jl, b, 92));
-				barn.add(new Case(7, 11, true, null, Colorp.green, jl, b, 93));
-				barn.add(new Case(7, 10, true, null, Colorp.green, jl, b, 94));
-				barn.add(new Case(7, 9, true, null, Colorp.green, jl, b, 95));
+				end.add(new Case(7, 13, true, null, Colorp.green, jl, b, 91));
+				end.add(new Case(7, 12, true, null, Colorp.green, jl, b, 92));
+				end.add(new Case(7, 11, true, null, Colorp.green, jl, b, 93));
+				end.add(new Case(7, 10, true, null, Colorp.green, jl, b, 94));
+				end.add(new Case(7, 9, true, null, Colorp.green, jl, b, 95));
 				break;
 		}
 	}

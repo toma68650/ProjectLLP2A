@@ -67,7 +67,7 @@ public class Pawn extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(!((dx==0)&(dy==0))) {
+                if((dx!=0)|(dy!=0)) {
                 	if(( x - targetx != 0)|( y - targety != 0)) {
                 		System.out.println("Valeur de realx : "+x+"; Valeur de realy : "+y+"; Valeur de targetx : "+targetx+"; Valeur de targety : "+targety);
                 		driveVector();
@@ -153,7 +153,13 @@ public class Pawn extends JPanel {
 	   int xv = targetx-x;
        int yv = targety-y;
        /* We "normalize" the vector */
-       if(yv >= xv) {
+       if(xv == 0) {
+    	   dx=0;
+    	   dy= yv/Math.abs(yv);
+       } else if (yv == 0) {
+    	   dy=0;
+    	   dx= xv/Math.abs(xv);
+       } else if(yv >= xv) {
     	   if(xv < 0) {
     		   dx=-1;
     	   } else {
