@@ -1,6 +1,7 @@
 package projectlp2a;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -16,7 +17,16 @@ public class Die extends Random {
 
 	
 	
-		die = new JButton("Launch Die");
+		die = new JButton(new ImageIcon("Image/die/dice_1.png"));
+		die.setVisible(false);
+		getButton().setBorder(BorderFactory.createEmptyBorder());
+		getButton().setBorderPainted(false);
+		getButton().setOpaque(false);
+		
+		
+		getButton().setContentAreaFilled(false);
+
+		
 		die.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int resultDice= rollDice();
@@ -24,35 +34,32 @@ public class Die extends Random {
 				System.out.println("Value of die : "+resultDice);
 				switch (resultDice){
 				case 1 : 
-					dice = new ImageIcon("Image/dice_1.png");
+					dice = new ImageIcon("Image/die/dice_1.png");
 					break;
 				case 2 : 
-					 dice = new ImageIcon("Image/dice_2.png");
+					 dice = new ImageIcon("Image/die/dice_2.png");
 					 break;
 				case 3 : 
-					 dice = new ImageIcon("Image/dice_3.png");
+					 dice = new ImageIcon("Image/die/dice_3.png");
 					 break;
 				case 4 : 
-					 dice = new ImageIcon("Image/dice_4.png");
+					 dice = new ImageIcon("Image/die/dice_4.png");
 					 break;
 				case 5 : 
-					 dice = new ImageIcon("Image/dice_5.png");
+					 dice = new ImageIcon("Image/die/dice_5.png");
 					 break;
 				case 6 : 
-					 dice = new ImageIcon("Image/dice_6.png");
+					 dice = new ImageIcon("Image/die/dice_6.png");
 					 break;
 				}
-				getButton().setOpaque(false);
-				getButton().setContentAreaFilled(false);
-				getButton().setBorderPainted(false);
+				
 				System.out.println(dice);
 				getButton().setIcon(dice);
-				JLabel result = new JLabel();
-				frame.add(result);
-				frame.setVisible(true);
+
 			}
 		});
-		die.setBounds(718, 31, 135, 126);
+		die.setBounds(708, 25, 150, 128);
+		die.setVisible(true);
 	}
 	
 	public JButton getButton() {
