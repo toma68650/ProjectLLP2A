@@ -120,4 +120,8 @@ public class Player {
 	public List<Pawn> getPawns() {
 		return pawns;
 	}
+	
+	public Colorp getColor() {
+		return color;
+	}
 }

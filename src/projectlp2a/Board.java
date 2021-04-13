@@ -176,7 +176,13 @@ public class Board extends JPanel{
         				/* We are not close from the end,  we just make a classic move */
         				} else {
         					target = cases.get(indexNextCase%56);
-        					/******** AJOUTER FONCTION EATPAWN ICI *****************/
+        					for(int i=0;i<4;i++) {
+        						for(int j =0;j<4;j++) {
+        							if( (players.get(i).getPawns().get(j).equals(target)) && (cases.get((cases.indexOf(focusedCase) + dieResult)%56).equals(target))) {
+        								players.get(i).getPawns().get(j).comeBackHome();
+        							}
+        						}
+        					}
         				}
         				p.move(target.getX(),target.getY());
         				break;

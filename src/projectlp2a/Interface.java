@@ -59,7 +59,7 @@ public class Interface {
 		JButton RED = new JButton("Red");
 		RED.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Player.color =Color.RED;
+				Player.color =Colorp.red;
 				System.out.println("You're Red");
 				RED.setVisible(false);
 			}
@@ -70,7 +70,7 @@ public class Interface {
 		JButton BLUE = new JButton("Blue");
 		BLUE.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Player.color =Color.BLUE;
+				Player.color =Colorp.blue;
 				System.out.println("You're Blue");
 				BLUE.setVisible(false);
 			}
