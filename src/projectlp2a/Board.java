@@ -241,6 +241,20 @@ public class Board extends JPanel{
 		focusedCase = c;
 	}
 	
+	public List<Player> getPlayers(){
+		return players;
+	}
+	
+	public Player findPlayer(Colorp color) {
+		Player playerFound =null;
+		for(Player p : players) {
+			if(p.getColor().equals(color)) {
+				playerFound = p;
+			}
+		}
+		return playerFound;
+	}
+	
 	public void startGame() {
 		
 	}

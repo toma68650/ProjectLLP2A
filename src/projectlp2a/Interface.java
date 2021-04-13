@@ -3,6 +3,7 @@ package projectlp2a;
 import java.awt.*;
 
 import javax.swing.JFrame;
+import javax.swing.JLayeredPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -11,35 +12,22 @@ import projectlp2a.Player;
 
 public class Interface {
 
-	private JFrame frame;
-
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Interface window = new Interface();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 	/**
 	 * Create the application.
 	 */
-	public Interface(JFrame frame) {
+	public Interface(JLayeredPane frame, Board b) {
 		initialize(frame);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize(JFrame frame) {
+	private void initialize(JLayeredPane frame, Board b) {
 		//frame = new JFrame();
 		//frame.setBounds(100, 100, 861, 693);
 		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,24 +36,24 @@ public class Interface {
 		JButton GREEN = new JButton("Green");
 		GREEN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Player.color =Color.GREEN;
+				Player greenP = b.findPlayer(Colorp.green);
 				System.out.println("You're Green");
 				GREEN.setVisible(false);
 			}
 		});
 		GREEN.setBounds(718, 156, 119, 115);
-		frame.getContentPane().add(GREEN);
+		frame.add(GREEN);
 		
 		JButton RED = new JButton("Red");
 		RED.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Player.color =Colorp.red;
+				Player redP = b.findPlayer(Colorp.red);
 				System.out.println("You're Red");
 				RED.setVisible(false);
 			}
 		});
 		RED.setBounds(718, 268, 119, 115);
-		frame.getContentPane().add(RED);
+		frame.add(RED);
 		
 		JButton BLUE = new JButton("Blue");
 		BLUE.addActionListener(new ActionListener() {
@@ -76,7 +64,7 @@ public class Interface {
 			}
 		});
 		BLUE.setBounds(718, 380, 119, 115);
-		frame.getContentPane().add(BLUE);
+		frame.add(BLUE);
 		
 		JButton YELLOW = new JButton("Yellow");
 		YELLOW.addActionListener(new ActionListener() {
@@ -87,9 +75,9 @@ public class Interface {
 			}
 		});
 		YELLOW.setBounds(718, 495, 119, 115);
-		frame.getContentPane().add(YELLOW);
+		frame.add(YELLOW);
 		
 		Die mydie = new Die();
-		frame.getContentPane().add(mydie.getButton());
+		frame.add(mydie.getButton());
 	}
 }

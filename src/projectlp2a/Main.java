@@ -22,7 +22,12 @@ public class Main extends JFrame {
 		jl.add(board, new Integer(1));
         getContentPane().add(jl);
         
-        
+        try {
+			Interface window = new Interface(jl, board);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
         
         setTitle("Game of poney");
         //setSize(735,765);
