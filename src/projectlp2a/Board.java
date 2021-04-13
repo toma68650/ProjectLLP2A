@@ -176,9 +176,10 @@ public class Board extends JPanel{
         				/* We are not close from the end,  we just make a classic move */
         				} else {
         					target = cases.get(indexNextCase%56);
+        					/******** AJOUTER FONCTION EATPAWN ICI *****************/
         				}
         				p.move(target.getX(),target.getY());
-        				
+        				break;
         			}
         		} else {
         			System.out.println("You haven't any horse on this case !!!");
@@ -204,7 +205,7 @@ public class Board extends JPanel{
     }
 	
 	private void loadImage() {
-		ImageIcon boardIcon = new ImageIcon("Image/plateauprojet_skin.png");
+		ImageIcon boardIcon = new ImageIcon("Image/plateauprojet.png");
 		boardImage = boardIcon.getImage();
 		
 		boardImage.getWidth(null);
