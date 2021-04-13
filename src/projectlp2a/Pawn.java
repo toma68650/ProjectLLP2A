@@ -194,6 +194,10 @@ public class Pawn extends JPanel {
    public void comeBackHome() {
 	   move(beginingx, beginingy);
    }
+   
+	public Colorp getColor() {
+		return color;
+	}
 
 
 

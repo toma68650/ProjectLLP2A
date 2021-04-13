@@ -21,7 +21,7 @@ public class Interface {
 	 * Create the application.
 	 */
 	public Interface(JLayeredPane frame, Board b) {
-		initialize(frame);
+		initialize(frame,b);
 	}
 
 	/**
@@ -58,7 +58,7 @@ public class Interface {
 		JButton BLUE = new JButton("Blue");
 		BLUE.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Player.color =Colorp.blue;
+				Player blueP = b.findPlayer(Colorp.blue);
 				System.out.println("You're Blue");
 				BLUE.setVisible(false);
 			}
@@ -69,7 +69,7 @@ public class Interface {
 		JButton YELLOW = new JButton("Yellow");
 		YELLOW.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Player.color =Color.YELLOW;
+				Player yellowP = b.findPlayer(Colorp.yellow);
 				System.out.println("You're Yellow");
 				YELLOW.setVisible(false);
 			}
