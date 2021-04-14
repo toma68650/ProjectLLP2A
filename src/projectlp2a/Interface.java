@@ -36,7 +36,8 @@ public class Interface {
 		JButton GREEN = new JButton("Green");
 		GREEN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Player greenP = b.findPlayer(Colorp.green);
+				Player greenP = b.greenP;
+				b.getPlayers().add(greenP);
 				System.out.println("You're Green");
 				GREEN.setVisible(false);
 			}
@@ -47,7 +48,8 @@ public class Interface {
 		JButton RED = new JButton("Red");
 		RED.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Player redP = b.findPlayer(Colorp.red);
+				Player redP = b.redP;
+				b.getPlayers().add(redP);
 				System.out.println("You're Red");
 				RED.setVisible(false);
 			}
@@ -58,7 +60,8 @@ public class Interface {
 		JButton BLUE = new JButton("Blue");
 		BLUE.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Player blueP = b.findPlayer(Colorp.blue);
+				Player blueP = b.blueP;
+				b.getPlayers().add(blueP);
 				System.out.println("You're Blue");
 				BLUE.setVisible(false);
 			}
@@ -69,7 +72,8 @@ public class Interface {
 		JButton YELLOW = new JButton("Yellow");
 		YELLOW.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Player yellowP = b.findPlayer(Colorp.yellow);
+				Player yellowP = b.yellowP;
+				b.getPlayers().add(yellowP);
 				System.out.println("You're Yellow");
 				YELLOW.setVisible(false);
 			}

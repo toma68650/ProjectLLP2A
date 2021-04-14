@@ -24,8 +24,12 @@ public class Board extends JPanel{
 	private Case focusedCase;
 	private Image boardImage;
 	private Timer timer;
-	//private final int DELAY = 10;
 	
+	
+	protected Player greenP;
+	protected Player blueP;
+	protected Player yellowP;
+	protected Player redP;
 	ArrayList<Player> players = new ArrayList<Player>();
 	List<Case> cases = new LinkedList<Case>();
 	
@@ -99,18 +103,14 @@ public class Board extends JPanel{
 		 ***************** GENERATION OF THE ARRAY OF PLAYERS ***************************************************
 		 ********************************************************************************************************/
 		
-		Player greenP = new Player(endGreen, Colorp.green, jl, this);
+		greenP = new Player(endGreen, Colorp.green, jl, this);
 		greenP.setStartingCase(startGreen);
-		Player blueP = new Player(endBlue, Colorp.blue, jl, this);
+		blueP = new Player(endBlue, Colorp.blue, jl, this);
 		blueP.setStartingCase(startBlue);
-		Player redP = new Player(endRed, Colorp.red, jl, this);
+		redP = new Player(endRed, Colorp.red, jl, this);
 		redP.setStartingCase(startRed);
-		Player yellowP = new Player(endYellow, Colorp.yellow, jl, this);
-		yellowP.setStartingCase(startYellow);
-		players.add(greenP);
-		players.add(blueP);
-		players.add(redP);
-		players.add(yellowP);		
+		yellowP = new Player(endYellow, Colorp.yellow, jl, this);
+		yellowP.setStartingCase(startYellow);		
 		
 		
 		/********************************************************************************************************
@@ -135,7 +135,7 @@ public class Board extends JPanel{
 	 */
 	public void process(int dieResult, Player focusedPlayer) {
 		/* We first check if a case is focused (clicked on), if it is not the case, we do nothing, else we manage the operation */
-		if(focusedCase != null) {
+		if((focusedCase != null) && (players.size() != 0)) {
         	System.out.println("Position of this case : x="+focusedCase.getX()+"; y="+focusedCase.getY());
         	/* We check if one of player's pawn is on the case clicked, if not, we do nothing */
         	for(Pawn p : focusedPlayer.getPawns()) {
