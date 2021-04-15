@@ -3,8 +3,13 @@ package projectlp2a;
 import java.awt.*;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
+import java.util.Timer;
 import javax.swing.JButton;
+import javax.swing.JDialog;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import projectlp2a.Player;
@@ -12,11 +17,8 @@ import projectlp2a.Player;
 
 public class Interface {
 
-	/**
-	 * Launch the application.
-	 */
-
-
+	private FadePane pane;
+	
 	/**
 	 * Create the application.
 	 */
@@ -25,7 +27,10 @@ public class Interface {
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * @method private void initialize(JLayeredPane frame, Board b)
+	 * @brief Initialize the contents of the frame.
+	 * @param frame - JLayeredPane, the JLayeredPnae where the buttons will be built
+	 * @param b - Board, that players belong to
 	 */
 	private void initialize(JLayeredPane frame, Board b) {
 		//frame = new JFrame();
@@ -39,10 +44,11 @@ public class Interface {
 				Player greenP = b.greenP;
 				b.getPlayers().add(greenP);
 				System.out.println("You're Green");
+				pane.changeAnnounce("You're Green",Color.green);
 				GREEN.setVisible(false);
 			}
 		});
-		GREEN.setBounds(718, 156, 119, 115);
+		GREEN.setBounds(800, 156, 119, 115);
 		frame.add(GREEN);
 		
 		JButton RED = new JButton("Red");
@@ -51,10 +57,11 @@ public class Interface {
 				Player redP = b.redP;
 				b.getPlayers().add(redP);
 				System.out.println("You're Red");
+				pane.changeAnnounce("You're Red",Color.red);
 				RED.setVisible(false);
 			}
 		});
-		RED.setBounds(718, 268, 119, 115);
+		RED.setBounds(800, 268, 119, 115);
 		frame.add(RED);
 		
 		JButton BLUE = new JButton("Blue");
@@ -63,10 +70,11 @@ public class Interface {
 				Player blueP = b.blueP;
 				b.getPlayers().add(blueP);
 				System.out.println("You're Blue");
+				pane.changeAnnounce("You're Blue",Color.blue);
 				BLUE.setVisible(false);
 			}
 		});
-		BLUE.setBounds(718, 380, 119, 115);
+		BLUE.setBounds(800, 380, 119, 115);
 		frame.add(BLUE);
 		
 		JButton YELLOW = new JButton("Yellow");
@@ -75,13 +83,40 @@ public class Interface {
 				Player yellowP = b.yellowP;
 				b.getPlayers().add(yellowP);
 				System.out.println("You're Yellow");
+				pane.changeAnnounce("You're Yellow",Color.yellow);
 				YELLOW.setVisible(false);
 			}
 		});
-		YELLOW.setBounds(718, 495, 119, 115);
+		YELLOW.setBounds(800, 495, 119, 115);
+		frame.add(YELLOW);
+		
+		JButton startParty = new JButton("Start");
+		YELLOW.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				startParty.setAction
+				System.out.println("Game's starting");
+				pane.changeAnnounce("Game's starting",Color.black);
+				startParty.setVisible(false);
+				
+			}
+		});
+		YELLOW.setBounds(800, 495, 119, 115);
 		frame.add(YELLOW);
 		
 		Die mydie = new Die();
 		frame.add(mydie.getButton());
+		initAnnounce("Let's start the game !");
+		
+		frame.add(pane, new Integer(200));
 	}
+	
+	public void initAnnounce(String text) {
+		pane = new FadePane(text);
+	}
+	
+	public FadePane getPane() {
+		return pane;
+	}
+	
+
 }

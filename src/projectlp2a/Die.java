@@ -18,7 +18,7 @@ public class Die extends Random {
 				System.out.println("Value of die : "+rollDice());
 			}
 		});
-		die.setBounds(687, 33, 150, 126);
+		die.setBounds(800, 33, 150, 126);
 	}
 	
 	public JButton getButton() {

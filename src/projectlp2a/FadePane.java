@@ -1,0 +1,118 @@
+package projectlp2a;
+
+import java.awt.AlphaComposite;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.awt.color.*;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.Timer;
+/**
+ * @author alexandrev - Thanks to MadProgrammer (here : stackoverflow.com/questions/13203415/how-to-add-fade-fade-out-effects-to-a-jlabel
+ * @author Thanks to Tym (here : blog.tym-project.fr )
+ */
+@SuppressWarnings("serial")
+public class FadePane extends JPanel {
+
+    private float direction = -0.03f;
+    private FadeLabel label;
+    
+    public FadePane(String text) {
+        setLayout(new BorderLayout());
+        JLabel background = new JLabel();
+        background.setLayout(new GridBagLayout());
+        setOpaque(false);
+        setBounds(0,0,735,400);
+        add(background);
+
+        label = new FadeLabel(text);
+        background.add(label);
+
+        Timer timer = new Timer(100, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	float alpha = label.getAlpha();
+            	if(alpha > Math.abs(direction)) {
+            		alpha += direction;
+                    label.setAlpha(alpha);
+                } else {
+                	alpha = 0f;
+                }
+            }
+        });
+        timer.setRepeats(true);
+        timer.setCoalesce(true);
+        timer.start();
+    }
+    
+    public void changeAnnounce(String text, Color color) {
+    	label.setText(text);
+    	label.setForeground(color);
+    	resetAlpha();
+    }
+    
+    private void resetAlpha() {
+    	label.setAlpha(1);
+    }
+    
+    public FadeLabel getFadeLabel() {
+    	return label;
+    }
+
+    public class FadeLabel extends JLabel {
+
+        private float alpha;
+        private BufferedImage background;
+
+        public FadeLabel(String text) {
+            setText(text);
+            setBounds(0,0,735,735);
+            setFont(new Font("Arial",Font.BOLD, 40));
+            setAlpha(1f);
+        }
+
+        public void setAlpha(float value) {
+            if (alpha != value) {
+            	float old = alpha;
+                alpha = value;
+                firePropertyChange("alpha", old, alpha);
+                repaint();
+            }
+        }
+
+        public float getAlpha() {
+            return alpha;
+        }
+
+        @Override
+        public void paint(Graphics g) {
+            // This is one of the few times I would directly override paint
+            // This makes sure that the entire paint chain is now using
+            // the alpha composite, including borders and child components
+            Graphics2D g2d = (Graphics2D) g.create();
+            g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, getAlpha()));
+            super.paint(g2d);
+            g2d.dispose();
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            // This is one of the few times that doing this before the super call
+            // will work...
+            if (background != null) {
+                int x = (getWidth() - background.getWidth()) / 2;
+                int y = (getHeight() - background.getHeight()) / 2;
+                g.drawImage(background, x, y, this);
+            }
+            super.paintComponent(g);
+        }
+    }
+}
