@@ -14,6 +14,7 @@ public class Main extends JFrame implements ActionListener {
 	public Board board;
 	private Interface window;
 	private boolean actionRealized = false;
+	private int d=0;
 	
 	public Main() {
 		initUI();
@@ -49,11 +50,23 @@ public class Main extends JFrame implements ActionListener {
 	
 	private void TurnPlayer(Player p) {
 		window.getPane().changeAnnounce(p.getColor()+"'s turn", Color.black);
+		boolean played=false;
+		boolean moved = p.movePerformed();
+		while(!played) {
+			if(d==0) {
+				System.out.println("You must throw a die first ! ");
+			} else {
+				if(!moved) {
+					System.out.println("You must move a pawn ! ");
+				} else {
+					moved = true;
+				}
+			}
+		}
 	}
 	
 	private void Turn() {
 		for(Player p : board.getPlayers()) {
-			
 			TurnPlayer(p);
 		}
 	}

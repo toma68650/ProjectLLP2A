@@ -97,6 +97,14 @@ public class Player {
 		}
 	}
 	
+	public boolean movePerformed() {
+		boolean moved = false;
+		  for(Pawn pa : pawns){
+			    moved = pa.getMoved();
+			  }
+			  return moved;
+	}
+	
 	protected void setStartingCase(Case c) {
 		this.startingCase = c;
 	}

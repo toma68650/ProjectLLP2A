@@ -259,8 +259,10 @@ public class Board extends JPanel{
 		
 	}
 	
-	public void isFinish() {
-		
+	public void isFinish(Player p) {
+		for(Pawn p: pawns) {
+			
+		}
 	}
 	
 	

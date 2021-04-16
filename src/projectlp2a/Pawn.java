@@ -33,6 +33,7 @@ public class Pawn extends JPanel {
 	private int relativey=0;
 	private int x=0;
 	private int y=0;
+	private boolean moved =false;
 	
 	private int dx=0;
 	private int dy=0;
@@ -141,6 +142,8 @@ public class Pawn extends JPanel {
 	   y=(relativey%2)*25 + (relativey/2)*49;
        /* We create vector which observe the movement of the pawn */
 	   driveVector();
+	   /* Verify if the pawn moved */
+	   moved=true;
        
        System.out.println("value of dx : "+dx+"; value of dy : "+dy);
       
@@ -199,6 +202,8 @@ public class Pawn extends JPanel {
 		return color;
 	}
 
-
+	public boolean getMoved() {
+		return moved;
+	}
 
 }
