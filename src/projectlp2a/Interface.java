@@ -93,14 +93,13 @@ public class Interface {
 		JButton startParty = new JButton("Start");
 		YELLOW.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				startParty.setAction
 				System.out.println("Game's starting");
 				pane.changeAnnounce("Game's starting",Color.black);
 				startParty.setVisible(false);
 				
 			}
 		});
-		YELLOW.setBounds(800, 495, 119, 115);
+		startParty.setBounds(800, 610, 119, 115);
 		frame.add(YELLOW);
 		
 		Die mydie = new Die();
