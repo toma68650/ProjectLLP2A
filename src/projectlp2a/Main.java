@@ -69,7 +69,7 @@ public class Main extends JFrame implements ActionListener {
 		for(Player p : board.getPlayers()) {
 			TurnPlayer(p);
 		}
-	}s
+	}
 	
 	private void Game() {
 		boolean finished=isFinished();
