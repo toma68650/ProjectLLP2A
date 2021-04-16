@@ -69,8 +69,15 @@ public class Main extends JFrame implements ActionListener {
 		for(Player p : board.getPlayers()) {
 			TurnPlayer(p);
 		}
-	}
+	}s
 	
+	private void Game() {
+		boolean finished=isFinished();
+		while(!finished) {
+			Turn();
+		}
+		
+	}
 	public static void main(String[] args) {
 		Main main = new Main();
 		//Pawn p = new Pawn(Colorp.yellow, main.jl, 2);

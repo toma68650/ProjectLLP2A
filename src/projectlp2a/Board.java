@@ -259,11 +259,21 @@ public class Board extends JPanel{
 		
 	}
 	
-	public void isFinish(Player p) {
-		for(Pawn p: pawns) {
-			
-		}
-	}
+    public boolean isFinish(Player p) {
+        int PawnsEnded = 0;
+        for(int i=1;i<=5;i++) {
+            for(Pawn pa : p.getPawns()) {
+                if((pa.getRelativeX()==p.getEnd().get(i).getX()) && (pa.getRelativeY()==p.getEnd().get(i).getY())) {
+                    PawnsEnded++;
+                }
+            }
+        }
+        if(PawnsEnded == 4) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 	
 	
 }
