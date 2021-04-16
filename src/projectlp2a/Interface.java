@@ -91,7 +91,7 @@ public class Interface {
 		frame.add(YELLOW);
 		
 		JButton startParty = new JButton("Start");
-		YELLOW.addActionListener(new ActionListener() {
+		startParty.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Game's starting");
 				pane.changeAnnounce("Game's starting",Color.black);
@@ -100,7 +100,7 @@ public class Interface {
 			}
 		});
 		startParty.setBounds(800, 610, 119, 115);
-		frame.add(YELLOW);
+		frame.add(startParty);
 		
 		Die mydie = new Die();
 		frame.add(mydie.getButton());
