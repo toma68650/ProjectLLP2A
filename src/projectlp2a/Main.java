@@ -47,12 +47,14 @@ public class Main extends JFrame implements ActionListener {
 
     }
 	
+	private void TurnPlayer(Player p) {
+		window.getPane().changeAnnounce(p.getColor()+"'s turn", Color.black);
+	}
+	
 	private void Turn() {
 		for(Player p : board.getPlayers()) {
-			window.getPane().changeAnnounce(p.getColor()+"'s turn", Color.black);
-			do {
-				
-			} while(!actionRealized);
+			
+			TurnPlayer(p);
 		}
 	}
 	
