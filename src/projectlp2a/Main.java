@@ -65,7 +65,7 @@ public class Main extends JFrame implements ActionListener {
 		}
 	}
 	
-	private void Turn() {
+	private  void Turn() {
 		for(Player p : board.getPlayers()) {
 			TurnPlayer(p);
 		}
@@ -97,7 +97,7 @@ public class Main extends JFrame implements ActionListener {
 		main.setVisible(true);
 		main.Turn();
 		//b1.setPreferredSize(new Dimension(300, 200));
-		
+
 ;
 	}
 
