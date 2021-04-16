@@ -71,8 +71,8 @@ public class Main extends JFrame implements ActionListener {
 		}
 	}
 	
-	private void Game() {
-		boolean finished=isFinished();
+	private void Game(Board b,Player p) {
+		boolean finished=b.isFinish(p);
 		while(!finished) {
 			Turn();
 		}
