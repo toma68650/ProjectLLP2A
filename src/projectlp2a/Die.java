@@ -53,7 +53,9 @@ public class Die extends Random {
 					 dice = new ImageIcon("Image/die/dice_6.png");
 					 break;
 				}
-				
+				if(resultDice!=6) {
+					die.setEnabled(false);
+				}
 				System.out.println(dice);
 				getButton().setIcon(dice);
 
