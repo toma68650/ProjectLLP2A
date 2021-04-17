@@ -201,6 +201,37 @@ public class Board extends JPanel{
         }
 	}
 	
+	public boolean isLegalMove(Player p) {
+		int nbLegalMoves = 4;
+		boolean inBarn = false;
+		for(Pawn pa : p.getPawns()) {
+			if(dieResult !=6) {
+				for(Case c : p.getBarn()) {
+					if((pa.getRelativeX()==c.getX()) && (pa.getRelativeY()==c.getY()) ) {
+						nbLegalMoves--;
+						inBarn=true;
+					}
+				}
+			} 
+			if(!inBarn) {
+				for(Case c : p.getEnd()) {
+					if((pa.getRelativeX()==c.getX()) && (pa.getRelativeY()==c.getY())){
+						if(p.getEnd().indexOf(c)+dieResult>5) {
+							nbLegalMoves--;
+						}
+					}
+				}
+			}
+			inBarn=false;
+		}
+		
+		if(nbLegalMoves >= 0) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
 	private void initBoard() {
 		
         setBackground(Color.black);
