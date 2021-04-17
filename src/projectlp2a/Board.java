@@ -123,7 +123,6 @@ public class Board extends JPanel{
             public void actionPerformed(ActionEvent e) {
                 if(action) {
                 	process(6,greenP);
-                	action=false;
                 }      	
             }
         });
@@ -188,6 +187,7 @@ public class Board extends JPanel{
         					}
         				}
         				p.move(target.getX(),target.getY());
+        				action=false;
         				break;
         			}
         		} else {

@@ -19,6 +19,8 @@ public class Interface {
 
 	private FadePane pane;
 	
+	
+	private Die myDie;
 	/**
 	 * Create the application.
 	 */
@@ -102,8 +104,8 @@ public class Interface {
 		startParty.setBounds(800, 610, 119, 115);
 		frame.add(startParty);
 		
-		Die mydie = new Die();
-		frame.add(mydie.getButton());
+		myDie = new Die();
+		frame.add(myDie.getButton());
 		initAnnounce("Let's start the game !");
 		
 		frame.add(pane, new Integer(200));
@@ -117,5 +119,8 @@ public class Interface {
 		return pane;
 	}
 	
-
+	public Die getDie() {
+		return myDie;
+	}
+	
 }
