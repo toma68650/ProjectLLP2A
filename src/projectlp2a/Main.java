@@ -51,17 +51,18 @@ public class Main extends JFrame implements ActionListener {
 	
 	private void TurnPlayer(Player p) {
 		window.getPane().changeAnnounce(p.getColor()+"'s turn", Color.black);
-		int c= 0;
-		c = window.getDie().rollDice();
+		int d= 0;
+		d = window.getDie().rollDice();
 		boolean played=false;
 		boolean moved = p.movePerformed();
 		while(!played) {
-			if(c == 0) {
+			if(d == 0) {
 				System.out.println("You must throw a die first ! ");
 			} else {
 				if(!moved) {
 					System.out.println("You must move a pawn ! ");
 				} else {
+					board.setAction(p, d);
 					moved = true;
 				}
 			}
@@ -108,7 +109,7 @@ public class Main extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand() == Actions.rollDice.name()) {
-			
+			Game();
 		}
 		
 	}
