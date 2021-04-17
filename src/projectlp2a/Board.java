@@ -24,7 +24,7 @@ public class Board extends JPanel{
 	private Case focusedCase;
 	private Image boardImage;
 	private Timer timer;
-	
+	protected boolean action = false;
 	
 	protected Player greenP;
 	protected Player blueP;
@@ -121,7 +121,10 @@ public class Board extends JPanel{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                process(6,greenP);
+                if(action) {
+                	process(6,greenP);
+                	action=false;
+                }      	
             }
         });
 		timer.start();
@@ -275,5 +278,8 @@ public class Board extends JPanel{
         }
     }
 	
+    public void enableAction() {
+    	action=true;
+    }
 	
 }

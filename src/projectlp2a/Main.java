@@ -13,6 +13,7 @@ public class Main extends JFrame implements ActionListener {
 	private JLayeredPane jl;
 	public Board board;
 	private Interface window;
+	private boolean finished;
 	private boolean actionRealized = false;
 	private int d=0;
 	
@@ -68,15 +69,15 @@ public class Main extends JFrame implements ActionListener {
 	private  void Turn() {
 		for(Player p : board.getPlayers()) {
 			TurnPlayer(p);
+			finished = board.isFinish(p);
 		}
 	}
 	
-	private void Game(Board b,Player p) {
-		boolean finished=b.isFinish(p);
+	private void Game() {
+		finished = false;
 		while(!finished) {
 			Turn();
 		}
-		
 	}
 	public static void main(String[] args) {
 		Main main = new Main();
@@ -95,7 +96,7 @@ public class Main extends JFrame implements ActionListener {
 		main.jl.setVisible(true);
 		//p.move(8, 3);
 		main.setVisible(true);
-		main.Turn();
+		main.Game();
 		//b1.setPreferredSize(new Dimension(300, 200));
 
 ;
