@@ -12,6 +12,7 @@ import java.util.*;
 @SuppressWarnings("serial")
 public class Die extends Random {
 	private JButton die;
+	private int resultDice =0;
 	
 	public Die(JLayeredPane frame) {
 		super();
@@ -30,7 +31,7 @@ public class Die extends Random {
 		
 		die.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int resultDice= rollDice();
+				resultDice= rollDice();
 				ImageIcon dice=null;
 				System.out.println("Value of die : "+resultDice);
 				switch (resultDice){
@@ -85,4 +86,7 @@ public class Die extends Random {
         return this.nextInt(4)+1;
     }
 
+	public int getResult() {
+		return resultDice;
+	}
 }
