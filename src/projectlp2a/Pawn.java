@@ -24,23 +24,35 @@ public class Pawn extends JPanel {
 	private Timer timer;
 	private final int NB_OF_IMAGES_PER_SECOND = 45;
 	private Image pawnSprite;
-	private JButton clicker;
 	
 	private int targetx;
 	private int targety;
+	private int beginingx=0;
+	private int beginingy=0;
 	private int relativex=0;
 	private int relativey=0;
 	private int x=0;
 	private int y=0;
+	private boolean moved =false;
 	
 	private int dx=0;
 	private int dy=0;
 	private Colorp color;
 	
-	public Pawn(Colorp color, JLayeredPane jl, int i) {
+	
+	/**
+	 * @method public Pawn(Colorp color, JLayeredPane jl, int i)
+	 * @brief Constructor of Pawn
+	 * @param color - Colorp, color of the Pawn
+	 * @param jl - JLayeredPane, the container where the pawn will be stick to
+	 * @param i - index of the pawn in depth
+	 */
+	public Pawn(Colorp color, JLayeredPane jl, int i, Case c) {
 		this.color = color;
-		relativex=0;
-		relativey=0;
+		beginingx=c.getX();
+		beginingy=c.getY();
+		relativex=beginingx;
+		relativey=beginingy;
 		x=(relativex%2)*25 + (relativex/2)*49;
 		y=(relativey%2)*25 + (relativey/2)*49;
 		System.out.println("Position is : "+x+" "+y);
@@ -56,7 +68,7 @@ public class Pawn extends JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(!((dx==0)&(dy==0))) {
+                if((dx!=0)|(dy!=0)) {
                 	if(( x - targetx != 0)|( y - targety != 0)) {
                 		System.out.println("Valeur de realx : "+x+"; Valeur de realy : "+y+"; Valeur de targetx : "+targetx+"; Valeur de targety : "+targety);
                 		driveVector();
@@ -81,12 +93,10 @@ public class Pawn extends JPanel {
 	}
 	
 	public int getRelativeX() {
-		relativex = x / 25;
 		return relativex;
 	}
 	
 	public int getRelativeY() {
-		relativey = y / 25;
 		return relativey;
 	}
 	
@@ -132,6 +142,8 @@ public class Pawn extends JPanel {
 	   y=(relativey%2)*25 + (relativey/2)*49;
        /* We create vector which observe the movement of the pawn */
 	   driveVector();
+	   /* Verify if the pawn moved */
+	   moved=true;
        
        System.out.println("value of dx : "+dx+"; value of dy : "+dy);
       
@@ -144,7 +156,13 @@ public class Pawn extends JPanel {
 	   int xv = targetx-x;
        int yv = targety-y;
        /* We "normalize" the vector */
-       if(yv >= xv) {
+       if(xv == 0) {
+    	   dx=0;
+    	   dy= yv/Math.abs(yv);
+       } else if (yv == 0) {
+    	   dy=0;
+    	   dx= xv/Math.abs(xv);
+       } else if(yv >= xv) {
     	   if(xv < 0) {
     		   dx=-1;
     	   } else {
@@ -175,13 +193,17 @@ public class Pawn extends JPanel {
 	   y+=dy;
        repaint(x-10, y-10,this.getWidth()+2,this.getHeight()+2);     
    }
+   
+   public void comeBackHome() {
+	   move(beginingx, beginingy);
+   }
+   
+	public Colorp getColor() {
+		return color;
+	}
 
-public JButton getClicker() {
-	return clicker;
-}
-
-public void setClicker(JButton clicker) {
-	this.clicker = clicker;
-}
+	public boolean getMoved() {
+		return moved;
+	}
 
 }
