@@ -19,6 +19,7 @@ public class Interface {
 
 	private FadePane pane;
 	private boolean startNewGame=false;
+	public JButton startGame=null;
 	
 	private Die myDie;
 	/**
@@ -92,19 +93,11 @@ public class Interface {
 		YELLOW.setBounds(800, 495, 119, 115);
 		frame.add(YELLOW);
 		
-		JButton startParty = new JButton("Start");
-		startParty.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("Game's starting");
-				pane.changeAnnounce("Game's starting",Color.black);
-				startParty.setVisible(false);
-				startNewGame=true;
-
-				
-			}
-		});
-		startParty.setBounds(800, 610, 119, 115);
-		frame.add(startParty);
+		startGame = new JButton("Start");
+		
+		startGame.setActionCommand(Actions.startGame.name());
+		startGame.setBounds(800, 610, 119, 115);
+		frame.add(startGame);
 		
 		myDie = new Die(frame);
 		frame.add(myDie.getButton());
@@ -123,6 +116,10 @@ public class Interface {
 	
 	public Die getDie() {
 		return myDie;
+	}
+	
+	public JButton getStartGame() {
+		return startGame;
 	}
 	
 	public boolean startNewGame() {

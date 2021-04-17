@@ -8,14 +8,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 @SuppressWarnings("serial")
-public class Main extends JFrame implements ActionListener {
+public class Main extends JFrame implements ActionListener, PawnMoveListener {
 
 	private JLayeredPane jl;
 	public Board board;
 	private Interface window;
 	private boolean finished=false;
-	private boolean actionRealized = false;
 	
+	int resultDice;
+	int turn=0;
+	
+	private boolean dieRolled = false;
+	private boolean pawnMoved = false;
+	private boolean gameStarted = false;
 	
 	public Main() {
 		initUI();
@@ -27,13 +32,22 @@ public class Main extends JFrame implements ActionListener {
         jl.setLayout(null);
 		jl.add(board, new Integer(1));
         getContentPane().add(jl);
-        
+
         try {
 			window = new Interface(jl, board);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+        
+        resultDice = 0;
+        
+        /* Setup of the action listeners */
+        this.window.getStartGame().addActionListener(this);
+        this.window.getDie().getButton().addActionListener(this);
+        this.board.addPawnMoveListener(this);
+        
+        
         /*JLabel label = new JLabel("Yo la street !");
         label.setBounds(800, 500, 100, 100);
         label.setText("Yo la street");
@@ -52,22 +66,20 @@ public class Main extends JFrame implements ActionListener {
 	private void TurnPlayer(Player p) {
 		window.getPane().changeAnnounce(p.getColor()+"'s turn", Color.black);
 		int d= 0;
-		boolean rolledDice=false;
 		boolean hasPlay=false;
 		boolean moved = p.movePerformed();
-		while(!rolledDice) {
-			if(d == 0) {
-				d = window.getDie().getResult();
-			} else {
-				rolledDice=true;
-			}			
+		while(window.getDie().getResult()==0) {
+			System.out.println(window.getDie().getResult());
 		}
+		System.out.println("Gone through !");
 		while(!hasPlay) {
-			board.setAction(p, d);
+			
 			if(p.movePerformed() || !board.isLegalMove(p)) {
 				hasPlay=true;
+				System.out.println("Next player!");
 			}	
 		}
+		window.getDie().resetDie();
 	}
 	
 	private  void Turn() {
@@ -106,10 +118,6 @@ public class Main extends JFrame implements ActionListener {
 		main.jl.setVisible(true);
 		//p.move(8, 3);
 		main.setVisible(true);
-		while(!main.window.startNewGame()) {
-			System.out.println("Nothing happend yet!");
-		};
-		main.Game();
 				
 		//b1.setPreferredSize(new Dimension(300, 200));
 
@@ -118,10 +126,44 @@ public class Main extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getActionCommand() == Actions.rollDice.name()) {
+		if(e.getActionCommand() == Actions.startGame.name()) {
+			
+			if(this.board.getPlayers().size() == 4) {
+				window.getPane().changeAnnounce("Game's starting",Color.black);
+				window.startGame.setVisible(false);
+				gameStarted =true;
+				turn = 1;
+				window.getPane().changeAnnounce(board.getPlayers().get((turn-1)%4).getColor()+"'s turn", Color.black);
+			} else {
+				window.getPane().changeAnnounce("Not enough players...", Color.black);
+			}
+		} else if(e.getActionCommand() == Actions.rollDice.name()) {
+			if(gameStarted) {
+				
+				resultDice = window.getDie().performAction();
+				dieRolled = true;
+				board.setAction(board.getPlayers().get((turn-1)%4), resultDice);
+				window.getDie().getButton().setEnabled(false);
+			}
+		} 		
+	}
+
+	@Override
+	public void pawnActionPerformed() {
+		if(gameStarted && dieRolled) {
+			if(resultDice == 6) {
+				window.getDie().getButton().setEnabled(true);
+				dieRolled=false;
+			} else if(board.isLegalMove(board.getPlayers().get((turn-1)%4)) && !board.getPlayers().get((turn-1)%4).movePerformed()) {
+				window.getPane().changeAnnounce("It's an illegal move !", Color.black);
+			} else {
+				turn++;
+				window.getPane().changeAnnounce(board.getPlayers().get((turn-1)%4).getColor()+"'s turn", Color.black);
+				window.getDie().getButton().setEnabled(true);
+				dieRolled=false;
+			}
 			
 		}
-		
 	}
 	
 	

@@ -26,6 +26,7 @@ public class Board extends JPanel{
 	private Timer timer;
 	protected boolean action = false;
 	
+	private List<PawnMoveListener> listeners = new ArrayList<PawnMoveListener>();
 	private Player focusedPlayer=null;
 	private int dieResult=0;
 	
@@ -41,7 +42,6 @@ public class Board extends JPanel{
 		loadImage();
 		initBoard();
 		focusedCase= null;
-		
 		/********************************************************************************************************
 		 ***************** GENERATION OF THE ARRAY OF CASES *****************************************************
 		 ********************************************************************************************************/
@@ -132,6 +132,11 @@ public class Board extends JPanel{
 		timer.start();
 		
 	}
+	
+	protected class Listener {
+		
+	}
+	
 	/**
 	 * @method public void process(int dieResult, Player focusedPlayer)
 	 * @brief The method which will manage the movement of the pawns depending on the player who is playing
@@ -141,7 +146,7 @@ public class Board extends JPanel{
 	public void process() {
 		/* We first check if a case is focused (clicked on), if it is not the case, we do nothing, else we manage the operation */
 		if((focusedCase != null) && (focusedPlayer != null) && (players.size() != 0)) {
-        	System.out.println("Position of this case : x="+focusedCase.getX()+"; y="+focusedCase.getY());
+			System.out.println("Position of this case : x="+focusedCase.getX()+"; y="+focusedCase.getY());
         	/* We check if one of player's pawn is on the case clicked, if not, we do nothing */
         	for(Pawn p : focusedPlayer.getPawns()) {
         		if((p.getRelativeX() == focusedCase.getX()) && (p.getRelativeY() == focusedCase.getY())) {
@@ -193,12 +198,17 @@ public class Board extends JPanel{
         				action=false;
         				break;
         			}
-        		} else {
-        			System.out.println("You haven't any horse on this case !!!");
         		}
+        	}
+        	for(PawnMoveListener l : listeners) {
+        		l.pawnActionPerformed();
         	}
         	focusedCase= null; // We set the focusedCase to null so we stop our interest on it
         }
+	}
+	
+	public void addPawnMoveListener(PawnMoveListener l) {
+		listeners.add(l);
 	}
 	
 	public boolean isLegalMove(Player p) {
@@ -224,11 +234,11 @@ public class Board extends JPanel{
 			}
 			inBarn=false;
 		}
-		
-		if(nbLegalMoves >= 0) {
-			return false;
-		} else {
+		System.out.println(nbLegalMoves);
+		if(nbLegalMoves > 0) {
 			return true;
+		} else {
+			return false;
 		}
 	}
 	

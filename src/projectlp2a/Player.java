@@ -100,8 +100,12 @@ public class Player {
 	public boolean movePerformed() {
 		boolean moved = false;
 		  for(Pawn pa : pawns){
-			    moved = pa.getMoved();
+			  if(pa.getMoved()) {
+				  moved = true;
+				  System.out.println("Get moved mother phoque");
 			  }
+			  pa.disableMoved(); 
+		  }
 			  return moved;
 	}
 	

@@ -35,7 +35,7 @@ public class Case extends JButton {
 		this.setContentAreaFilled(false);
 		this.setBorderPainted(false);
 		jl.add(this, new Integer(idCase+20));
-		
+		this.setActionCommand(Actions.caseClicked.name());
 		this.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//System.out.println("Position of this case  : x="+coordX+"; y="+coordY);
