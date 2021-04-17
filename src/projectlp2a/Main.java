@@ -52,16 +52,21 @@ public class Main extends JFrame implements ActionListener {
 	private void TurnPlayer(Player p) {
 		window.getPane().changeAnnounce(p.getColor()+"'s turn", Color.black);
 		int d= 0;
-		d = window.getDie().getResult();
-		boolean played=false;
+		boolean rolledDice=false;
+		boolean hasPlay=false;
 		boolean moved = p.movePerformed();
-		while(!played) {
+		while(!rolledDice) {
 			if(d == 0) {
-				System.out.println("You must throw a die first ! ");
 				d = window.getDie().getResult();
 			} else {
-				board.setAction(p, d);
-			}
+				rolledDice=true;
+			}			
+		}
+		while(!hasPlay) {
+			board.setAction(p, d);
+			if(p.movePerformed() || !board.isLegalMove(p)) {
+				hasPlay=true;
+			}	
 		}
 	}
 	
@@ -72,11 +77,16 @@ public class Main extends JFrame implements ActionListener {
 		}
 	}
 	
-	private void Game() {
+	protected void Game() {
 		finished=false;
-		while(!finished) {
-			Turn();
+		if(board.getPlayers().size() == 4) {
+			while(!finished) {
+				Turn();
+			}
+		} else {
+			System.out.println("There is not enough players !");
 		}
+
 		
 	}
 	public static void main(String[] args) {
@@ -96,7 +106,11 @@ public class Main extends JFrame implements ActionListener {
 		main.jl.setVisible(true);
 		//p.move(8, 3);
 		main.setVisible(true);
+		while(!main.window.startNewGame()) {
+			System.out.println("Nothing happend yet!");
+		};
 		main.Game();
+				
 		//b1.setPreferredSize(new Dimension(300, 200));
 
 ;

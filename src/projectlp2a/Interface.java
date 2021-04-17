@@ -18,7 +18,7 @@ import projectlp2a.Player;
 public class Interface {
 
 	private FadePane pane;
-	
+	private boolean startNewGame=false;
 	
 	private Die myDie;
 	/**
@@ -98,6 +98,8 @@ public class Interface {
 				System.out.println("Game's starting");
 				pane.changeAnnounce("Game's starting",Color.black);
 				startParty.setVisible(false);
+				startNewGame=true;
+
 				
 			}
 		});
@@ -123,4 +125,7 @@ public class Interface {
 		return myDie;
 	}
 	
+	public boolean startNewGame() {
+		return startNewGame;
+	}
 }
