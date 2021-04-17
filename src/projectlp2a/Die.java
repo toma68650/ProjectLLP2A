@@ -61,7 +61,7 @@ public class Die extends Random {
 
 			}
 		});
-		die.setBounds(708, 25, 150, 128);
+		die.setBounds(785, 25, 150, 128);
 		die.setVisible(true);
 	}
 	

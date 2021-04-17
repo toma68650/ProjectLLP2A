@@ -26,6 +26,9 @@ public class Board extends JPanel{
 	private Timer timer;
 	protected boolean action = false;
 	
+	private Player focusedPlayer=null;
+	private int dieResult=0;
+	
 	protected Player greenP;
 	protected Player blueP;
 	protected Player yellowP;
@@ -122,7 +125,7 @@ public class Board extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(action) {
-                	process(6,greenP);
+                	process();
                 }      	
             }
         });
@@ -135,9 +138,9 @@ public class Board extends JPanel{
 	 * @param dieResult - integer, the result of the dieRoll
 	 * @param focusedPlayer - Player, the player who is playing
 	 */
-	public void process(int dieResult, Player focusedPlayer) {
+	public void process() {
 		/* We first check if a case is focused (clicked on), if it is not the case, we do nothing, else we manage the operation */
-		if((focusedCase != null) && (players.size() != 0)) {
+		if((focusedCase != null) && (focusedPlayer != null) && (players.size() != 0)) {
         	System.out.println("Position of this case : x="+focusedCase.getX()+"; y="+focusedCase.getY());
         	/* We check if one of player's pawn is on the case clicked, if not, we do nothing */
         	for(Pawn p : focusedPlayer.getPawns()) {
@@ -278,8 +281,13 @@ public class Board extends JPanel{
         }
     }
 	
-    public void enableAction() {
+    private void enableAction() {
     	action=true;
     }
 	
+    public void setAction(Player p, int dieResult) {
+    	focusedPlayer = p;
+    	this.dieResult = dieResult;
+    	enableAction();
+    }
 }
