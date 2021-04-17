@@ -1,6 +1,7 @@
 package projectlp2a;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -12,7 +13,7 @@ import java.util.*;
 public class Die extends Random {
 	private JButton die;
 	
-	public Die(JFrame frame) {
+	public Die(JLayeredPane frame) {
 		super();
 
 	

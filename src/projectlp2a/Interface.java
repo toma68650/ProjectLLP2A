@@ -104,7 +104,7 @@ public class Interface {
 		startParty.setBounds(800, 610, 119, 115);
 		frame.add(startParty);
 		
-		myDie = new Die();
+		myDie = new Die(frame);
 		frame.add(myDie.getButton());
 		initAnnounce("Let's start the game !");
 		
