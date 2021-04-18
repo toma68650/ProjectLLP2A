@@ -151,10 +151,11 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener {
 	@Override
 	public void pawnActionPerformed() {
 		if(gameStarted && dieRolled) {
+			boolean isPawnMove = board.getPlayers().get((turn-1)%4).movePerformed();
 			if(resultDice == 6) {
 				window.getDie().getButton().setEnabled(true);
 				dieRolled=false;
-			} else if(board.isLegalMove(board.getPlayers().get((turn-1)%4)) && !board.getPlayers().get((turn-1)%4).movePerformed()) {
+			} else if(board.isLegalMove(board.getPlayers().get((turn-1)%4)) && !isPawnMove) {
 				window.getPane().changeAnnounce("It's an illegal move !", Color.black);
 			} else {
 				turn++;

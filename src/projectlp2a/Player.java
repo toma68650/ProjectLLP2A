@@ -100,13 +100,15 @@ public class Player {
 	public boolean movePerformed() {
 		boolean moved = false;
 		  for(Pawn pa : pawns){
+			  System.out.println(pawns.indexOf(pa)+" : "+pa.getMoved());
 			  if(pa.getMoved()) {
 				  moved = true;
-				  System.out.println("Get moved mother phoque");
+				  pa.disableMoved();
 			  }
-			  pa.disableMoved(); 
+			  
 		  }
-			  return moved;
+		  System.out.println("Value of moved : "+moved);
+		  return moved;
 	}
 	
 	protected void setStartingCase(Case c) {

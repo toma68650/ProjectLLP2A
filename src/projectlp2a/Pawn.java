@@ -70,11 +70,9 @@ public class Pawn extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 if((dx!=0)|(dy!=0)) {
                 	if(( x - targetx != 0)|( y - targety != 0)) {
-                		System.out.println("Valeur de realx : "+x+"; Valeur de realy : "+y+"; Valeur de targetx : "+targetx+"; Valeur de targety : "+targety);
                 		driveVector();
                 		step();
-                		/* Verify if the pawn moved */
-                		moved=true;
+                		
                 	} else {
                 		dx=0;
                 		dy=0;
@@ -123,7 +121,7 @@ public class Pawn extends JPanel {
         
         Toolkit.getDefaultToolkit().sync();
     }
-    
+   
    protected void doDrawing(Graphics g) {
         
         Graphics2D g2d = (Graphics2D) g;
@@ -145,8 +143,9 @@ public class Pawn extends JPanel {
        /* We create vector which observe the movement of the pawn */
 	   driveVector();
 	   
-	   
-       
+	   /* Verify if the pawn moved */
+	   if((finalX != relativex)||(finalY !=relativey)) moved=true;
+      
        System.out.println("value of dx : "+dx+"; value of dy : "+dy);
       
        relativex = finalX;

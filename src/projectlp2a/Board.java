@@ -148,56 +148,61 @@ public class Board extends JPanel{
 		if((focusedCase != null) && (focusedPlayer != null) && (players.size() != 0)) {
 			System.out.println("Position of this case : x="+focusedCase.getX()+"; y="+focusedCase.getY());
         	/* We check if one of player's pawn is on the case clicked, if not, we do nothing */
-        	for(Pawn p : focusedPlayer.getPawns()) {
-        		if((p.getRelativeX() == focusedCase.getX()) && (p.getRelativeY() == focusedCase.getY())) {
-        			/* We detected a horse on the case, we now check the position of this case. It is a case of the barn ? */
-        			if( ( (focusedCase == focusedPlayer.getBarn().get(0)) || (focusedCase == focusedPlayer.getBarn().get(1)) || (focusedCase == focusedPlayer.getBarn().get(2)) || (focusedCase == focusedPlayer.getBarn().get(3))) && (dieResult == 6) ) {
-        				
-        				p.move(focusedPlayer.getStartingCase().getX(), focusedPlayer.getStartingCase().getY());
-        			/* Or is it a case from the board ? */
-        			} else if(cases.contains(focusedCase)) {
-        				int  indexNextCase = (cases.indexOf(focusedCase)+dieResult); // The index of the next case if everything happen correctly
-        				int nbCaseBeforeEnd=-10; // The case before the beginning of the "stair" or "ladder" 
-        				Case target = null; // The case which will be targeted
-        				/* We check if a case is the end before the horse arrive. The horse must stand at the beginning of the ladder to climb to it, else he will go back */
-        				for(int i = cases.indexOf(focusedCase);i<indexNextCase;i++) {
-        					if(cases.get(i%56) == focusedPlayer.getEnd().get(0)) {
-        						nbCaseBeforeEnd = i-cases.indexOf(focusedCase);
-        						System.out.println("Value of nbCaseBeforeEnd : "+nbCaseBeforeEnd);
-        					}
-        				}
-        				/* The pawn arrive right on the bottom of the ladder, he can climb at the next turn */
-        				if(dieResult - nbCaseBeforeEnd == 0) {
-        					target = cases.get(indexNextCase%56);
-        				/* The result of the die is too big, we must go back */
-        				} else if ( nbCaseBeforeEnd > 0) {
-        					indexNextCase = cases.indexOf(focusedCase) +nbCaseBeforeEnd;
-        					dieResult -= nbCaseBeforeEnd;
-        					indexNextCase -= dieResult;
-        					indexNextCase = indexNextCase%56; // Normally this action is useless, but if the die has more than 55 sides, it could be a problem :] */
-        					target = cases.get(indexNextCase);
-        				/* We're at the bottom of the ladder, we can now climb to it */
-        				} else if(nbCaseBeforeEnd == 0) {
-        					if (dieResult == 6) {
-        						target = focusedPlayer.getEnd().get(dieResult-1);
-        					} else {
-        						target = focusedPlayer.getEnd().get(dieResult);
-        					}
-        				/* We are not close from the end,  we just make a classic move */
-        				} else {
-        					target = cases.get(indexNextCase%56);
-        					for(int i=0;i<4;i++) {
-        						for(int j =0;j<4;j++) {
-        							if( (players.get(i).getPawns().get(j).getX()==target.getX()) && (cases.get((cases.indexOf(focusedCase) + dieResult)%56).equals(target)) && (players.get(i).getPawns().get(j).getColor().equals(p.getColor()))) {
-        								players.get(i).getPawns().get(j).comeBackHome();
-        							}
-        						}
-        					}
-        				}
-        				p.move(target.getX(),target.getY());
-        				action=false;
-        				break;
-        			}
+        	boolean pawnMoved=false;
+			for(Pawn p : focusedPlayer.getPawns()) {
+        		if(!pawnMoved) {
+        			if((p.getRelativeX() == focusedCase.getX()) && (p.getRelativeY() == focusedCase.getY())) {
+            			/* We detected a horse on the case, we now check the position of this case. It is a case of the barn ? */
+            			if( ( (focusedCase == focusedPlayer.getBarn().get(0)) || (focusedCase == focusedPlayer.getBarn().get(1)) || (focusedCase == focusedPlayer.getBarn().get(2)) || (focusedCase == focusedPlayer.getBarn().get(3))) && (dieResult == 6) ) {
+            				
+            				p.move(focusedPlayer.getStartingCase().getX(), focusedPlayer.getStartingCase().getY());
+            			/* Or is it a case from the board ? */
+            			} else if(cases.contains(focusedCase)) {
+            				int  indexNextCase = (cases.indexOf(focusedCase)+dieResult); // The index of the next case if everything happen correctly
+            				int nbCaseBeforeEnd=-10; // The case before the beginning of the "stair" or "ladder" 
+            				Case target = null; // The case which will be targeted
+            				/* We check if a case is the end before the horse arrive. The horse must stand at the beginning of the ladder to climb to it, else he will go back */
+            				for(int i = cases.indexOf(focusedCase);i<indexNextCase;i++) {
+            					if(cases.get(i%56) == focusedPlayer.getEnd().get(0)) {
+            						nbCaseBeforeEnd = i-cases.indexOf(focusedCase);
+            						System.out.println("Value of nbCaseBeforeEnd : "+nbCaseBeforeEnd);
+            					}
+            				}
+            				/* The pawn arrive right on the bottom of the ladder, he can climb at the next turn */
+            				if(dieResult - nbCaseBeforeEnd == 0) {
+            					target = cases.get(indexNextCase%56);
+            				/* The result of the die is too big, we must go back */
+            				} else if ( nbCaseBeforeEnd > 0) {
+            					indexNextCase = cases.indexOf(focusedCase) +nbCaseBeforeEnd;
+            					dieResult -= nbCaseBeforeEnd;
+            					indexNextCase -= dieResult;
+            					indexNextCase = indexNextCase%56; // Normally this action is useless, but if the die has more than 55 sides, it could be a problem :] */
+            					target = cases.get(indexNextCase);
+            				/* We're at the bottom of the ladder, we can now climb to it */
+            				} else if(nbCaseBeforeEnd == 0) {
+            					if (dieResult == 6) {
+            						target = focusedPlayer.getEnd().get(dieResult-1);
+            					} else {
+            						target = focusedPlayer.getEnd().get(dieResult);
+            					}
+            				/* We are not close from the end,  we just make a classic move */
+            				} else {
+            					target = cases.get(indexNextCase%56);
+            					for(int i=0;i<4;i++) {
+            						for(int j =0;j<4;j++) {
+            							if( (players.get(i).getPawns().get(j).getX()==target.getX()) && (cases.get((cases.indexOf(focusedCase) + dieResult)%56).equals(target)) && (players.get(i).getPawns().get(j).getColor().equals(p.getColor()))) {
+            								players.get(i).getPawns().get(j).comeBackHome();
+            							}
+            						}
+            					}
+            				}
+            				if (target != null) {
+            					p.move(target.getX(),target.getY());
+            					pawnMoved=true;
+            				}
+            				action=false;
+            			}
+            		}
         		}
         	}
         	for(PawnMoveListener l : listeners) {
@@ -234,7 +239,7 @@ public class Board extends JPanel{
 			}
 			inBarn=false;
 		}
-		System.out.println(nbLegalMoves);
+		System.out.println("Number of legal moves : "+nbLegalMoves);
 		if(nbLegalMoves > 0) {
 			return true;
 		} else {
