@@ -162,7 +162,11 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener {
 				window.getDie().getButton().setEnabled(true);
 				dieRolled=false;
 			}
-			
+			if(board.isFinish(board.getPlayers().get((turn-1)%4))) {
+				window.getDie().getButton().setEnabled(false);
+				board.action =false;
+				window.getPane().changeAnnounce("Congratulations"+ board.getPlayers().get((turn-1)%4) + "You won this amazing game !!", Color.black);
+			}
 		}
 	}
 	
