@@ -121,7 +121,7 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener {
 				
 		//b1.setPreferredSize(new Dimension(300, 200));
 
-;
+
 	}
 
 	@Override
