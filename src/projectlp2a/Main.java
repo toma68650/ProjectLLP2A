@@ -65,9 +65,7 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener {
 	
 	private void TurnPlayer(Player p) {
 		window.getPane().changeAnnounce(p.getColor()+"'s turn", Color.black);
-		int d= 0;
 		boolean hasPlay=false;
-		boolean moved = p.movePerformed();
 		while(window.getDie().getResult()==0) {
 			System.out.println(window.getDie().getResult());
 		}

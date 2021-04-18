@@ -188,8 +188,11 @@ public class Board extends JPanel{
         					target = cases.get(indexNextCase%56);
         					for(int i=0;i<4;i++) {
         						for(int j =0;j<4;j++) {
-        							if( (players.get(i).getPawns().get(j).getX()==target.getX()) && (cases.get((cases.indexOf(focusedCase) + dieResult)%56).equals(target)) && (players.get(i).getPawns().get(j).getColor().equals(p.getColor()))) {
+        							System.out.println("yo 1");
+        							if( (players.get(i).getPawns().get(j).getX()+(cases.indexOf(focusedCase) + dieResult)%56==target.getX()) && (cases.get((cases.indexOf(focusedCase) + dieResult)%56).equals(target)) && (players.get(i).getPawns().get(j).getColor().equals(p.getColor()))) {
+        								System.out.println("yo 2");
         								players.get(i).getPawns().get(j).comeBackHome();
+        								System.out.println("yoda");
         							}
         						}
         					}
