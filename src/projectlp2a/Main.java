@@ -65,9 +65,7 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener {
 	
 	private void TurnPlayer(Player p) {
 		window.getPane().changeAnnounce(p.getColor()+"'s turn", Color.black);
-		int d= 0;
 		boolean hasPlay=false;
-		boolean moved = p.movePerformed();
 		while(window.getDie().getResult()==0) {
 			System.out.println(window.getDie().getResult());
 		}
@@ -121,7 +119,7 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener {
 				
 		//b1.setPreferredSize(new Dimension(300, 200));
 
-;
+
 	}
 
 	@Override
@@ -163,7 +161,11 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener {
 				window.getDie().getButton().setEnabled(true);
 				dieRolled=false;
 			}
-			
+			if(board.isFinish(board.getPlayers().get((turn-1)%4))) {
+				window.getDie().getButton().setEnabled(false);
+				board.action =false;
+				window.getPane().changeAnnounce("Congratulations"+ board.getPlayers().get((turn-1)%4) + "You won this amazing game !!", Color.black);
+			}
 		}
 	}
 	

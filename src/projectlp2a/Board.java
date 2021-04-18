@@ -188,14 +188,17 @@ public class Board extends JPanel{
             				/* We are not close from the end,  we just make a classic move */
             				} else {
             					target = cases.get(indexNextCase%56);
-            					for(int i=0;i<4;i++) {
-            						for(int j =0;j<4;j++) {
-            							if( (players.get(i).getPawns().get(j).getX()==target.getX()) && (cases.get((cases.indexOf(focusedCase) + dieResult)%56).equals(target)) && (players.get(i).getPawns().get(j).getColor().equals(p.getColor()))) {
-            								players.get(i).getPawns().get(j).comeBackHome();
-            							}
-            						}
-            					}
-            				}
+								for(int i=0;i<4;i++) {
+									for(int j =0;j<4;j++) {
+										System.out.println("yo 1");
+										if( (players.get(i).getPawns().get(j).getX()+(cases.indexOf(focusedCase) + dieResult)%56==target.getX()) && (cases.get((cases.indexOf(focusedCase) + dieResult)%56).equals(target)) && (players.get(i).getPawns().get(j).getColor().equals(p.getColor()))) {
+											System.out.println("yo 2");
+											players.get(i).getPawns().get(j).comeBackHome();
+											System.out.println("yoda");
+										}
+									}
+								}
+							}
             				if (target != null) {
             					p.move(target.getX(),target.getY());
             					pawnMoved=true;
