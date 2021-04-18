@@ -135,21 +135,24 @@ public class Pawn extends JPanel {
    }
    
    public void move(int finalX, int finalY) {
-	   /* Get the real place of the pawn and the target */
-	   targetx=(finalX%2)*25 + (finalX/2)*49;
-	   targety=(finalY%2)*25 + (finalY/2)*49;
-	   x=(relativex%2)*25 + (relativex/2)*49;
-	   y=(relativey%2)*25 + (relativey/2)*49;
-       /* We create vector which observe the movement of the pawn */
-	   driveVector();
-	   
-	   /* Verify if the pawn moved */
-	   if((finalX != relativex)||(finalY !=relativey)) moved=true;
-      
-       System.out.println("value of dx : "+dx+"; value of dy : "+dy);
-      
-       relativex = finalX;
-       relativey = finalY;
+	   if((finalX != relativex)||(finalY !=relativey)){
+
+		   /* Get the real place of the pawn and the target */
+		   targetx=(finalX%2)*25 + (finalX/2)*49;
+		   targety=(finalY%2)*25 + (finalY/2)*49;
+		   x=(relativex%2)*25 + (relativex/2)*49;
+		   y=(relativey%2)*25 + (relativey/2)*49;
+	       /* We create vector which observe the movement of the pawn */
+		   driveVector();
+		   
+		   /* Verify if the pawn moved */
+		   if((finalX != relativex)||(finalY !=relativey)) moved=true;
+	      
+	       System.out.println("value of dx : "+dx+"; value of dy : "+dy);
+	      
+	       relativex = finalX;
+	       relativey = finalY;
+	   }
    }
    
    private void driveVector() {

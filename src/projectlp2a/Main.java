@@ -142,6 +142,9 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener {
 				dieRolled = true;
 				board.setAction(board.getPlayers().get((turn-1)%4), resultDice);
 				window.getDie().getButton().setEnabled(false);
+				if(!board.isLegalMove(board.getPlayers().get((turn-1)%4))) {
+					nextTurn();
+				}
 			}
 		} 		
 	}
@@ -150,23 +153,31 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener {
 	public void pawnActionPerformed() {
 		if(gameStarted && dieRolled) {
 			boolean isPawnMove = board.getPlayers().get((turn-1)%4).movePerformed();
+			//board.getPlayers().get((turn-1)%4).getPawns().get(0).move(board.getPlayers().get((turn-1)%4).getEnd().get(1).getX(),board.getPlayers().get((turn-1)%4).getEnd().get(1).getY());
+			//board.getPlayers().get((turn-1)%4).getPawns().get(1).move(board.getPlayers().get((turn-1)%4).getEnd().get(2).getX(),board.getPlayers().get((turn-1)%4).getEnd().get(2).getY());
+			//board.getPlayers().get((turn-1)%4).getPawns().get(2).move(board.getPlayers().get((turn-1)%4).getEnd().get(3).getX(),board.getPlayers().get((turn-1)%4).getEnd().get(3).getY());
+			//board.getPlayers().get((turn-1)%4).getPawns().get(3).move(board.getPlayers().get((turn-1)%4).getEnd().get(4).getX(),board.getPlayers().get((turn-1)%4).getEnd().get(4).getY());
 			if(resultDice == 6) {
 				window.getDie().getButton().setEnabled(true);
 				dieRolled=false;
 			} else if(board.isLegalMove(board.getPlayers().get((turn-1)%4)) && !isPawnMove) {
 				window.getPane().changeAnnounce("It's an illegal move !", Color.black);
 			} else {
-				turn++;
-				window.getPane().changeAnnounce(board.getPlayers().get((turn-1)%4).getColor()+"'s turn", Color.black);
-				window.getDie().getButton().setEnabled(true);
-				dieRolled=false;
+				nextTurn();
 			}
 			if(board.isFinish(board.getPlayers().get((turn-1)%4))) {
 				window.getDie().getButton().setEnabled(false);
 				board.action =false;
-				window.getPane().changeAnnounce("Congratulations"+ board.getPlayers().get((turn-1)%4) + "You won this amazing game !!", Color.black);
+				window.getPane().changeAnnounce("Congratulations, "+ board.getPlayers().get((turn-1)%4).getColor() + "You won this amazing game !!", Color.black);
 			}
 		}
+	}
+	
+	private void nextTurn() {
+		turn++;
+		window.getPane().changeAnnounce(board.getPlayers().get((turn-1)%4).getColor()+"'s turn", Color.black);
+		window.getDie().getButton().setEnabled(true);
+		dieRolled=false;
 	}
 	
 	

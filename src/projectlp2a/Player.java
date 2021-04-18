@@ -100,14 +100,14 @@ public class Player {
 	public boolean movePerformed() {
 		boolean moved = false;
 		  for(Pawn pa : pawns){
-			  System.out.println(pawns.indexOf(pa)+" : "+pa.getMoved());
+			  //System.out.println(pawns.indexOf(pa)+" : "+pa.getMoved());
 			  if(pa.getMoved()) {
 				  moved = true;
 				  pa.disableMoved();
 			  }
 			  
 		  }
-		  System.out.println("Value of moved : "+moved);
+		  //System.out.println("Value of moved : "+moved);
 		  return moved;
 	}
 	

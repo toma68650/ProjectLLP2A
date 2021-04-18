@@ -153,14 +153,14 @@ public class Board extends JPanel{
         		if(!pawnMoved) {
         			if((p.getRelativeX() == focusedCase.getX()) && (p.getRelativeY() == focusedCase.getY())) {
             			/* We detected a horse on the case, we now check the position of this case. It is a case of the barn ? */
-            			if( ( (focusedCase == focusedPlayer.getBarn().get(0)) || (focusedCase == focusedPlayer.getBarn().get(1)) || (focusedCase == focusedPlayer.getBarn().get(2)) || (focusedCase == focusedPlayer.getBarn().get(3))) && (dieResult == 6) ) {
-            				
-            				p.move(focusedPlayer.getStartingCase().getX(), focusedPlayer.getStartingCase().getY());
+        				Case target = null; // The case which will be targeted
+        				if( ( (focusedCase == focusedPlayer.getBarn().get(0)) || (focusedCase == focusedPlayer.getBarn().get(1)) || (focusedCase == focusedPlayer.getBarn().get(2)) || (focusedCase == focusedPlayer.getBarn().get(3))) && (dieResult == 6) ) {
+            				target = focusedPlayer.getStartingCase();
             			/* Or is it a case from the board ? */
             			} else if(cases.contains(focusedCase)) {
             				int  indexNextCase = (cases.indexOf(focusedCase)+dieResult); // The index of the next case if everything happen correctly
             				int nbCaseBeforeEnd=-10; // The case before the beginning of the "stair" or "ladder" 
-            				Case target = null; // The case which will be targeted
+            				
             				/* We check if a case is the end before the horse arrive. The horse must stand at the beginning of the ladder to climb to it, else he will go back */
             				for(int i = cases.indexOf(focusedCase);i<indexNextCase;i++) {
             					if(cases.get(i%56) == focusedPlayer.getEnd().get(0)) {
@@ -187,24 +187,29 @@ public class Board extends JPanel{
             					}
             				/* We are not close from the end,  we just make a classic move */
             				} else {
-            					target = cases.get(indexNextCase%56);
-								for(int i=0;i<4;i++) {
-									for(int j =0;j<4;j++) {
-										System.out.println("yo 1");
-										if( (players.get(i).getPawns().get(j).getX()+(cases.indexOf(focusedCase) + dieResult)%56==target.getX()) && (cases.get((cases.indexOf(focusedCase) + dieResult)%56).equals(target)) && (players.get(i).getPawns().get(j).getColor().equals(p.getColor()))) {
-											System.out.println("yo 2");
-											players.get(i).getPawns().get(j).comeBackHome();
-											System.out.println("yoda");
-										}
-									}
-								}
+            					target = cases.get(indexNextCase%56);							
 							}
-            				if (target != null) {
-            					p.move(target.getX(),target.getY());
-            					pawnMoved=true;
-            				}
-            				action=false;
+            				
             			}
+        				if (target != null) {
+        					p.move(target.getX(),target.getY());
+        					for(int i=0;i<4;i++) {
+    							for(int j =0;j<4;j++) {
+    								System.out.println("Position of pawn : "+players.get(i).getPawns().get(j).getX()+" "+players.get(i).getPawns().get(j).getY());
+    								System.out.println("Postion of case : "+target.getX()+" "+target.getY());
+    								System.out.println("Same color ? "+!(players.get(i).getPawns().get(j).getColor().equals(p.getColor())));
+    								if( (players.get(i).getPawns().get(j).getRelativeX()==target.getX()) && (players.get(i).getPawns().get(j).getRelativeY()==target.getY()) && !(players.get(i).getPawns().get(j).getColor().equals(p.getColor()))) {
+    									System.out.println("yo 2");
+    									players.get(i).getPawns().get(j).comeBackHome();
+    									System.out.println("yoda");
+    								}
+    							}
+    						}
+        					pawnMoved=true;
+        					action=false;
+        				}
+        				
+            			
             		}
         		}
         	}
