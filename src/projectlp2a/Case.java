@@ -68,7 +68,7 @@ public class Case extends JButton {
 		return startColor;
 	}
 	
-	public boolean getSafe() {
+	public boolean isSafe() {
 		return safe;
 	}
 	

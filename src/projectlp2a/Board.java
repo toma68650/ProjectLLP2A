@@ -51,12 +51,16 @@ public class Board extends JPanel{
 		Case startGreen = new Case(6, 14, true, Colorp.green, null, jl, this, 1);
 		cases.add(startGreen);
 		for(int i=2; i <=7;i++) {
-			cases.add(new Case(6, 15-i, true, null, null, jl, this, i));
+			cases.add(new Case(6, 15-i, false, null, null, jl, this, i));
 		}
 		for(int i=1;i<=6;i++) {
-			cases.add(new Case(6-i, 8, true, null, null, jl, this, 7+i));
+			if(i == 4) {
+				cases.add(new Case(6-i, 8, true, null, null, jl, this, 7+i));
+			} else {
+				cases.add(new Case(6-i, 8, false, null, null, jl, this, 7+i));
+			}
 		}
-		Case endBlue = new Case(0, 7, true, null, Colorp.blue, jl, this, 13);
+		Case endBlue = new Case(0, 7, false, null, Colorp.blue, jl, this, 13);
 		cases.add(endBlue);
 		
 		
@@ -65,12 +69,16 @@ public class Board extends JPanel{
 		Case startBlue = new Case(0, 6, true, Colorp.blue, null, jl, this, 14);
 		cases.add(startBlue);
 		for(int i=1; i <=6;i++) {
-			cases.add(new Case(i, 6, true, null, null, jl, this, 14+i));
+			cases.add(new Case(i, 6, false, null, null, jl, this, 14+i));
 		}
 		for(int i=1;i<=6;i++) {
-			cases.add(new Case(6, 6-i, true, null, null, jl, this, 20+i));
+			if(i == 4) {
+				cases.add(new Case(6, 6-i, true, null, null, jl, this, 20+i));
+			} else {
+				cases.add(new Case(6, 6-i, false, null, null, jl, this, 20+i));
+			}
 		}
-		Case endRed = new Case(7, 0, true, null, Colorp.red, jl, this, 27);
+		Case endRed = new Case(7, 0, false, null, Colorp.red, jl, this, 27);
 		cases.add(endRed);
 		
 		
@@ -79,12 +87,16 @@ public class Board extends JPanel{
 		Case startRed = new Case(8, 0, true, Colorp.red, null, jl, this, 28);
 		cases.add(startRed);
 		for(int i=1; i <=6;i++) {
-			cases.add(new Case(8, i, true, null, null, jl, this, 28+i));
+			cases.add(new Case(8, i, false, null, null, jl, this, 28+i));
 		}
 		for(int i=1;i<=6;i++) {
-			cases.add(new Case(8+i, 6, true, null, null, jl, this, 34+i));
+			if(i == 4) {
+				cases.add(new Case(8+i, 6, true, null, null, jl, this, 34+i));
+			} else {
+				cases.add(new Case(8+i, 6, false, null, null, jl, this, 34+i));
+			}
 		}
-		Case endYellow = new Case(14, 7, true, null, Colorp.yellow, jl, this, 41);
+		Case endYellow = new Case(14, 7, false, null, Colorp.yellow, jl, this, 41);
 		cases.add(endYellow);
 		
 		
@@ -93,12 +105,16 @@ public class Board extends JPanel{
 		Case startYellow = new Case(14, 8, true, Colorp.yellow, null, jl, this, 42);
 		cases.add(startYellow);
 		for(int i=1; i <=6;i++) {
-			cases.add(new Case(14-i, 8, true, null, null, jl, this, 42+i));
+			cases.add(new Case(14-i, 8, false, null, null, jl, this, 42+i));
 		}
 		for(int i=1;i<=6;i++) {
-			cases.add(new Case(8, 8+i, true, null, null, jl, this, 48+i));
+			if(i == 4) {
+				cases.add(new Case(8, 8+i, true, null, null, jl, this, 48+i));
+			} else {
+				cases.add(new Case(8, 8+i, false, null, null, jl, this, 48+i));
+			}
 		}
-		Case endGreen = new Case(7, 14, true, null, Colorp.green, jl, this, 55);
+		Case endGreen = new Case(7, 14, false, null, Colorp.green, jl, this, 55);
 		cases.add(endGreen);
 		
 		
@@ -193,17 +209,26 @@ public class Board extends JPanel{
             			}
         				if (target != null) {
         					p.move(target.getX(),target.getY());
+        					List<Pawn> pawnsInDanger = new ArrayList<Pawn>();
         					for(int i=0;i<4;i++) {
-    							for(int j =0;j<4;j++) {
-    								System.out.println("Position of pawn : "+players.get(i).getPawns().get(j).getX()+" "+players.get(i).getPawns().get(j).getY());
-    								System.out.println("Postion of case : "+target.getX()+" "+target.getY());
-    								System.out.println("Same color ? "+!(players.get(i).getPawns().get(j).getColor().equals(p.getColor())));
-    								if( (players.get(i).getPawns().get(j).getRelativeX()==target.getX()) && (players.get(i).getPawns().get(j).getRelativeY()==target.getY()) && !(players.get(i).getPawns().get(j).getColor().equals(p.getColor()))) {
-    									System.out.println("yo 2");
-    									players.get(i).getPawns().get(j).comeBackHome();
-    									System.out.println("yoda");
-    								}
-    							}
+        						pawnsInDanger=null;
+        						pawnsInDanger = new ArrayList<Pawn>();
+        						if(!(players.get(i) == focusedPlayer)) {
+	        						for(int j =0;j<4;j++) {
+	    								
+										System.out.println("Position of pawn : "+players.get(i).getPawns().get(j).getX()+" "+players.get(i).getPawns().get(j).getY());
+	    								System.out.println("Postion of case : "+target.getX()+" "+target.getY());
+	    								System.out.println("Same color ? "+!(players.get(i).getPawns().get(j).getColor().equals(p.getColor())));
+	    								if( (players.get(i).getPawns().get(j).getRelativeX()==target.getX()) && (players.get(i).getPawns().get(j).getRelativeY()==target.getY()) && !(players.get(i).getPawns().get(j).getColor().equals(p.getColor()))) {
+	    									if(!target.isSafe()) {
+	    										pawnsInDanger.add(players.get(i).getPawns().get(j));
+	    									}
+	    								}
+	    							}
+	        						if(pawnsInDanger.size()==1) {
+	        							pawnsInDanger.get(0).comeBackHome();
+	        						}
+        						}
     						}
         					pawnMoved=true;
         					action=false;

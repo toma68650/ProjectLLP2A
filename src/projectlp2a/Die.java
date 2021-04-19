@@ -20,7 +20,6 @@ public class Die extends Random {
 	
 	
 		die = new JButton(new ImageIcon("Image/die/dice_1.png"));
-		die.setVisible(false);
 		getButton().setBorder(BorderFactory.createEmptyBorder());
 		getButton().setBorderPainted(false);
 		getButton().setOpaque(false);

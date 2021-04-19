@@ -7,6 +7,10 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import java.util.Timer;
+
+import javax.swing.BorderFactory;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 
@@ -133,7 +137,12 @@ public class Interface {
 		frame.add(rememberer, new Integer(201));
 		
 		/************* OPTION BUTTON CREATED ****************/
-		options = new JButton("options");
+		options = new JButton(new ImageIcon("Image/cog.png"));
+		
+		options.setBorder(BorderFactory.createEmptyBorder());
+		options.setBorderPainted(false);
+		options.setOpaque(false);
+		options.setContentAreaFilled(false);
 		
 		options.setActionCommand(Actions.options.name());
 		options.setBounds(950, 690, 40, 40);
