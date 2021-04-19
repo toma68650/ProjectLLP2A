@@ -182,6 +182,7 @@ public class Interface {
 		BLUE.setVisible(true);
 		YELLOW.setVisible(true);
 		startGame.setVisible(true);
+		myDie.getButton().setEnabled(true);
 		disableRememberer();
 	}
 	

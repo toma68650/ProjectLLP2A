@@ -169,6 +169,7 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener {
 			setSize(1000,765);
 			menu.setVisible(false);
 			if (menu.startButton.getText().contentEquals("Restart game")) {
+				gameStarted=false;
 				board.restartBoard();
 				window.restartInterface();
 			} else {

@@ -355,5 +355,6 @@ public class Board extends JPanel{
     	}
     	players = null;
     	players = new ArrayList<Player>();
+    	action=false;
     }
 }
