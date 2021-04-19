@@ -271,7 +271,7 @@ public class Board extends JPanel{
     }
 	
 	private void loadImage() {
-		ImageIcon boardIcon = new ImageIcon("Image/plateauprojet.png");
+		ImageIcon boardIcon = new ImageIcon("Image/plateauprojet_skin.png");
 		boardImage = boardIcon.getImage();
 		
 		boardImage.getWidth(null);
@@ -343,5 +343,17 @@ public class Board extends JPanel{
     	focusedPlayer = p;
     	this.dieResult = dieResult;
     	enableAction();
+    }
+    
+    public void restartBoard() {
+    	if(players.size() !=0) {
+    		for(Player p : players) {
+        		for(Pawn pa : p.getPawns()) {
+        			pa.comeBackHome();
+        		}
+        	}
+    	}
+    	players = null;
+    	players = new ArrayList<Player>();
     }
 }

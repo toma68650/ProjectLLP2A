@@ -12,6 +12,7 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener {
 
 	private JLayeredPane jl;
 	public Board board;
+	private Menu menu;
 	private Interface window;
 	private boolean finished=false;
 	
@@ -30,6 +31,7 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener {
 		jl = new JLayeredPane();
 		board = new Board(this, jl);
         jl.setLayout(null);
+        jl.setBackground(Color.black);
 		jl.add(board, new Integer(1));
         getContentPane().add(jl);
 
@@ -42,9 +44,19 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener {
         
         resultDice = 0;
         
-        /* Setup of the action listeners */
+        menu = new Menu();
+		menu.setVisible(true);
+		jl.add(menu,new Integer(300));
+        
+        /* Setup of the action listeners for the menu */
+        menu.quitButton.addActionListener(this);
+        menu.startButton.addActionListener(this);
+        menu.resumeButton.addActionListener(this);
+        
+        /* Setup of the action listeners for the game */
         this.window.getStartGame().addActionListener(this);
         this.window.getDie().getButton().addActionListener(this);
+        this.window.options.addActionListener(this);
         this.board.addPawnMoveListener(this);
         
         
@@ -55,7 +67,7 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener {
         label.setVisible(true); */
         setTitle("Game of poney");
         //setSize(735,765);
-        setSize(1000,765);
+        setSize(500,500);
         setBackground(Color.black);
         setLocationRelativeTo(null);
         setResizable(false);
@@ -113,7 +125,9 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener {
 
 		//main.jl.add(b, new Integer(5));
 		//b.setVisible(true);
+		
 		main.jl.setVisible(true);
+		main.jl.setOpaque(true);
 		//p.move(8, 3);
 		main.setVisible(true);
 				
@@ -127,13 +141,15 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener {
 		if(e.getActionCommand() == Actions.startGame.name()) {
 			
 			if(this.board.getPlayers().size() == 4) {
-				window.getPane().changeAnnounce("Game's starting",Color.black);
+				window.getPane().changeAnnounce("Game's starting",Color.white);
 				window.startGame.setVisible(false);
 				gameStarted =true;
 				turn = 1;
-				window.getPane().changeAnnounce(board.getPlayers().get((turn-1)%4).getColor()+"'s turn", Color.black);
+				String message = board.getPlayers().get((turn-1)%4).getColor()+"'s turn";
+				window.getPane().changeAnnounce(message, Color.white);
+				window.setRemembererText("  "+message, convertColorpToAwtColor(board.getPlayers().get((turn-1)%4).getColor()));
 			} else {
-				window.getPane().changeAnnounce("Not enough players...", Color.black);
+				window.getPane().changeAnnounce("Not enough players...", Color.white);
 			}
 		} else if(e.getActionCommand() == Actions.rollDice.name()) {
 			if(gameStarted) {
@@ -146,13 +162,35 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener {
 					nextTurn();
 				}
 			}
-		} 		
+			
+			
+			
+		} else if(e.getActionCommand() == Actions.startMenu.name()) {
+			setSize(1000,765);
+			menu.setVisible(false);
+			if (menu.startButton.getText().contentEquals("Restart game")) {
+				board.restartBoard();
+				window.restartInterface();
+			} else {
+				menu.changeToRestart();
+				menu.resumeButton.setVisible(true);
+			}
+		} else if(e.getActionCommand() == Actions.quitMenu.name()) {
+			dispose();
+		}else if(e.getActionCommand() == Actions.resumeMenu.name()) { 
+			setSize(1000,765);
+			menu.setVisible(false);
+		} else if(e.getActionCommand() == Actions.options.name()) {
+			setSize(500,500);
+			menu.setVisible(true);
+		}
 	}
 
 	@Override
 	public void pawnActionPerformed() {
 		if(gameStarted && dieRolled) {
 			boolean isPawnMove = board.getPlayers().get((turn-1)%4).movePerformed();
+			/* To show the end */
 			//board.getPlayers().get((turn-1)%4).getPawns().get(0).move(board.getPlayers().get((turn-1)%4).getEnd().get(1).getX(),board.getPlayers().get((turn-1)%4).getEnd().get(1).getY());
 			//board.getPlayers().get((turn-1)%4).getPawns().get(1).move(board.getPlayers().get((turn-1)%4).getEnd().get(2).getX(),board.getPlayers().get((turn-1)%4).getEnd().get(2).getY());
 			//board.getPlayers().get((turn-1)%4).getPawns().get(2).move(board.getPlayers().get((turn-1)%4).getEnd().get(3).getX(),board.getPlayers().get((turn-1)%4).getEnd().get(3).getY());
@@ -161,23 +199,41 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener {
 				window.getDie().getButton().setEnabled(true);
 				dieRolled=false;
 			} else if(board.isLegalMove(board.getPlayers().get((turn-1)%4)) && !isPawnMove) {
-				window.getPane().changeAnnounce("It's an illegal move !", Color.black);
+				window.getPane().changeAnnounce("It's an illegal move !", Color.white);
 			} else {
 				nextTurn();
 			}
 			if(board.isFinish(board.getPlayers().get((turn-1)%4))) {
 				window.getDie().getButton().setEnabled(false);
 				board.action =false;
-				window.getPane().changeAnnounce("Congratulations, "+ board.getPlayers().get((turn-1)%4).getColor() + "You won this amazing game !!", Color.black);
+				window.disableRememberer();
+				window.getPane().changeAnnounce("Congratulations, "+ board.getPlayers().get((turn-1)%4).getColor() + "You won this amazing game !!", Color.white);
 			}
 		}
 	}
 	
 	private void nextTurn() {
 		turn++;
-		window.getPane().changeAnnounce(board.getPlayers().get((turn-1)%4).getColor()+"'s turn", Color.black);
+		String message = board.getPlayers().get((turn-1)%4).getColor()+"'s turn";
+		window.getPane().changeAnnounce(message, Color.white);
+		window.setRemembererText("  "+message, convertColorpToAwtColor(board.getPlayers().get((turn-1)%4).getColor()));
 		window.getDie().getButton().setEnabled(true);
 		dieRolled=false;
+	}
+	
+	private Color convertColorpToAwtColor(Colorp color) {
+		switch(color){
+			case yellow:
+				return Color.yellow;
+			case green:
+				return Color.green;
+			case red:
+				return Color.red;
+			case blue:
+				return Color.blue;
+			default :
+				return null;
+		}
 	}
 	
 	

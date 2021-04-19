@@ -17,9 +17,15 @@ import projectlp2a.Player;
 
 public class Interface {
 
+	private JLabel rememberer;
 	private FadePane pane;
-	private boolean startNewGame=false;
 	public JButton startGame=null;
+	public JButton options=null;
+	
+	private JButton GREEN;
+	private JButton RED;
+	private JButton BLUE;
+	private JButton YELLOW;
 	
 	private Die myDie;
 	/**
@@ -36,12 +42,15 @@ public class Interface {
 	 * @param b - Board, that players belong to
 	 */
 	private void initialize(JLayeredPane frame, Board b) {
-		//frame = new JFrame();
-		//frame.setBounds(100, 100, 861, 693);
-		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//frame.getContentPane().setLayout(null);
+
 		
-		JButton GREEN = new JButton("Green");
+		
+		/***************************************************
+		 **************** COLOR BUTTONS ********************
+		 ***************************************************/
+		GREEN = new JButton("Green");
+		GREEN.setBackground(Color.green);
+		GREEN.setForeground(Color.black);
 		GREEN.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Player greenP = b.greenP;
@@ -51,10 +60,13 @@ public class Interface {
 				GREEN.setVisible(false);
 			}
 		});
-		GREEN.setBounds(800, 156, 119, 115);
+		//GREEN.setBounds(800, 156, 119, 115);
+		GREEN.setBounds(815, 169, 90, 90);
 		frame.add(GREEN);
 		
-		JButton RED = new JButton("Red");
+		RED = new JButton("Red");
+		RED.setBackground(Color.red);
+		RED.setForeground(Color.white);
 		RED.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Player redP = b.redP;
@@ -64,10 +76,13 @@ public class Interface {
 				RED.setVisible(false);
 			}
 		});
-		RED.setBounds(800, 268, 119, 115);
+		//RED.setBounds(800, 268, 119, 115);
+		RED.setBounds(815, 281, 90, 90);
 		frame.add(RED);
 		
-		JButton BLUE = new JButton("Blue");
+		BLUE = new JButton("Blue");
+		BLUE.setBackground(Color.blue);
+		BLUE.setForeground(Color.white);
 		BLUE.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Player blueP = b.blueP;
@@ -77,10 +92,13 @@ public class Interface {
 				BLUE.setVisible(false);
 			}
 		});
-		BLUE.setBounds(800, 380, 119, 115);
+		//BLUE.setBounds(800, 380, 119, 115);
+		BLUE.setBounds(815, 393, 90, 90);
 		frame.add(BLUE);
 		
-		JButton YELLOW = new JButton("Yellow");
+		YELLOW = new JButton("Yellow");
+		YELLOW.setBackground(Color.yellow);
+		YELLOW.setForeground(Color.black);
 		YELLOW.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Player yellowP = b.yellowP;
@@ -90,20 +108,56 @@ public class Interface {
 				YELLOW.setVisible(false);
 			}
 		});
-		YELLOW.setBounds(800, 495, 119, 115);
+		//YELLOW.setBounds(800, 495, 119, 115);
+		YELLOW.setBounds(815, 508, 90, 90);
 		frame.add(YELLOW);
 		
+		/********************* START BUTTON *****************/
 		startGame = new JButton("Start");
 		
 		startGame.setActionCommand(Actions.startGame.name());
-		startGame.setBounds(800, 610, 119, 115);
+		//startGame.setBounds(800, 610, 119, 115);
+		startGame.setBounds(815, 623, 90, 35);
 		frame.add(startGame);
 		
+		/************* DIE (WITH HIS BUTTON (OFC)) **********/
 		myDie = new Die(frame);
 		frame.add(myDie.getButton());
-		initAnnounce("Let's start the game !");
 		
+		/************* FADING LABEL CREATED *****************/
+		initAnnounce("Let's start the game !");
 		frame.add(pane, new Integer(200));
+		
+		/************* REMEMBER LABEL CREATED ***************/
+		initRememberer();
+		frame.add(rememberer, new Integer(201));
+		
+		/************* OPTION BUTTON CREATED ****************/
+		options = new JButton("options");
+		
+		options.setActionCommand(Actions.options.name());
+		options.setBounds(950, 690, 40, 40);
+		frame.add(options);
+	}
+	
+	private void initRememberer() {
+		rememberer = new JLabel();
+		rememberer.setBounds(771,160,180,50 );
+		rememberer.setFont(new Font("Arial",Font.BOLD, 20));
+		rememberer.setOpaque(true);
+		rememberer.setBackground(Color.black);
+		
+		rememberer.setVisible(false);
+	}
+	
+	public void disableRememberer() {
+		rememberer.setVisible(false);
+	}
+	
+	public void setRemembererText(String text, Color color) {
+		rememberer.setText(text);
+		rememberer.setForeground(color);
+		rememberer.setVisible(true);
 	}
 	
 	public void initAnnounce(String text) {
@@ -122,7 +176,13 @@ public class Interface {
 		return startGame;
 	}
 	
-	public boolean startNewGame() {
-		return startNewGame;
+	public void restartInterface() {
+		GREEN.setVisible(true);
+		RED.setVisible(true);
+		BLUE.setVisible(true);
+		YELLOW.setVisible(true);
+		startGame.setVisible(true);
+		disableRememberer();
 	}
+	
 }
