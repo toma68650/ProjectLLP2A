@@ -156,8 +156,6 @@ public class Board extends JPanel{
 	/**
 	 * @method public void process(int dieResult, Player focusedPlayer)
 	 * @brief The method which will manage the movement of the pawns depending on the player who is playing
-	 * @param dieResult - integer, the result of the dieRoll
-	 * @param focusedPlayer - Player, the player who is playing
 	 */
 	public void process() {
 		/* We first check if a case is focused (clicked on), if it is not the case, we do nothing, else we manage the operation */

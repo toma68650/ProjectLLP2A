@@ -152,19 +152,7 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener {
 				window.getPane().changeAnnounce("Not enough players...", Color.white);
 			}
 		} else if(e.getActionCommand() == Actions.rollDice.name()) {
-			if(gameStarted) {
-				
-				resultDice = window.getDie().performAction();
-				dieRolled = true;
-				board.setAction(board.getPlayers().get((turn-1)%4), resultDice);
-				window.getDie().getButton().setEnabled(false);
-				if(!board.isLegalMove(board.getPlayers().get((turn-1)%4))) {
-					nextTurn();
-				}
-			}
-			
-			
-			
+			rollDieAction();			
 		} else if(e.getActionCommand() == Actions.startMenu.name()) {
 			setSize(1000,765);
 			menu.setVisible(false);
@@ -237,6 +225,21 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener {
 		}
 	}
 	
+	public boolean rollDieAction() {
+		if(gameStarted) {
+			
+			resultDice = window.getDie().performAction();
+			dieRolled = true;
+			board.setAction(board.getPlayers().get((turn-1)%4), resultDice);
+			window.getDie().getButton().setEnabled(false);
+			if(!board.isLegalMove(board.getPlayers().get((turn-1)%4))) {
+				nextTurn();
+				return false;
+			}
+			return true;
+		}
+		return false;
+	}
 	
 
 }

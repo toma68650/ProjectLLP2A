@@ -72,5 +72,12 @@ public class Case extends JButton {
 		return safe;
 	}
 	
+	public boolean isEqual(Case c) {
+		return ((c.getX() == this.getX())&&(c.getY()==this.getY()));
+	}
+	
+	public boolean isPawnStanding(Pawn pa) {
+		return ((this.getX() == pa.getRelativeX())&&(this.getY() == pa.getRelativeY()));
+	}
 	
 }
