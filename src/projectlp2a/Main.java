@@ -196,11 +196,11 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener {
 			//board.getPlayers().get((turn-1)%4).getPawns().get(1).move(board.getPlayers().get((turn-1)%4).getEnd().get(2).getX(),board.getPlayers().get((turn-1)%4).getEnd().get(2).getY());
 			//board.getPlayers().get((turn-1)%4).getPawns().get(2).move(board.getPlayers().get((turn-1)%4).getEnd().get(3).getX(),board.getPlayers().get((turn-1)%4).getEnd().get(3).getY());
 			//board.getPlayers().get((turn-1)%4).getPawns().get(3).move(board.getPlayers().get((turn-1)%4).getEnd().get(4).getX(),board.getPlayers().get((turn-1)%4).getEnd().get(4).getY());
-			if(resultDice == 6) {
-				window.getDie().getButton().setEnabled(true);
-				dieRolled=false;
-			} else if(board.isLegalMove(board.getPlayers().get((turn-1)%4)) && !isPawnMove) {
+			if(board.isLegalMove(board.getPlayers().get((turn-1)%4)) && !isPawnMove) {
 				window.getPane().changeAnnounce("It's an illegal move !", Color.white);
+			} else if(resultDice == 6) {
+				window.getDie().getButton().setEnabled(true);
+				dieRolled=false; 
 			} else {
 				nextTurn();
 			}

@@ -184,21 +184,20 @@ public class Board extends JPanel{
             						System.out.println("Value of nbCaseBeforeEnd : "+nbCaseBeforeEnd);
             					}
             				}
+            				
             				/* The pawn arrive right on the bottom of the ladder, he can climb at the next turn */
             				if(dieResult - nbCaseBeforeEnd == 0) {
             					target = cases.get(indexNextCase%56);
             				/* The result of the die is too big, we must go back */
             				} else if ( nbCaseBeforeEnd > 0) {
-            					indexNextCase = cases.indexOf(focusedCase) +nbCaseBeforeEnd;
+            					//indexNextCase = cases.indexOf(focusedCase) +nbCaseBeforeEnd;
             					dieResult -= nbCaseBeforeEnd;
-            					indexNextCase -= dieResult;
-            					indexNextCase = indexNextCase%56; // Normally this action is useless, but if the die has more than 55 sides, it could be a problem :] */
-            					target = cases.get(indexNextCase);
+            					//indexNextCase -= dieResult;
+            					//indexNextCase = indexNextCase%56; // Normally this action is useless, but if the die has more than 55 sides, it could be a problem :] */
+            					target = focusedPlayer.getEnd().get(dieResult);
             				/* We're at the bottom of the ladder, we can now climb to it */
             				} else if(nbCaseBeforeEnd == 0) {
-            					if (dieResult == 6) {
-            						target = focusedPlayer.getEnd().get(dieResult-1);
-            					} else {
+            					if (dieResult != 6) {
             						target = focusedPlayer.getEnd().get(dieResult);
             					}
             				/* We are not close from the end,  we just make a classic move */
@@ -206,6 +205,8 @@ public class Board extends JPanel{
             					target = cases.get(indexNextCase%56);							
 							}
             				
+            			} else if((focusedPlayer.getEnd().indexOf(focusedCase) > 0) && (6 - focusedPlayer.getEnd().indexOf(focusedCase) >= dieResult)) {
+            				target = focusedPlayer.getEnd().get(focusedPlayer.getEnd().indexOf(focusedCase) + dieResult);
             			}
         				if (target != null) {
         					p.move(target.getX(),target.getY());
@@ -264,7 +265,7 @@ public class Board extends JPanel{
 			if(!inBarn) {
 				for(Case c : p.getEnd()) {
 					if((pa.getRelativeX()==c.getX()) && (pa.getRelativeY()==c.getY())){
-						if(p.getEnd().indexOf(c)+dieResult>5) {
+						if(6 - p.getEnd().indexOf(c) < dieResult) {
 							nbLegalMoves--;
 						}
 					}

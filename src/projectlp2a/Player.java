@@ -72,27 +72,31 @@ public class Player {
 				end.add(new Case(11, 7, true, null, Colorp.yellow, jl, b, 78));
 				end.add(new Case(10, 7, true, null, Colorp.yellow, jl, b, 79));
 				end.add(new Case(9, 7, true, null, Colorp.yellow, jl, b, 80));
+				end.add(new Case(8, 7, true, null, Colorp.yellow, jl, b, 81));
 				break;
 			case red :
-				end.add(new Case(7, 1, true, null, Colorp.red, jl, b, 81));
-				end.add(new Case(7, 2, true, null, Colorp.red, jl, b, 82));
-				end.add(new Case(7, 3, true, null, Colorp.red, jl, b, 83));
-				end.add(new Case(7, 4, true, null, Colorp.red, jl, b, 84));
-				end.add(new Case(7, 5, true, null, Colorp.red, jl, b, 85));
+				end.add(new Case(7, 1, true, null, Colorp.red, jl, b, 82));
+				end.add(new Case(7, 2, true, null, Colorp.red, jl, b, 83));
+				end.add(new Case(7, 3, true, null, Colorp.red, jl, b, 84));
+				end.add(new Case(7, 4, true, null, Colorp.red, jl, b, 85));
+				end.add(new Case(7, 5, true, null, Colorp.red, jl, b, 86));
+				end.add(new Case(7, 6, true, null, Colorp.red, jl, b, 87));
 				break;
 			case blue :
-				end.add(new Case(1, 7, true, null, Colorp.blue, jl, b, 86));
-				end.add(new Case(2, 7, true, null, Colorp.blue, jl, b, 87));
-				end.add(new Case(3, 7, true, null, Colorp.blue, jl, b, 88));
-				end.add(new Case(4, 7, true, null, Colorp.blue, jl, b, 89));
-				end.add(new Case(5, 7, true, null, Colorp.blue, jl, b, 90));
+				end.add(new Case(1, 7, true, null, Colorp.blue, jl, b, 88));
+				end.add(new Case(2, 7, true, null, Colorp.blue, jl, b, 89));
+				end.add(new Case(3, 7, true, null, Colorp.blue, jl, b, 90));
+				end.add(new Case(4, 7, true, null, Colorp.blue, jl, b, 91));
+				end.add(new Case(5, 7, true, null, Colorp.blue, jl, b, 92));
+				end.add(new Case(6, 7, true, null, Colorp.blue, jl, b, 93));
 				break;
 			case green :
-				end.add(new Case(7, 13, true, null, Colorp.green, jl, b, 91));
-				end.add(new Case(7, 12, true, null, Colorp.green, jl, b, 92));
-				end.add(new Case(7, 11, true, null, Colorp.green, jl, b, 93));
-				end.add(new Case(7, 10, true, null, Colorp.green, jl, b, 94));
-				end.add(new Case(7, 9, true, null, Colorp.green, jl, b, 95));
+				end.add(new Case(7, 13, true, null, Colorp.green, jl, b, 94));
+				end.add(new Case(7, 12, true, null, Colorp.green, jl, b, 95));
+				end.add(new Case(7, 11, true, null, Colorp.green, jl, b, 96));
+				end.add(new Case(7, 10, true, null, Colorp.green, jl, b, 97));
+				end.add(new Case(7, 9, true, null, Colorp.green, jl, b, 98));
+				end.add(new Case(7, 8, true, null, Colorp.green, jl, b, 98));
 				break;
 		}
 	}
