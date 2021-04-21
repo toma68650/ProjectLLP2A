@@ -133,7 +133,11 @@ public class AI {
 	}
 	
 	public boolean canBecomeSafePawn(Case target) {
-		return target.isSafe();
+		boolean isPawn = false;
+		for(Pawn pa : playerAi.getPawns()) {
+			if(target.isPawnStanding(pa)) isPawn=true;
+		}
+		return (target.isSafe() || isPawn);
 	}
 	
 	public boolean canEnterEndPawn(Case target) {
