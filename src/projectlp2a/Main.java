@@ -6,15 +6,19 @@ import java.awt.Dimension;
 import java.awt.MouseInfo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 @SuppressWarnings("serial")
-public class Main extends JFrame implements ActionListener, PawnMoveListener {
+public class Main extends JFrame implements ActionListener, PawnMoveListener, AiStruggleListener {
 
 	private JLayeredPane jl;
 	public Board board;
 	private Menu menu;
 	private Interface window;
 	private boolean finished=false;
+	private boolean isAi = false;
+	private List<AI> ais;
 	
 	int resultDice;
 	int turn=0;
@@ -51,6 +55,7 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener {
         /* Setup of the action listeners for the menu */
         menu.quitButton.addActionListener(this);
         menu.startButton.addActionListener(this);
+        menu.startAiButton.addActionListener(this);
         menu.resumeButton.addActionListener(this);
         
         /* Setup of the action listeners for the game */
@@ -139,36 +144,97 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand() == Actions.startGame.name()) {
-			
-			if(this.board.getPlayers().size() == 4) {
-				window.getPane().changeAnnounce("Game's starting",Color.white);
-				window.startGame.setVisible(false);
-				gameStarted =true;
-				turn = 1;
-				String message = board.getPlayers().get((turn-1)%4).getColor()+"'s turn";
-				window.getPane().changeAnnounce(message, Color.white);
-				window.setRemembererText("  "+message, convertColorpToAwtColor(board.getPlayers().get((turn-1)%4).getColor()));
+			if(isAi) {
+				if(this.board.getPlayers().size() >= 1){
+					ais = new ArrayList<AI>();
+					window.setInterfaceInvisible();
+					for(Player p : window.getColorNotClicked()) {
+						board.getPlayers().add(p);
+						ais.add(new AI(p, window.getDie(), this));
+					}
+					for(AI ai : ais) {
+						ai.addListeners(this);
+					}
+					window.getPane().changeAnnounce("Game's starting",Color.white);
+					window.startGame.setVisible(false);
+					gameStarted =true;
+					turn = 1;
+					String message = board.getPlayers().get((turn-1)%4).getColor()+"'s turn";
+					window.getPane().changeAnnounce(message, Color.white);
+					window.setRemembererText("  "+message, convertColorpToAwtColor(board.getPlayers().get((turn-1)%4).getColor()));
+				} else {
+					window.getPane().changeAnnounce("Not enough players...", Color.white);
+				}
 			} else {
-				window.getPane().changeAnnounce("Not enough players...", Color.white);
+				if(this.board.getPlayers().size() == 4) {
+					window.getPane().changeAnnounce("Game's starting",Color.white);
+					window.startGame.setVisible(false);
+					gameStarted =true;
+					turn = 1;
+					String message = board.getPlayers().get((turn-1)%4).getColor()+"'s turn";
+					window.getPane().changeAnnounce(message, Color.white);
+					window.setRemembererText("  "+message, convertColorpToAwtColor(board.getPlayers().get((turn-1)%4).getColor()));
+				} else {
+					window.getPane().changeAnnounce("Not enough players...", Color.white);
+				}
 			}
+			
+			
+			
+			
 		} else if(e.getActionCommand() == Actions.rollDice.name()) {
 			rollDieAction();			
+			
+			
+			
+			
 		} else if(e.getActionCommand() == Actions.startMenu.name()) {
+			isAi = false;
 			setSize(1000,765);
 			menu.setVisible(false);
 			if (menu.startButton.getText().contentEquals("Restart game")) {
 				gameStarted=false;
 				board.restartBoard();
-				window.restartInterface();
+				window.restartInterface(this.board);
 			} else {
 				menu.changeToRestart();
 				menu.resumeButton.setVisible(true);
 			}
+			
+			
+			
+			
+		} else if(e.getActionCommand() == Actions.startAiMenu.name()) {	
+			isAi = true;
+			setSize(1000,765);
+			menu.setVisible(false);
+			if (menu.startButton.getText().contentEquals("Restart game")) {
+				gameStarted=false;
+				board.restartBoard();
+				window.restartInterface(board);
+			} else {
+				menu.changeToRestart();
+				menu.resumeButton.setVisible(true);
+			}
+			
+			
+			
+			
 		} else if(e.getActionCommand() == Actions.quitMenu.name()) {
 			dispose();
+			
+			
+			
+			
+			
 		}else if(e.getActionCommand() == Actions.resumeMenu.name()) { 
 			setSize(1000,765);
 			menu.setVisible(false);
+			
+			
+			
+			
+			
 		} else if(e.getActionCommand() == Actions.options.name()) {
 			setSize(500,500);
 			menu.setVisible(true);
@@ -190,15 +256,22 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener {
 				window.getDie().getButton().setEnabled(true);
 				dieRolled=false; 
 			} else {
-				nextTurn();
+				if(board.isFinish(board.getPlayers().get((turn-1)%4))) {
+					window.getDie().getButton().setEnabled(false);
+					board.action =false;
+					window.disableRememberer();
+					window.getPane().changeAnnounce("Congratulations, "+ board.getPlayers().get((turn-1)%4).getColor() + "You won this amazing game !!", Color.white);
+				} else {
+					nextTurn();
+				}
 			}
-			if(board.isFinish(board.getPlayers().get((turn-1)%4))) {
-				window.getDie().getButton().setEnabled(false);
-				board.action =false;
-				window.disableRememberer();
-				window.getPane().changeAnnounce("Congratulations, "+ board.getPlayers().get((turn-1)%4).getColor() + "You won this amazing game !!", Color.white);
-			}
+			
 		}
+	}
+	
+	@Override
+	public void aiStrugglePerformed() {
+		nextTurn();		
 	}
 	
 	private void nextTurn() {
@@ -206,8 +279,24 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener {
 		String message = board.getPlayers().get((turn-1)%4).getColor()+"'s turn";
 		window.getPane().changeAnnounce(message, Color.white);
 		window.setRemembererText("  "+message, convertColorpToAwtColor(board.getPlayers().get((turn-1)%4).getColor()));
-		window.getDie().getButton().setEnabled(true);
-		dieRolled=false;
+		if(!isAi) {
+			window.getDie().getButton().setEnabled(true);
+			dieRolled=false;
+		} else {
+			if(!isCorrespondingAi(board.getPlayers().get((turn-1)%4))) {
+				window.getDie().getButton().setEnabled(true);
+				dieRolled=false;
+			} else {
+				AI interstedAi =null;
+				for(AI ai : ais) {
+					if(ai.getPlayer() == board.getPlayers().get((turn-1)%4)){
+						interstedAi = ai;
+					}
+				}
+				interstedAi.setTurn();
+			}
+		}
+		
 	}
 	
 	private Color convertColorpToAwtColor(Colorp color) {
@@ -241,5 +330,16 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener {
 		return false;
 	}
 	
+	private boolean isCorrespondingAi(Player p) {
+		boolean correspondingAi=false;
+		for(AI ai : ais ) {
+			if(ai.getPlayer() == p) {
+				correspondingAi = true;
+			}
+		}
+		return correspondingAi;
+	}
 
+	
+	
 }

@@ -1,32 +1,71 @@
 package projectlp2a;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+import javax.swing.Timer;
 
 public class AI {
 	//Here we use composition over inheritance because we do not want to change too much details about the existing code.
 	//So composition let us use all the things made w/o changing the initialization of the players
-	Player playerAi;
+	private Player playerAi;
+	private Die die;
+	private Main main;
+	private boolean action = false;
+	private List<AiStruggleListener> listeners = new ArrayList<AiStruggleListener>();
 	
-	public AI(Player p) {
+	public AI(Player p, Die die, Main main) {
 		playerAi = p;
+		this.die  = die;
+		this.main = main;
+		
+		Timer timer = new Timer(201, new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(action) {
+                	makeTurn();
+                }      	
+            }
+        });
+		timer.start();
 	}
 	
-	private int rollDie(Die die) {
+	private int rollDie() {
 		return die.performAction();
 	}
 	
-	public void makeTurn(Die die, Main main) {
-		int dieValue = rollDie(die);
-		if(main.rollDieAction()) {
-			aiThoughts(main.board, dieValue);
-		}
-		
+	public void setTurn() {
+		action = true;
 	}
 	
-	public Case aiThoughts(Board board, int dieValue) {
+	public void makeTurn() {
+		int dieValue = 0;
+		boolean struggle = false;
+			dieValue = rollDie();
+			System.out.println("Player "+playerAi.getColor()+" played a "+dieValue);
+			Case focusedCase = aiThoughts(main.board, dieValue);
+			if(focusedCase != null) {
+				System.out.println("Player "+playerAi.getColor()+" decided to make something of his life");
+				main.board.setFocusedCase(focusedCase);
+				main.board.setAction(playerAi, dieValue);
+			} else {
+				struggle = true;
+			}
+		if(struggle) {
+			for(AiStruggleListener listener : listeners) {
+				listener.aiStrugglePerformed();
+			}
+		}
+		if(dieValue != 6) {
+			action = false;
+		}
+
+	}
+	
+	private Case aiThoughts(Board board, int dieValue) {
 		
 		boolean inBarn=false;
 		int pawnsInBarn = 0;
@@ -35,12 +74,13 @@ public class AI {
 		boolean inEnd=false;
 		int pawnsInEnd = 0;
 		List<Case> endPawn = new ArrayList<Case>();
+		List<Boolean> canGoForwardInEnd = new ArrayList<Boolean>();
 		
 		
 		List<Case> boardPawn = new ArrayList<Case>();
 		List<Boolean> canEat = new ArrayList<Boolean>();
 		List<Boolean> canBecomeSafe = new ArrayList<Boolean>();
-		List<Boolean> canEnterEnd = new ArrayList<Boolean>(); 
+		List<Boolean> canEnterEnd = new ArrayList<Boolean>();
 		
 		
 		for(Pawn p : playerAi.getPawns()) {
@@ -48,39 +88,50 @@ public class AI {
 				if(c.isPawnStanding(p)) {
 					pawnsInBarn++;
 					barnPawn.add(c);
-					inBarn=true;
 				}
 			}
-			if(!inBarn) {
-				for(Case c : playerAi.getEnd()) {
-					if(c.isPawnStanding(p) && (playerAi.getEnd().indexOf(c) != 0)) {
-						pawnsInEnd++;
-						endPawn.add(c);
-						inEnd=true;
-					}
-				}
-				if(!inEnd) {
-					for(Case c : board.cases) {
-						if(c.isPawnStanding(p)) {
-							boardPawn.add(c);
-							Case target = determineTarget(c,board,dieValue);
-							canEat.add(canEatPawn(p,board,target));
-							canBecomeSafe.add(canBecomeSafePawn(target));
-							canEnterEnd.add(canEnterEndPawn(target));
-						}
-					}
+			for(Case c : playerAi.getEnd()) {
+				if(c.isPawnStanding(p) && (playerAi.getEnd().indexOf(c) != 0)) {
+					pawnsInEnd++;
+					endPawn.add(c);
+					canGoForwardInEnd.add(goForwardInEnd(dieValue,c));
+					inEnd=true;
 				}
 			}
+
+			for(Case c : board.cases) {
+				if(c.isPawnStanding(p)) {
+					boardPawn.add(c);
+					Case target = determineTarget(c,board,dieValue);
+					if(board.cases.contains(target)) canEat.add(canEatPawn(p,board,target));
+					canBecomeSafe.add(canBecomeSafePawn(target));
+					canEnterEnd.add(canEnterEndPawn(target));
+				}
+			}
+
 			
 			
 		}
-		if((4-(pawnsInBarn+pawnsInBarn) < 2)&&(dieValue == 6)) {
+		if((barnPawn.size() == 4) &&(dieValue == 6)) {
 			return barnPawn.get(0);
+		} else if(boardPawn.size() != 0 && canEnterEnd.contains(true)) {
+			return boardPawn.get(canEnterEnd.indexOf(true));
+		} else if ((4-(pawnsInBarn+pawnsInEnd) < 2)&&(dieValue == 6)&&(pawnsInBarn > 0)) {
+			return barnPawn.get(0);
+		} else if(boardPawn.size() != 0 && canBecomeSafe.contains(true)) {
+			return boardPawn.get(canBecomeSafe.indexOf(true));
+		} else if(boardPawn.size() != 0 && canEat.contains(true)) {
+			return boardPawn.get(canEat.indexOf(true));
+		} else if(endPawn.size() != 0 && canGoForwardInEnd.contains(true)) {
+			return endPawn.get(canGoForwardInEnd.indexOf(true));
+		} else if( boardPawn.size() != 0){
+			return boardPawn.get(boardPawn.size()-1);
+		} else {
+			return null;
 		}
-		return barnPawn.get(0);
 	}
 	
-	public Case determineTarget(Case focusedCase, Board board, int dieValue) {
+	private Case determineTarget(Case focusedCase, Board board, int dieValue) {
 		Case target = null;
 		int  indexNextCase = (board.cases.indexOf(focusedCase)+dieValue); // The index of the next case if everything happen correctly
 		int nbCaseBeforeEnd=-10; // The case before the beginning of the "stair" or "ladder" 
@@ -110,7 +161,7 @@ public class AI {
 		
 	}
 	
-	public boolean canEatPawn(Pawn pa, Board board, Case target) {
+	private boolean canEatPawn(Pawn pa, Board board, Case target) {
 		boolean canEat=false;
 		List<Pawn> pawnsInDanger;
 		for(int i=0;i<4;i++) {
@@ -132,7 +183,7 @@ public class AI {
 		return canEat;
 	}
 	
-	public boolean canBecomeSafePawn(Case target) {
+	private boolean canBecomeSafePawn(Case target) {
 		boolean isPawn = false;
 		for(Pawn pa : playerAi.getPawns()) {
 			if(target.isPawnStanding(pa)) isPawn=true;
@@ -140,7 +191,24 @@ public class AI {
 		return (target.isSafe() || isPawn);
 	}
 	
-	public boolean canEnterEndPawn(Case target) {
+	private boolean canEnterEndPawn(Case target) {
 		return (playerAi.getEnd().indexOf(target) > 0);
 	}
+	
+	private boolean goForwardInEnd(int dieValue, Case focusedCase) {
+		if(playerAi.getEnd().contains(focusedCase)) {
+			return (playerAi.getEnd().indexOf(focusedCase)+dieValue <= 6);
+		} else {
+			return false;
+		}
+	}
+	
+	public Player getPlayer() {
+		return playerAi;
+	}
+
+	public void addListeners(AiStruggleListener listener) {
+		this.listeners.add(listener);
+	}
+
 }

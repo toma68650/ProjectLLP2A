@@ -56,7 +56,6 @@ public class Die extends Random {
 	public int performAction() {
 		int resultDice= rollDice();
 		ImageIcon dice=null;
-		System.out.println("Value of die : "+resultDice);
 		switch (resultDice){
 		case 1 : 
 			dice = new ImageIcon("Image/die/dice_1.png");
@@ -80,7 +79,6 @@ public class Die extends Random {
 		/*if(resultDice!=6) {
 			getButton().setEnabled(false);
 		}*/
-		System.out.println(dice);
 		getButton().setIcon(dice);
 		return resultDice;
 	}

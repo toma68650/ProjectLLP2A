@@ -2,6 +2,7 @@ package projectlp2a;
 
 public enum Actions {
 	startMenu,
+	startAiMenu,
 	quitMenu,
 	resumeMenu,
 	

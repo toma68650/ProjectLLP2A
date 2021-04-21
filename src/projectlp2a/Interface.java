@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+
+import java.util.ArrayList;
 import java.util.Timer;
 
 import javax.swing.BorderFactory;
@@ -25,6 +27,7 @@ public class Interface {
 	private FadePane pane;
 	public JButton startGame=null;
 	public JButton options=null;
+	private ArrayList<Player> colorNotClicked;
 	
 	private JButton GREEN;
 	private JButton RED;
@@ -46,8 +49,11 @@ public class Interface {
 	 * @param b - Board, that players belong to
 	 */
 	private void initialize(JLayeredPane frame, Board b) {
-
-		
+		colorNotClicked = new ArrayList<Player>();
+		colorNotClicked.add(b.greenP);
+		colorNotClicked.add(b.redP);
+		colorNotClicked.add(b.blueP);
+		colorNotClicked.add(b.yellowP);
 		
 		/***************************************************
 		 **************** COLOR BUTTONS ********************
@@ -62,6 +68,7 @@ public class Interface {
 				System.out.println("You're Green");
 				pane.changeAnnounce("You're Green",Color.green);
 				GREEN.setVisible(false);
+				colorNotClicked.remove(greenP);
 			}
 		});
 		//GREEN.setBounds(800, 156, 119, 115);
@@ -78,6 +85,7 @@ public class Interface {
 				System.out.println("You're Red");
 				pane.changeAnnounce("You're Red",Color.red);
 				RED.setVisible(false);
+				colorNotClicked.remove(redP);
 			}
 		});
 		//RED.setBounds(800, 268, 119, 115);
@@ -94,6 +102,7 @@ public class Interface {
 				System.out.println("You're Blue");
 				pane.changeAnnounce("You're Blue",Color.blue);
 				BLUE.setVisible(false);
+				colorNotClicked.remove(blueP);
 			}
 		});
 		//BLUE.setBounds(800, 380, 119, 115);
@@ -110,6 +119,7 @@ public class Interface {
 				System.out.println("You're Yellow");
 				pane.changeAnnounce("You're Yellow",Color.yellow);
 				YELLOW.setVisible(false);
+				colorNotClicked.remove(yellowP);
 			}
 		});
 		//YELLOW.setBounds(800, 495, 119, 115);
@@ -185,7 +195,23 @@ public class Interface {
 		return startGame;
 	}
 	
-	public void restartInterface() {
+	public ArrayList<Player> getColorNotClicked(){
+		return colorNotClicked;
+	}
+	
+	public void setInterfaceInvisible() {
+		GREEN.setVisible(false);
+		RED.setVisible(false);
+		BLUE.setVisible(false);
+		YELLOW.setVisible(false);
+	}
+	
+	public void restartInterface(Board b) {
+		colorNotClicked = new ArrayList<Player>();
+		colorNotClicked.add(b.greenP);
+		colorNotClicked.add(b.redP);
+		colorNotClicked.add(b.blueP);
+		colorNotClicked.add(b.yellowP);
 		GREEN.setVisible(true);
 		RED.setVisible(true);
 		BLUE.setVisible(true);

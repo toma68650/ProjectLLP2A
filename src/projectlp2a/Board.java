@@ -136,7 +136,7 @@ public class Board extends JPanel{
 		 ***************** TIMER FOR DETECTING ACTIONS **********************************************************
 		 ********************************************************************************************************/
 		
-		timer = new Timer(1, new ActionListener() {
+		timer = new Timer(200, new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -160,7 +160,7 @@ public class Board extends JPanel{
 	public void process() {
 		/* We first check if a case is focused (clicked on), if it is not the case, we do nothing, else we manage the operation */
 		if((focusedCase != null) && (focusedPlayer != null) && (players.size() != 0)) {
-			System.out.println("Position of this case : x="+focusedCase.getX()+"; y="+focusedCase.getY());
+			System.out.println("I entered this kindly function");
         	/* We check if one of player's pawn is on the case clicked, if not, we do nothing */
         	boolean pawnMoved=false;
 			for(Pawn p : focusedPlayer.getPawns()) {
@@ -215,9 +215,9 @@ public class Board extends JPanel{
         						if(!(players.get(i) == focusedPlayer)) {
 	        						for(int j =0;j<4;j++) {
 	    								
-										System.out.println("Position of pawn : "+players.get(i).getPawns().get(j).getX()+" "+players.get(i).getPawns().get(j).getY());
-	    								System.out.println("Postion of case : "+target.getX()+" "+target.getY());
-	    								System.out.println("Same color ? "+!(players.get(i).getPawns().get(j).getColor().equals(p.getColor())));
+										//System.out.println("Position of pawn : "+players.get(i).getPawns().get(j).getX()+" "+players.get(i).getPawns().get(j).getY());
+	    								//System.out.println("Postion of case : "+target.getX()+" "+target.getY());
+	    								//System.out.println("Same color ? "+!(players.get(i).getPawns().get(j).getColor().equals(p.getColor())));
 	    								if( (players.get(i).getPawns().get(j).getRelativeX()==target.getX()) && (players.get(i).getPawns().get(j).getRelativeY()==target.getY()) && !(players.get(i).getPawns().get(j).getColor().equals(p.getColor()))) {
 	    									if(!target.isSafe()) {
 	    										pawnsInDanger.add(players.get(i).getPawns().get(j));
@@ -345,7 +345,7 @@ public class Board extends JPanel{
 	
     public boolean isFinish(Player p) {
         int PawnsEnded = 0;
-        for(int i=1;i<=5;i++) {
+        for(int i=1;i<=6;i++) {
             for(Pawn pa : p.getPawns()) {
                 if((pa.getRelativeX()==p.getEnd().get(i).getX()) && (pa.getRelativeY()==p.getEnd().get(i).getY())) {
                     PawnsEnded++;

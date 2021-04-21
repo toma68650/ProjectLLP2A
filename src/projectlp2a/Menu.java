@@ -17,6 +17,7 @@ public class Menu extends JPanel {
 	
 	private JPanel options;
 	public JButton startButton;
+	public JButton startAiButton;
 	public JButton quitButton;
 	public JButton resumeButton;
 	
@@ -45,6 +46,11 @@ public class Menu extends JPanel {
 		startButton.setFont(new Font("Arial",Font.ITALIC,20));
 		startButton.setText("Start a game");
 		startButton.setActionCommand(Actions.startMenu.name());
+		/* INITIALIZATION OF THE STARTAIBUTTON *************/
+		startAiButton = new JButton();
+		startAiButton.setFont(new Font("Arial",Font.ITALIC,20));
+		startAiButton.setText("Start a game with ai");
+		startAiButton.setActionCommand(Actions.startAiMenu.name());
 		
 		/* INITIALIZATION OF THE QUIT BUTTON ***************/
 		quitButton = new JButton();
@@ -61,9 +67,11 @@ public class Menu extends JPanel {
 		gb.setConstraints(quitButton, gbc);
 		gb.setConstraints(resumeButton, gbc);
 		gb.setConstraints(startButton, gbc);
+		gb.setConstraints(startAiButton, gbc);
 
 		/* ADDING OF THE BUTTON ON THE INTERN PANEL ********/
 		options.add(startButton);
+		options.add(startAiButton);
 		options.add(resumeButton);
 		options.add(quitButton);
 	
@@ -71,6 +79,7 @@ public class Menu extends JPanel {
 	
 	public void changeToRestart() {
 		startButton.setText("Restart game");
+		startAiButton.setText("Restart a game with ai");
 	}
 	
 }
