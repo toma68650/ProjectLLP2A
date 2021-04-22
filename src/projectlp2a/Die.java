@@ -1,18 +1,23 @@
 package projectlp2a;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+
 import javax.swing.JLayeredPane;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.util.*;
 
+/**
+ * @class Die.java
+ * @brief Die class, represents the die with his image.
+ * @details It inherits from Random.
+ * @author alexandrev - thomasl
+ * @version 1.0
+ * @date 2021
+ */
 @SuppressWarnings("serial")
 public class Die extends Random {
-	private JButton die;
-	private int resultDice;
+	private JButton die; //<! 
+	private int resultDice; //<! 
 	
 	public Die(JLayeredPane frame) {
 		super();

@@ -11,15 +11,23 @@ import java.awt.Toolkit;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
-
+/**
+ * @class Menu.java
+ * @brief menu where the players can set up some settings.
+ * @details The class inherits from JPanel.
+ * @author alexandrev - thomasl
+ * @version 1.0
+ * @date 2021
+ */ 
 @SuppressWarnings("serial")
 public class Menu extends JPanel {
 	
-	private JPanel options;
-	public JButton startButton;
-	public JButton startAiButton;
-	public JButton quitButton;
-	public JButton resumeButton;
+	private JPanel options; //<!
+	public JButton startButton; //<! 
+	public JButton startAiButton; //<! 
+	public JButton quitButton; //<! 
+	public JButton resumeButton; //<! 
+	public JButton themeButton; //<! 
 	
 	public Menu() {
 		super();
@@ -63,16 +71,23 @@ public class Menu extends JPanel {
 		resumeButton.setText("Resume");
 		resumeButton.setActionCommand(Actions.resumeMenu.name());
 		resumeButton.setVisible(false);
+		/* INITIALIZATION OF THE DARK/LIGHT THEME BUTTON ***/
+		themeButton = new JButton();
+		themeButton.setFont(new Font("Arial",Font.ITALIC,20));
+		themeButton.setText("Dark theme");
+		themeButton.setActionCommand(Actions.themeMenu.name());
 		/* SETING OF THE CONSTRAINTS FOR THE GRIDBAGLAYOUT */
 		gb.setConstraints(quitButton, gbc);
 		gb.setConstraints(resumeButton, gbc);
 		gb.setConstraints(startButton, gbc);
 		gb.setConstraints(startAiButton, gbc);
+		gb.setConstraints(themeButton, gbc);
 
 		/* ADDING OF THE BUTTON ON THE INTERN PANEL ********/
 		options.add(startButton);
 		options.add(startAiButton);
 		options.add(resumeButton);
+		options.add(themeButton);
 		options.add(quitButton);
 	
 	}
@@ -80,6 +95,14 @@ public class Menu extends JPanel {
 	public void changeToRestart() {
 		startButton.setText("Restart game");
 		startAiButton.setText("Restart a game with ai");
+	}
+	
+	public void changeToDarkTheme(boolean isDarkTheme) {
+		if(isDarkTheme) {
+			themeButton.setText("Dark theme");
+		} else {
+			themeButton.setText("Light theme");
+		}
 	}
 	
 }

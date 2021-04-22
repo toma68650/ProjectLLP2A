@@ -15,28 +15,40 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.Image;
 import java.awt.MouseInfo;
-
+/**
+ * @class Board.java
+ * @brief The class where all things linked with the movement on the board and outside happend.
+ * @details It extends a JPanel.
+ * @author alexandrev - thomasl
+ * @version 1.0
+ * @date 2021
+ */ 
 @SuppressWarnings("serial")
 public class Board extends JPanel{
 	
-	private Graphics2D g2d;
+	private Graphics2D g2d; //!<
 
-	private Case focusedCase;
-	private Image boardImage;
-	private Timer timer;
-	protected boolean action = false;
+	private Case focusedCase; //!<
+	private Image boardImage; //!<
+	private Timer timer; //!<
+	protected boolean action = false; //!<
 	
-	private List<PawnMoveListener> listeners = new ArrayList<PawnMoveListener>();
-	private Player focusedPlayer=null;
-	private int dieResult=0;
+	private List<PawnMoveListener> listeners = new ArrayList<PawnMoveListener>(); //!<
+	private Player focusedPlayer=null; //!<
+	private int dieResult=0; //!<
 	
-	protected Player greenP;
-	protected Player blueP;
-	protected Player yellowP;
-	protected Player redP;
-	ArrayList<Player> players = new ArrayList<Player>();
-	List<Case> cases = new LinkedList<Case>();
+	protected Player greenP; //!<
+	protected Player blueP; //!<
+	protected Player yellowP; //!< 
+	protected Player redP;//!< 
+	ArrayList<Player> players = new ArrayList<Player>(); //!< 
+	List<Case> cases = new LinkedList<Case>(); //!< 
 	
+	/**
+	 * 
+	 * @param f1
+	 * @param jl
+	 */
 	public Board(JFrame f1, JLayeredPane jl) {
 		super();
 		loadImage();
@@ -136,7 +148,7 @@ public class Board extends JPanel{
 		 ***************** TIMER FOR DETECTING ACTIONS **********************************************************
 		 ********************************************************************************************************/
 		
-		timer = new Timer(200, new ActionListener() {
+		timer = new Timer(1, new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -149,12 +161,8 @@ public class Board extends JPanel{
 		
 	}
 	
-	protected class Listener {
-		
-	}
-	
 	/**
-	 * @method public void process(int dieResult, Player focusedPlayer)
+	 * @method public void process()
 	 * @brief The method which will manage the movement of the pawns depending on the player who is playing
 	 */
 	public void process() {
@@ -244,10 +252,19 @@ public class Board extends JPanel{
         }
 	}
 	
+	/**
+	 * 
+	 * @param l
+	 */
 	public void addPawnMoveListener(PawnMoveListener l) {
 		listeners.add(l);
 	}
 	
+	/**
+	 * 
+	 * @param p
+	 * @return
+	 */
 	public boolean isLegalMove(Player p) {
 		int nbLegalMoves = 4;
 		boolean inBarn = false;
@@ -279,6 +296,9 @@ public class Board extends JPanel{
 		}
 	}
 	
+	/**
+	 * 
+	 */
 	private void initBoard() {
 		
         setBackground(Color.black);
@@ -289,11 +309,18 @@ public class Board extends JPanel{
         //timer.start();
     }
 
+	/**
+	 * 
+	 * @return
+	 */
 	public Image getImage() {
         
         return boardImage;
     }
 	
+	/**
+	 * 
+	 */
 	private void loadImage() {
 		ImageIcon boardIcon = new ImageIcon("Image/plateauprojet_skin.png");
 		boardImage = boardIcon.getImage();
@@ -302,6 +329,9 @@ public class Board extends JPanel{
 		boardImage.getHeight(null);
 	}
 	
+	/**
+	 * 
+	 */
 	public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
@@ -310,10 +340,18 @@ public class Board extends JPanel{
         Toolkit.getDefaultToolkit().sync();
     }
 	
+	/**
+	 * 
+	 * @return
+	 */
 	protected Graphics2D getG2D() {
 		return g2d;
 	}
 	
+	/**
+	 * 
+	 * @param g
+	 */
 	protected void doDrawing(Graphics g) {
         
         g2d = (Graphics2D) g;
@@ -321,14 +359,27 @@ public class Board extends JPanel{
         g2d.drawImage(this.getImage(),0,0, this);
     }
 	
+	/**
+	 * 
+	 * @param c
+	 */
 	public void setFocusedCase(Case c) {
 		focusedCase = c;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public List<Player> getPlayers(){
 		return players;
 	}
 	
+	/**
+	 * 
+	 * @param color
+	 * @return
+	 */
 	public Player findPlayer(Colorp color) {
 		Player playerFound =null;
 		for(Player p : players) {
@@ -339,10 +390,11 @@ public class Board extends JPanel{
 		return playerFound;
 	}
 	
-	public void startGame() {
-		
-	}
-	
+	/**
+	 * 
+	 * @param p
+	 * @return
+	 */
     public boolean isFinish(Player p) {
         int PawnsEnded = 0;
         for(int i=1;i<=6;i++) {
@@ -359,16 +411,39 @@ public class Board extends JPanel{
         }
     }
 	
+    /**
+     * 
+     */
     private void enableAction() {
     	action=true;
     }
 	
+    
+    /**
+     * 
+     * @param p
+     * @param dieResult
+     */
     public void setAction(Player p, int dieResult) {
     	focusedPlayer = p;
     	this.dieResult = dieResult;
     	enableAction();
     }
     
+    /**
+     * 
+     * @param p
+     * @param dieResult
+     */
+    public void setActionAi(Player p, int dieResult) {
+    	focusedPlayer = p;
+    	this.dieResult = dieResult;
+    	process();
+    }
+    
+    /**
+     * 
+     */
     public void restartBoard() {
     	if(players.size() !=0) {
     		for(Player p : players) {

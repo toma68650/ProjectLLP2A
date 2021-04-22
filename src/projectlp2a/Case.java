@@ -1,5 +1,4 @@
 package projectlp2a;
-import java.awt.Color;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,15 +6,24 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLayeredPane;
 
+
+/**
+ * @class Case.java
+ * @brief Case class, represent a case of the Board.
+ * @details It inherits from a JButton, so every case is clickable.
+ * @author alexandrev - thomasl
+ * @version 1.0
+ * @date 2021
+ */
 @SuppressWarnings("serial")
 public class Case extends JButton {
-	private boolean safe;
-	private Colorp startColor;
-	private Colorp finishColor;
-	private int coordX;
-	private int coordY;
-	private int idCase;
-	private Board b;
+	private boolean safe; //<! 
+	private Colorp startColor; //<! 
+	private Colorp finishColor; //<! 
+	private int coordX; //<! 
+	private int coordY; //<! 
+	private int idCase; //<! 
+	private Board b; //<! 
 	
 	
 	
@@ -35,7 +43,6 @@ public class Case extends JButton {
 		this.setContentAreaFilled(false);
 		this.setBorderPainted(false);
 		jl.add(this, new Integer(idCase+20));
-		this.setActionCommand(Actions.caseClicked.name());
 		this.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//System.out.println("Position of this case  : x="+coordX+"; y="+coordY);

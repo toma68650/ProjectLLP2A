@@ -6,22 +6,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.Timer;
-
+/**
+ * @class AI.java
+ * @brief A class representing an AI, she owns a player and she makes move it by thinking.
+ * @details Here we use composition over inheritance because we do not want to change too much details about the existing code
+ * So composition let us use all the things made w/o changing the initialization of the players.
+ * @author alexandrev - thomasl
+ * @version 1.0
+ * @date 2021
+ */ 
 public class AI {
 	//Here we use composition over inheritance because we do not want to change too much details about the existing code.
-	//So composition let us use all the things made w/o changing the initialization of the players
-	private Player playerAi;
-	private Die die;
-	private Main main;
-	private boolean action = false;
-	private List<AiStruggleListener> listeners = new ArrayList<AiStruggleListener>();
+	//
+	private Player playerAi; //!<
+	private Die die; //!<
+	private Main main; //!<
+	private Timer timer; //!<
+	private boolean action = false; //!<
+	private List<AiStruggleListener> listeners = new ArrayList<AiStruggleListener>(); //!<
 	
 	public AI(Player p, Die die, Main main) {
 		playerAi = p;
 		this.die  = die;
 		this.main = main;
 		
-		Timer timer = new Timer(201, new ActionListener() {
+		timer = new Timer(600, new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -42,6 +51,7 @@ public class AI {
 	}
 	
 	public void makeTurn() {
+
 		int dieValue = 0;
 		boolean struggle = false;
 			dieValue = rollDie();
@@ -50,7 +60,7 @@ public class AI {
 			if(focusedCase != null) {
 				System.out.println("Player "+playerAi.getColor()+" decided to make something of his life");
 				main.board.setFocusedCase(focusedCase);
-				main.board.setAction(playerAi, dieValue);
+				main.board.setActionAi(playerAi, dieValue);
 			} else {
 				struggle = true;
 			}
@@ -59,9 +69,9 @@ public class AI {
 				listener.aiStrugglePerformed();
 			}
 		}
-		if(dieValue != 6) {
+		if(dieValue != 6 ) {
 			action = false;
-		}
+		} 
 
 	}
 	
@@ -210,5 +220,6 @@ public class AI {
 	public void addListeners(AiStruggleListener listener) {
 		this.listeners.add(listener);
 	}
+
 
 }

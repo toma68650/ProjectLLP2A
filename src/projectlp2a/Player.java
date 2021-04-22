@@ -3,14 +3,20 @@ import java.util.*;
 
 import javax.swing.JLayeredPane;
 
-
+/**
+ * @class Player.java
+ * @brief Player class, represents a player with his pawns.
+ * @author alexandrev - thomasl
+ * @version 1.0
+ * @date 2021
+ */
 public class Player {
-	private Board b;
-	private Case startingCase;
-	private List<Pawn> pawns;
-	private List<Case> barn;
-	private List<Case> end;
-	private Colorp color;
+	private Board b; //!< b is the board which the player belong to
+	private Case startingCase; //!< startingCase is the Case where the pawns can start to move
+	private List<Pawn> pawns; //!< pawns represents the list of pawns belonging to the player
+	private List<Case> barn; //!< barn represents the cases of the player's barn
+	private List<Case> end; //!< end represents the cases of the player's ladder/stair/end + the case on the bottom of the ladder
+	private Colorp color; //<! color is just the color of the player
 	
 	public Player(Case end, Colorp color, JLayeredPane jl, Board board) {
 		this.b = board;

@@ -10,14 +10,19 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.awt.color.*;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+
 /**
- * @author alexandrev - Thanks to MadProgrammer (here : stackoverflow.com/questions/13203415/how-to-add-fade-fade-out-effects-to-a-jlabel
+ * @class FadePane.java
+ * @brief JPanel which can simpley fade out.
+ * @author alexandrev - thomasl 
+ * @author Thanks to MadProgrammer (here : stackoverflow.com/questions/13203415/how-to-add-fade-fade-out-effects-to-a-jlabel
  * @author Thanks to Tym (here : blog.tym-project.fr )
+ * @version 1.0
+ * @date 2021
  */
 @SuppressWarnings("serial")
 public class FadePane extends JPanel {

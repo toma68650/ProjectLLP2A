@@ -2,10 +2,7 @@ package projectlp2a;
 
 import javax.swing.*;
 
-import java.lang.Object;
-import java.math.*;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -13,39 +10,43 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
-// Here we use composition over inheritance because we don't want to keep the interface of an Image, which is pretty difficult to  
+/**
+ * @class Pawn.java
+ * @brief Pawn class, represents a pawn on a board
+ * @details Pawn inherits from a JPanel.
+ * @author alexandrev - thomasl
+ * @version 1.0
+ * @date 2021
+ */ 
 @SuppressWarnings("serial")
 public class Pawn extends JPanel {
 	
-	private Timer timer;
-	private final int NB_OF_IMAGES_PER_SECOND = 45;
-	private Image pawnSprite;
+	private Timer timer; //!< 
+	private final int NB_OF_IMAGES_PER_SECOND = 100; //<! 
+	private Image pawnSprite; //<! 
 	
-	private int targetx;
-	private int targety;
-	private int beginingx=0;
-	private int beginingy=0;
-	private int relativex=0;
-	private int relativey=0;
-	private int x=0;
-	private int y=0;
-	private boolean moved =false;
+	private int targetx; //<! 
+	private int targety; //<! 
+	private int beginingx=0; //<! 
+	private int beginingy=0; //<! 
+	private int relativex=0; //<! 
+	private int relativey=0; //<! 
+	private int x=0; //<! 
+	private int y=0; //<! 
+	private boolean moved =false; //<! 
 	
-	private int dx=0;
-	private int dy=0;
-	private Colorp color;
+	private int dx=0; //<! 
+	private int dy=0; //<! 
+	private Colorp color; //<! 
 	
 	
 	/**
-	 * @method public Pawn(Colorp color, JLayeredPane jl, int i)
+	 * @method public Pawn(Colorp color, JLayeredPane jl, int i, Case c)
 	 * @brief Constructor of Pawn
 	 * @param color - Colorp, color of the Pawn
 	 * @param jl - JLayeredPane, the container where the pawn will be stick to
 	 * @param i - index of the pawn in depth
+	 * @param c - the case where the Pawn is summoned
 	 */
 	public Pawn(Colorp color, JLayeredPane jl, int i, Case c) {
 		this.color = color;

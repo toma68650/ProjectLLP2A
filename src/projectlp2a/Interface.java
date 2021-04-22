@@ -20,21 +20,27 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import projectlp2a.Player;
 
-
+/**
+ * @class Interface.java
+ * @brief The interface owns all the buttons displayed on the board during the game.
+ * @author alexandrev - thomasl 
+ * @version 1.0
+ * @date 2021
+ */
 public class Interface {
 
-	private JLabel rememberer;
-	private FadePane pane;
-	public JButton startGame=null;
-	public JButton options=null;
-	private ArrayList<Player> colorNotClicked;
+	private JLabel rememberer; //<! 
+	private FadePane pane; //<! 
+	public JButton startGame=null; //<! 
+	public JButton options=null; //<! 
+	private ArrayList<Player> colorNotClicked; //<! 
 	
-	private JButton GREEN;
-	private JButton RED;
-	private JButton BLUE;
-	private JButton YELLOW;
+	private JButton GREEN; //<! 
+	private JButton RED; //<! 
+	private JButton BLUE; //<! 
+	private JButton YELLOW; //<! 
 	
-	private Die myDie;
+	private Die myDie; //<! 
 	/**
 	 * Create the application.
 	 */
