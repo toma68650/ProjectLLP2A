@@ -10,6 +10,8 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.List;
 /**
  * @class Pawn.java
  * @brief Pawn class, represents a pawn on a board
@@ -73,7 +75,6 @@ public class Pawn extends JPanel {
                 	if(( x - targetx != 0)|( y - targety != 0)) {
                 		driveVector();
                 		step();
-                		
                 	} else {
                 		dx=0;
                 		dy=0;
@@ -196,7 +197,7 @@ public class Pawn extends JPanel {
    private void step() {
 	   x+=dx;
 	   y+=dy;
-       repaint(x-10, y-10,this.getWidth()+2,this.getHeight()+2);     
+       repaint(x-100, y-100,this.getWidth()+2,this.getHeight()+2);     
    }
    
    public void comeBackHome() {
@@ -214,5 +215,5 @@ public class Pawn extends JPanel {
 	public void disableMoved() {
 		moved=false;
 	}
-
+	
 }

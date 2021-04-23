@@ -51,26 +51,24 @@ public class AI {
 	}
 	
 	public void makeTurn() {
-
 		int dieValue = 0;
 		boolean struggle = false;
-			dieValue = rollDie();
-			System.out.println("Player "+playerAi.getColor()+" played a "+dieValue);
-			Case focusedCase = aiThoughts(main.board, dieValue);
-			if(focusedCase != null) {
-				System.out.println("Player "+playerAi.getColor()+" decided to make something of his life");
-				main.board.setFocusedCase(focusedCase);
-				main.board.setActionAi(playerAi, dieValue);
-			} else {
-				struggle = true;
-			}
-		if(struggle) {
-			for(AiStruggleListener listener : listeners) {
-				listener.aiStrugglePerformed();
-			}
+		dieValue = rollDie();
+		System.out.println("Player "+playerAi.getColor()+" played a "+dieValue);
+		Case focusedCase = aiThoughts(main.board, dieValue);
+		if(focusedCase != null) {
+			System.out.println("Player "+playerAi.getColor()+" decided to make something of his life");
+			main.board.setFocusedCase(focusedCase);
+			main.board.setActionAi(playerAi, dieValue);
+		} else {
+			struggle = true;
 		}
-		if(dieValue != 6 ) {
+		
+		if(dieValue != 6 || struggle) {
 			action = false;
+			for(AiStruggleListener listener : listeners) {
+				listener.aiFinished();
+			}
 		} 
 
 	}
@@ -114,7 +112,7 @@ public class AI {
 					boardPawn.add(c);
 					Case target = determineTarget(c,board,dieValue);
 					if(board.cases.contains(target)) canEat.add(canEatPawn(p,board,target));
-					canBecomeSafe.add(canBecomeSafePawn(target));
+					if(board.cases.contains(target)) canBecomeSafe.add(canBecomeSafePawn(target));
 					canEnterEnd.add(canEnterEndPawn(target));
 				}
 			}

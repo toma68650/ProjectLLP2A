@@ -1,5 +1,5 @@
 package projectlp2a;
 
 public interface AiStruggleListener {
-	public void aiStrugglePerformed();
+	public void aiFinished();
 }

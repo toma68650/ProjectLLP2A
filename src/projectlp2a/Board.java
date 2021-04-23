@@ -308,7 +308,7 @@ public class Board extends JPanel{
         //timer = new Timer(DELAY, this);
         //timer.start();
     }
-
+	
 	/**
 	 * 
 	 * @return
@@ -428,6 +428,7 @@ public class Board extends JPanel{
     	focusedPlayer = p;
     	this.dieResult = dieResult;
     	enableAction();
+    	process();
     }
     
     /**

@@ -45,7 +45,6 @@ public class Case extends JButton {
 		jl.add(this, new Integer(idCase+20));
 		this.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//System.out.println("Position of this case  : x="+coordX+"; y="+coordY);
 				b.setFocusedCase(getCase());
 			}
 		});

@@ -18,7 +18,7 @@ import java.util.List;
  *
  */
 @SuppressWarnings("serial")
-public class Main extends JFrame implements ActionListener, PawnMoveListener, AiStruggleListener {
+public class Main extends JFrame implements ActionListener, PawnMoveListener, AiStruggleListener{
 
 	private JLayeredPane jl; //<! 
 	public Board board; //<! 
@@ -76,7 +76,7 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener, Ai
         this.window.getDie().getButton().addActionListener(this);
         this.window.options.addActionListener(this);
         this.board.addPawnMoveListener(this);
-        
+  
         
         /*JLabel label = new JLabel("Yo la street !");
         label.setBounds(800, 500, 100, 100);
@@ -257,35 +257,35 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener, Ai
 	@Override
 	public void pawnActionPerformed() {
 		if(gameStarted && dieRolled) {
-			boolean isPawnMove = board.getPlayers().get((turn-1)%4).movePerformed();
-			/* To show the end */
-			//board.getPlayers().get((turn-1)%4).getPawns().get(0).move(board.getPlayers().get((turn-1)%4).getEnd().get(1).getX(),board.getPlayers().get((turn-1)%4).getEnd().get(1).getY());
-			//board.getPlayers().get((turn-1)%4).getPawns().get(1).move(board.getPlayers().get((turn-1)%4).getEnd().get(2).getX(),board.getPlayers().get((turn-1)%4).getEnd().get(2).getY());
-			//board.getPlayers().get((turn-1)%4).getPawns().get(2).move(board.getPlayers().get((turn-1)%4).getEnd().get(3).getX(),board.getPlayers().get((turn-1)%4).getEnd().get(3).getY());
-			//board.getPlayers().get((turn-1)%4).getPawns().get(3).move(board.getPlayers().get((turn-1)%4).getEnd().get(4).getX(),board.getPlayers().get((turn-1)%4).getEnd().get(4).getY());
-			if(board.isLegalMove(board.getPlayers().get((turn-1)%4)) && !isPawnMove) {
-				window.getPane().changeAnnounce("It's an illegal move !", colorText);
-			} else if(resultDice == 6) {
-				window.getDie().getButton().setEnabled(true);
-				dieRolled=false; 
-			} else {
-				if(board.isFinish(board.getPlayers().get((turn-1)%4))) {
-					window.getDie().getButton().setEnabled(false);
-					board.action =false;
-					window.disableRememberer();
-					window.getPane().changeAnnounce("Congratulations, "+ board.getPlayers().get((turn-1)%4).getColor() + "You won this amazing game !!", colorText);
+			if(!isAi || !isCorrespondingAi(board.getPlayers().get((turn-1)%4))){
+				System.out.println("I entered here");
+				boolean isPawnMove = board.getPlayers().get((turn-1)%4).movePerformed();
+				/* To show the end */
+				//board.getPlayers().get((turn-1)%4).getPawns().get(0).move(board.getPlayers().get((turn-1)%4).getEnd().get(1).getX(),board.getPlayers().get((turn-1)%4).getEnd().get(1).getY());
+				//board.getPlayers().get((turn-1)%4).getPawns().get(1).move(board.getPlayers().get((turn-1)%4).getEnd().get(2).getX(),board.getPlayers().get((turn-1)%4).getEnd().get(2).getY());
+				//board.getPlayers().get((turn-1)%4).getPawns().get(2).move(board.getPlayers().get((turn-1)%4).getEnd().get(3).getX(),board.getPlayers().get((turn-1)%4).getEnd().get(3).getY());
+				//board.getPlayers().get((turn-1)%4).getPawns().get(3).move(board.getPlayers().get((turn-1)%4).getEnd().get(4).getX(),board.getPlayers().get((turn-1)%4).getEnd().get(4).getY());
+				if(board.isLegalMove(board.getPlayers().get((turn-1)%4)) && !isPawnMove) {
+					window.getPane().changeAnnounce("It's an illegal move !", colorText);
+				} else if(resultDice == 6 ) {
+					window.getDie().getButton().setEnabled(true);
+					dieRolled=false; 				
 				} else {
-					nextTurn();
+					if(board.isFinish(board.getPlayers().get((turn-1)%4))) {
+						window.getDie().getButton().setEnabled(false);
+						board.action =false;
+						window.disableRememberer();
+						window.getPane().changeAnnounce("Congratulations, "+ board.getPlayers().get((turn-1)%4).getColor() + "You won this amazing game !!", colorText);
+					} else {
+						nextTurn();
+					}
 				}
-			}
+			}	
 			
 		}
 	}
 	
-	@Override
-	public void aiStrugglePerformed() {
-		nextTurn();		
-	}
+
 	
 	private void nextTurn() {
 		turn++;
@@ -306,6 +306,7 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener, Ai
 						interstedAi = ai;
 					}
 				}
+				window.getDie().getButton().setEnabled(false);
 				interstedAi.setTurn();
 			}
 		}
@@ -328,7 +329,7 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener, Ai
 	}
 	
 	public boolean rollDieAction() {
-		if(gameStarted) {
+		if(gameStarted && (!isAi || !isCorrespondingAi(board.getPlayers().get((turn-1)%4)))) {
 			
 			resultDice = window.getDie().performAction();
 			dieRolled = true;
@@ -352,6 +353,20 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener, Ai
 		}
 		return correspondingAi;
 	}
+
+
+	@Override
+	public void aiFinished() {
+		window.getDie().getButton().setEnabled(false);
+		if(board.isFinish(board.getPlayers().get((turn-1)%4))) {
+			board.action =false;
+			window.disableRememberer();
+			window.getPane().changeAnnounce(board.getPlayers().get((turn-1)%4).getColor() + " won !!!", colorText);
+		} else {
+			nextTurn();
+		}
+	}
+
 
 	
 	
