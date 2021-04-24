@@ -19,6 +19,11 @@ public class Die extends Random {
 	private JButton die; //!< the button of the die
 	private int resultDice; //!< the result of the die when rolled
 	
+	
+	/**
+	 * @brief the default constructor for a Die.
+	 * @param frame - JLayeredPane, the JLayeredPane of the main function.
+	 */
 	public Die(JLayeredPane frame) {
 		super();
 		resultDice=0;
@@ -38,11 +43,17 @@ public class Die extends Random {
 		die.setVisible(true);
 	}
 	
+	
+	/**
+	 * @brief getter for die.
+	 * @return JButton, the die attribute.
+	 */
 	public JButton getButton() {
 		return die;
 	}
+	
+	
 	/**
-	 * @method rollDice()
 	 * @brief method to roll a dice
 	 * @return the result of the die (integer between 1 & 6)
 	 */
@@ -50,14 +61,20 @@ public class Die extends Random {
 		return this.nextInt(6)+1;
 	}
 	
+	
 	/**
-	 * @method whoStart();
+	 * @brief method to determine who must start.
 	 * @return a number between 1 and 4 to pick up a player randomly
 	 */
 	public int whoStart() {
         return this.nextInt(4)+1;
     }
 	
+	
+	/**
+	 * @brief roll a die with an "animation".
+	 * @return Integer, The result of the die.
+	 */
 	public int performAction() {
 		int resultDice= rollDice();
 		ImageIcon dice=null;
@@ -81,23 +98,23 @@ public class Die extends Random {
 			 dice = new ImageIcon("Image/die/dice_6.png");
 			 break;
 		}
-		/*if(resultDice!=6) {
-			getButton().setEnabled(false);
-		}*/
 		getButton().setIcon(dice);
 		return resultDice;
 	}
 	
 	
-	
-	private void updateResult(int die) {
-		this.resultDice=die;
-	}
-
+	/**
+	 * @brief a getter for resultDice.
+	 * @return Integer, resultDice.
+	 */
 	public int getResult() {
 		return this.resultDice;
 	}
 	
+	
+	/**
+	 * @brief reset the value of the die.
+	 */
 	public void resetDie() {
 		this.resultDice = 0;
 		die.setEnabled(true);
