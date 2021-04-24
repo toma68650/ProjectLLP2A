@@ -16,14 +16,13 @@ import javax.swing.Timer;
  * @date 2021
  */ 
 public class AI {
-	//Here we use composition over inheritance because we do not want to change too much details about the existing code.
-	//
-	private Player playerAi; //!<
-	private Die die; //!<
-	private Main main; //!<
-	private Timer timer; //!<
-	private boolean action = false; //!<
-	private List<AiStruggleListener> listeners = new ArrayList<AiStruggleListener>(); //!<
+
+	private Player playerAi; //!< We use composition : Instead of AI inherting from Player, we compose the AI with a Player 
+	private Die die; //!< the die used in the Interface
+	private Main main; //!< the main class to perform actions in the main to make it easier
+	private Timer timer; //!< the timer of the AI, it is useful for put a speed gap on the ai
+	private boolean action = false; //!< boolean set true if we ask the ai to make a move
+	private List<AiStruggleListener> listeners = new ArrayList<AiStruggleListener>(); //!< Custom array of listeners for sending infromations to the main when an ai is done
 	
 	public AI(Player p, Die die, Main main) {
 		playerAi = p;

@@ -17,13 +17,13 @@ import javax.swing.JLayeredPane;
  */
 @SuppressWarnings("serial")
 public class Case extends JButton {
-	private boolean safe; //!< 
-	private Colorp startColor; //!< 
-	private Colorp finishColor; //!<
-	private int coordX; //!< 
-	private int coordY; //!< 
-	private int idCase; //!< 
-	private Board b; //!< 
+	private boolean safe; //!< true if the case is a safe case, false else
+	private Colorp startColor; //!< Is this case the first case on the board for a player ?
+	private Colorp finishColor; //!< Is this case the last case for a player ?
+	private int coordX; //!< Relative position of this case on the X axis  
+	private int coordY; //!< Relative position of this case on the Y axis
+	private int idCase; //!< identificator for the case, each case has a different id
+	private Board b; //!< Board the case belong to
 	
 	
 	

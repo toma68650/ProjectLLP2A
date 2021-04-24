@@ -23,23 +23,28 @@ import java.util.List;
 @SuppressWarnings("serial")
 public class Pawn extends JPanel {
 	
-	private Timer timer; //!< 
-	private final int NB_OF_IMAGES_PER_SECOND = 100; //<! 
-	private Image pawnSprite; //<! 
+	private Timer timer; //!< The timer of the pawn. It is used to update the position of the pawn each second.
+	private final int NB_OF_IMAGES_PER_SECOND = 100; //!< A constant. It stands for the refresh rate of the pawn.
+	private Image pawnSprite; //!< The image representing the image of the pawn.
 	
-	private int targetx; //<! 
-	private int targety; //<! 
-	private int beginingx=0; //<! 
-	private int beginingy=0; //<! 
-	private int relativex=0; //<! 
-	private int relativey=0; //<! 
-	private int x=0; //<! 
-	private int y=0; //<! 
-	private boolean moved =false; //<! 
+	private int targetx; //!< the real position of the case targeted on the X axis.
+	private int targety; //!< the real position of the case targeted on the Y axis.
 	
-	private int dx=0; //<! 
-	private int dy=0; //<! 
-	private Colorp color; //<! 
+	private int beginingx=0; //!< The relative position of the first case took by the pawn. X axis.
+	private int beginingy=0; //!< The relative position of the first case took by the pawn. Y axis.
+	
+	private int relativex=0; //!< The relative position of the pawn. X axis.
+	private int relativey=0; //!< The relative position of the pawn. Y axis.
+	
+	private int x=0; //!< The real position of the pawn at each moment. X axis.
+	private int y=0; //!< The real position of the pawn at each moment. Y axis.
+	
+	
+	private boolean moved =false; //!< Used to know if the pawn has moved or not.
+	
+	private int dx=0; //!< The little delta performed at each second to move the pawn on the X axis.
+	private int dy=0; //!< The little delta performed at each second to move the pawn on the Y axis. 
+	private Colorp color; //!< The color of the pawn.
 	
 	
 	/**

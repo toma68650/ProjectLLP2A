@@ -20,24 +20,23 @@ import java.util.List;
 @SuppressWarnings("serial")
 public class Main extends JFrame implements ActionListener, PawnMoveListener, AiStruggleListener{
 
-	private JLayeredPane jl; //<! 
-	public Board board; //<! 
-	private Menu menu; //<! 
-	private Interface window; //<! 
-	private boolean finished=false; //<! 
-	private boolean isAi = false; //<! 
-	private List<AI> ais; //<! 
+	private JLayeredPane jl; //!< A JLayeredPane used to put all the components useful during the game. It acts like a pile of paper we put on each other.
+	public Board board; //!< The board used during the game.
+	private Menu menu; //!< The menu used during the game.
+	private Interface window; //!< The interface during the game.
+	private boolean finished=false; //!< Equals false while any player has finished.
+	private boolean isAi = false; //!< check if we play with ai or not.
+	private List<AI> ais; //!< AI present in the game we are playing.
 	
-	int resultDice; //<! 
-	int turn=0; //<! 
+	int resultDice; //!< The result of the last die roll.
+	int turn=0; //!< the counter of turn. It is only incremented during the game and set to 0 at the beginning of a new game.
 	
-	private boolean dieRolled = false; //<! 
-	private boolean pawnMoved = false; //<! 
-	private boolean gameStarted = false; //<! 
+	private boolean dieRolled = false; //!< check if the die has been rolled or not.
+	private boolean gameStarted = false; //!< check if the game is running or not
 	
 	/***** THEME ******************************/
-	private boolean isDarkTheme = true; //<! 
-	private Color colorText = Color.white; //<! 
+	private boolean isDarkTheme = true; //!< Used for the theme : equals true if the dark theme is set.
+	private Color colorText = Color.white; //!< Used for the theme : the font color of the FadePane (white if we are in dark theme and black else). 
 	
 	public Main() {
 		initUI();

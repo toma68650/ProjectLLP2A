@@ -17,7 +17,7 @@ import javax.swing.Timer;
 
 /**
  * @class FadePane.java
- * @brief JPanel which can simpley fade out.
+ * @brief JPanel which can simply fade out.
  * @author alexandrev - thomasl 
  * @author Thanks to MadProgrammer (here : stackoverflow.com/questions/13203415/how-to-add-fade-fade-out-effects-to-a-jlabel
  * @author Thanks to Tym (here : blog.tym-project.fr )
@@ -27,8 +27,8 @@ import javax.swing.Timer;
 @SuppressWarnings("serial")
 public class FadePane extends JPanel {
 
-    private float direction = -0.03f;
-    private FadeLabel label;
+    private float direction = -0.03f; //!< the little transparence delta change performed each time the timer run.
+    private FadeLabel label; //!< the label with the text
     
     public FadePane(String text) {
         setLayout(new BorderLayout());
@@ -72,10 +72,16 @@ public class FadePane extends JPanel {
     	return label;
     }
 
+    /**
+     * @class FadeLabel
+     * @brief inner class of FadePane. It inherits from a JLabel. It is where the text is displayed
+     * @author alexandrev - thomasl
+     * @version 1.0
+     * @date 2021
+     */
     public class FadeLabel extends JLabel {
 
-        private float alpha;
-        private BufferedImage background;
+        private float alpha; //!< the opacity of the FadeLabel.
 
         public FadeLabel(String text) {
             setText(text);
@@ -110,13 +116,6 @@ public class FadePane extends JPanel {
 
         @Override
         protected void paintComponent(Graphics g) {
-            // This is one of the few times that doing this before the super call
-            // will work...
-            if (background != null) {
-                int x = (getWidth() - background.getWidth()) / 2;
-                int y = (getHeight() - background.getHeight()) / 2;
-                g.drawImage(background, x, y, this);
-            }
             super.paintComponent(g);
         }
     }

@@ -26,23 +26,23 @@ import java.awt.MouseInfo;
 @SuppressWarnings("serial")
 public class Board extends JPanel{
 	
-	private Graphics2D g2d; //!<
+	private Graphics2D g2d; //!< The graphic 2d where the board is painted
 
-	private Case focusedCase; //!<
-	private Image boardImage; //!<
-	private Timer timer; //!<
-	protected boolean action = false; //!<
+	private Case focusedCase; //!< The case focused when someone push it
+	private Image boardImage; //!< The image of the board
+	private Timer timer; //!< The timer used to detect at each moment if a case has been focused
+	protected boolean action = false; //!< true if an action was started, false else.
 	
-	private List<PawnMoveListener> listeners = new ArrayList<PawnMoveListener>(); //!<
-	private Player focusedPlayer=null; //!<
-	private int dieResult=0; //!<
+	private List<PawnMoveListener> listeners = new ArrayList<PawnMoveListener>(); //!< list of the listeners listening to this board. They receive a notification when a Pawn's move is performed.
+	private Player focusedPlayer=null; //!< The player focused when it's his turn.
+	private int dieResult=0; //!< The result of the die when someon launched it.
 	
-	protected Player greenP; //!<
-	protected Player blueP; //!<
-	protected Player yellowP; //!< 
-	protected Player redP;//!< 
-	ArrayList<Player> players = new ArrayList<Player>(); //!< 
-	List<Case> cases = new LinkedList<Case>(); //!< 
+	protected Player greenP; //!< The green player.
+	protected Player blueP; //!< The blue player.
+	protected Player yellowP; //!< The yellow player.
+	protected Player redP;//!< the red player.
+	ArrayList<Player> players = new ArrayList<Player>(); //!< The list of all the players. It is useful to know who need to play.
+	List<Case> cases = new LinkedList<Case>(); //!< The list of cases composing the board
 	
 	/**
 	 * 
@@ -339,14 +339,6 @@ public class Board extends JPanel{
         
         Toolkit.getDefaultToolkit().sync();
     }
-	
-	/**
-	 * 
-	 * @return
-	 */
-	protected Graphics2D getG2D() {
-		return g2d;
-	}
 	
 	/**
 	 * 

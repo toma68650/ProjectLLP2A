@@ -18,6 +18,13 @@ public class Player {
 	private List<Case> end; //!< end represents the cases of the player's ladder/stair/end + the case on the bottom of the ladder
 	private Colorp color; //!< color is just the color of the player
 	
+	/**
+	 * 
+	 * @param end
+	 * @param color
+	 * @param jl
+	 * @param board
+	 */
 	public Player(Case end, Colorp color, JLayeredPane jl, Board board) {
 		this.b = board;
 		pawns = new ArrayList<Pawn>();
@@ -35,6 +42,12 @@ public class Player {
 		initEnd(jl);
 	}
 	
+	
+	/**
+	 * 
+	 * @param jl
+	 * @return
+	 */
 	private int initBarn(JLayeredPane jl) {
 		int i=16;
 		switch(color) {
@@ -70,6 +83,10 @@ public class Player {
 		return i;
 	}
 	
+	/**
+	 * 
+	 * @param jl
+	 */
 	private void initEnd(JLayeredPane jl) {
 		switch(color) {
 			case yellow :
@@ -107,6 +124,11 @@ public class Player {
 		}
 	}
 	
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean movePerformed() {
 		boolean moved = false;
 		  for(Pawn pa : pawns){
@@ -121,30 +143,64 @@ public class Player {
 		  return moved;
 	}
 	
+	/**
+	 * 
+	 * @param c
+	 */
 	protected void setStartingCase(Case c) {
 		this.startingCase = c;
 	}
 	
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public Case getStartingCase() {
 		return startingCase;
 	}
 	
+	
+	/**
+	 * 
+	 * @param p
+	 */
 	public void addPawn(Pawn p) {
 		pawns.add(p);
 	}
 	
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public List<Case> getEnd() {
 		return end;
 	}
 	
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public List<Case> getBarn() {
 		return barn;
 	}
 	
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public List<Pawn> getPawns() {
 		return pawns;
 	}
 	
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public Colorp getColor() {
 		return color;
 	}

@@ -8,8 +8,8 @@ package projectlp2a;
  * @date 2021
  */ 
 public enum Colorp {
-	yellow,
-	blue,
-	red,
-	green;
+	yellow, //!< yellow color for a player
+	blue, //!< blue color for a player
+	red, //!< red color for a player
+	green; //!< green color for a player
 }

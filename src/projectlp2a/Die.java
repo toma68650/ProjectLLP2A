@@ -16,8 +16,8 @@ import java.util.*;
  */
 @SuppressWarnings("serial")
 public class Die extends Random {
-	private JButton die; //<! 
-	private int resultDice; //<! 
+	private JButton die; //!< the button of the die
+	private int resultDice; //!< the result of the die when rolled
 	
 	public Die(JLayeredPane frame) {
 		super();

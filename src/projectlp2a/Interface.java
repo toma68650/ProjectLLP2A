@@ -29,18 +29,18 @@ import projectlp2a.Player;
  */
 public class Interface {
 
-	private JLabel rememberer; //<! 
-	private FadePane pane; //<! 
-	public JButton startGame=null; //<! 
-	public JButton options=null; //<! 
-	private ArrayList<Player> colorNotClicked; //<! 
+	private JLabel rememberer; //!< A JLabel remembering what player must play.
+	private FadePane pane; //!< A message that fade out.
+	public JButton startGame=null; //!< The button for starting a game.
+	public JButton options=null; //!< The button used to choose an option.
+	private ArrayList<Player> colorNotClicked; //!< List of players that were not clicked. It is mainly used when there is AI to know which player become an AI.
 	
-	private JButton GREEN; //<! 
-	private JButton RED; //<! 
-	private JButton BLUE; //<! 
-	private JButton YELLOW; //<! 
+	private JButton GREEN; //!< The button for choosing the green player.
+	private JButton RED; //!< The button for choosing the red player.
+	private JButton BLUE; //!< The button for choosing the blue player.
+	private JButton YELLOW; //!< The button for choosing the yellow player.
 	
-	private Die myDie; //<! 
+	private Die myDie; //!< The die used during the game.
 	/**
 	 * Create the application.
 	 */

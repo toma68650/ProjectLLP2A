@@ -22,12 +22,12 @@ import javax.swing.UIManager;
 @SuppressWarnings("serial")
 public class Menu extends JPanel {
 	
-	private JPanel options; //<!
-	public JButton startButton; //<! 
-	public JButton startAiButton; //<! 
-	public JButton quitButton; //<! 
-	public JButton resumeButton; //<! 
-	public JButton themeButton; //<! 
+	private JPanel options; //!< A JPanel used to contain the options. It is used to have a good rendering on the options disposition. It is linked with a GridBagLayout manager.
+	public JButton startButton; //!< The button to display the game board.
+	public JButton startAiButton; //!< The button to display the game board and play with ai.
+	public JButton quitButton; //!< The button to quit the game.
+	public JButton resumeButton; //!< The button to resume the game when it was paused.
+	public JButton themeButton; //!< The button to switch theme.
 	
 	public Menu() {
 		super();
