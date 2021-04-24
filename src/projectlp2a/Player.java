@@ -19,11 +19,11 @@ public class Player {
 	private Colorp color; //!< color is just the color of the player
 	
 	/**
-	 * 
-	 * @param end
-	 * @param color
-	 * @param jl
-	 * @param board
+	 * @brief default constructor for a player
+	 * @param end - Case, the end case of the player
+	 * @param color - Color, color of the player
+	 * @param jl - JLayeredPane used in the Main class.
+	 * @param board - Board, the main board.
 	 */
 	public Player(Case end, Colorp color, JLayeredPane jl, Board board) {
 		this.b = board;
@@ -44,9 +44,9 @@ public class Player {
 	
 	
 	/**
-	 * 
-	 * @param jl
-	 * @return
+	 * @brief initialize a barn
+	 * @param jl -JLayeredPane used in the Main class.
+	 * @return Integer, i
 	 */
 	private int initBarn(JLayeredPane jl) {
 		int i=16;
@@ -84,8 +84,8 @@ public class Player {
 	}
 	
 	/**
-	 * 
-	 * @param jl
+	 * @brief initialize the end line of the player
+	 * @param jl - JLayeredPane used in the Main class.
 	 */
 	private void initEnd(JLayeredPane jl) {
 		switch(color) {
@@ -126,8 +126,8 @@ public class Player {
 	
 	
 	/**
-	 * 
-	 * @return
+	 * @brief verify if a pawn moved
+	 * @return Boolean, moved
 	 */
 	public boolean movePerformed() {
 		boolean moved = false;
@@ -144,8 +144,8 @@ public class Player {
 	}
 	
 	/**
-	 * 
-	 * @param c
+	 * @brief setter for the starting case of the player
+	 * @param c - Case, the case we want to be the starting case
 	 */
 	protected void setStartingCase(Case c) {
 		this.startingCase = c;
@@ -153,8 +153,8 @@ public class Player {
 	
 	
 	/**
-	 * 
-	 * @return
+	 * @brief getter for starting case
+	 * @return Case, startingCase
 	 */
 	public Case getStartingCase() {
 		return startingCase;
@@ -162,8 +162,8 @@ public class Player {
 	
 	
 	/**
-	 * 
-	 * @param p
+	 * @brief add a pawn in a list of pawns
+	 * @param p - Pawn, pawn we want to add in the list
 	 */
 	public void addPawn(Pawn p) {
 		pawns.add(p);
@@ -171,8 +171,8 @@ public class Player {
 	
 	
 	/**
-	 * 
-	 * @return
+	 * @brief getter for finish line
+	 * @return List<Case>, end
 	 */
 	public List<Case> getEnd() {
 		return end;
@@ -180,8 +180,8 @@ public class Player {
 	
 	
 	/**
-	 * 
-	 * @return
+	 * @brief getter for barn
+	 * @return List<Case>, barn
 	 */
 	public List<Case> getBarn() {
 		return barn;
@@ -189,8 +189,8 @@ public class Player {
 	
 	
 	/**
-	 * 
-	 * @return
+	 * @brief getter for a list of pawns
+	 * @return List<Pawn>, pawns
 	 */
 	public List<Pawn> getPawns() {
 		return pawns;
@@ -198,8 +198,8 @@ public class Player {
 	
 	
 	/**
-	 * 
-	 * @return
+	 * @brief getter for Colorp
+	 * @return Colorp, color
 	 */
 	public Colorp getColor() {
 		return color;

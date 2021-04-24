@@ -90,7 +90,9 @@ public class Pawn extends JPanel {
         timer.start();
 	}
 	
-	
+	/**
+	 * @brief load the images of the pawns
+	 */
 	private void loadImage() {
 		ImageIcon pawnSpriteIcon = new ImageIcon("Image/pawn_sprite_"+color+".png");
 		pawnSprite = pawnSpriteIcon.getImage();
@@ -98,23 +100,42 @@ public class Pawn extends JPanel {
 		pawnSprite.getWidth(null);
 		pawnSprite.getHeight(null);
 	}
-	
+	/**
+	 * @brief getter for relatives x coordinates
+	 * @return Integer, relativex
+	 */
 	public int getRelativeX() {
 		return relativex;
 	}
 	
+	/**
+	 * @brief getter for relatives y coordinates
+	 * @return Integer, relativey
+	 */
 	public int getRelativeY() {
 		return relativey;
 	}
 	
+	/**
+	 * @brief getter for x coordinates
+	 * @return Integer, x
+	 */
 	public int getX() {
         return x;
     }
 
+	/**
+	 * @brief getter for y coordinates
+	 * @return Integer, y
+	 */
     public int getY() {
         return y;
     }
     
+    /**
+     * @brief getter for pawn's Sprite
+     * @return Image, pawnSprite
+     */
     public Image getImage() {
         
         return pawnSprite;
@@ -205,18 +226,32 @@ public class Pawn extends JPanel {
        repaint(x-100, y-100,this.getWidth()+2,this.getHeight()+2);     
    }
    
+   /**
+    * @brief make a pawn go to his barn
+    */
    public void comeBackHome() {
 	   move(beginingx, beginingy);
    }
    
+   /**
+    * @brief getter for Colorp
+    * @return Color, color
+    */
 	public Colorp getColor() {
 		return color;
 	}
 
+	/**
+	 * @brief verify if a pawn has moved
+	 * @return Boolean, moved
+	 */
 	public boolean getMoved() {
 		return moved;
 	}
 	
+	/**
+	 * @brief make that a pawn can't move
+	 */
 	public void disableMoved() {
 		moved=false;
 	}

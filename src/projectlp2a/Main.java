@@ -41,7 +41,9 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener, Ai
 	public Main() {
 		initUI();
 	}
-	
+	/**
+	 * @brief initialize the user's interface and the menu
+	 */
 	private void initUI() {
 		jl = new JLayeredPane();
 		board = new Board(this, jl);
@@ -92,6 +94,10 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener, Ai
 
     }
 	
+	/**
+	 * @brief verify if all actions are made during the turn of a player
+	 * @param p - Player, the player that is playing
+	 */
 	private void TurnPlayer(Player p) {
 		window.getPane().changeAnnounce(p.getColor()+"'s turn", colorText);
 		boolean hasPlay=false;
@@ -109,6 +115,9 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener, Ai
 		window.getDie().resetDie();
 	}
 	
+	/**
+	 * @brief make all the players play
+	 */
 	private  void Turn() {
 		for(Player p : board.getPlayers()) {
 			TurnPlayer(p);
@@ -116,6 +125,9 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener, Ai
 		}
 	}
 	
+	/**
+	 * @brief manage all the processing of the game
+	 */
 	protected void Game() {
 		finished=false;
 		if(board.getPlayers().size() == 4) {
@@ -285,7 +297,9 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener, Ai
 	}
 	
 
-	
+	/**
+	 * @brief change the user's turn when it's over
+	 */
 	private void nextTurn() {
 		turn++;
 		String message = board.getPlayers().get((turn-1)%4).getColor()+"'s turn";
@@ -312,6 +326,11 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener, Ai
 		
 	}
 	
+	/**
+	 * @brief convert the Colorp argument in a color that is
+	 * @param color - Colorp, color used for the players
+	 * @return Color, color brought by awt
+	 */
 	private Color convertColorpToAwtColor(Colorp color) {
 		switch(color){
 			case yellow:
@@ -326,7 +345,10 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener, Ai
 				return null;
 		}
 	}
-	
+	/**
+	 * 
+	 * @return
+	 */
 	public boolean rollDieAction() {
 		if(gameStarted && (!isAi || !isCorrespondingAi(board.getPlayers().get((turn-1)%4)))) {
 			
@@ -342,7 +364,11 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener, Ai
 		}
 		return false;
 	}
-	
+	/**
+	 * 
+	 * @param p
+	 * @return
+	 */
 	private boolean isCorrespondingAi(Player p) {
 		boolean correspondingAi=false;
 		for(AI ai : ais ) {

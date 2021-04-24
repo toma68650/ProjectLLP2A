@@ -45,9 +45,9 @@ public class Board extends JPanel{
 	List<Case> cases = new LinkedList<Case>(); //!< The list of cases composing the board
 	
 	/**
-	 * 
-	 * @param f1
-	 * @param jl
+	 * @brief default constructor for a board
+	 * @param f1 - JFrame, frame on which the game will be played on
+	 * @param jl - JLayeredPane, pane that will appear when to inform the user about events
 	 */
 	public Board(JFrame f1, JLayeredPane jl) {
 		super();
@@ -253,17 +253,17 @@ public class Board extends JPanel{
 	}
 	
 	/**
-	 * 
-	 * @param l
+	 * @brief add a PawnMoveListener in a list of listeners
+	 * @param l - 
 	 */
 	public void addPawnMoveListener(PawnMoveListener l) {
 		listeners.add(l);
 	}
 	
 	/**
-	 * 
-	 * @param p
-	 * @return
+	 * @brief verify is the movement proposed by the player is legal or not
+	 * @param p - Player, the player actually playing
+	 * @return boolean, true if the movement is legal
 	 */
 	public boolean isLegalMove(Player p) {
 		int nbLegalMoves = 4;
@@ -297,7 +297,7 @@ public class Board extends JPanel{
 	}
 	
 	/**
-	 * 
+	 * @brief initialze the board
 	 */
 	private void initBoard() {
 		
@@ -310,8 +310,8 @@ public class Board extends JPanel{
     }
 	
 	/**
-	 * 
-	 * @return
+	 * @brief getter for Image
+	 * @return Image, boardImage
 	 */
 	public Image getImage() {
         
@@ -319,7 +319,7 @@ public class Board extends JPanel{
     }
 	
 	/**
-	 * 
+	 * @brief load the image of the board on the JFrame
 	 */
 	private void loadImage() {
 		ImageIcon boardIcon = new ImageIcon("Image/plateauprojet_skin.png");
@@ -352,25 +352,25 @@ public class Board extends JPanel{
     }
 	
 	/**
-	 * 
-	 * @param c
+	 * @brief set the case the program will focus on
+	 * @param c - Case, the case we want the program to focus on
 	 */
 	public void setFocusedCase(Case c) {
 		focusedCase = c;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * @brief getter for players
+	 * @return Player, players
 	 */
 	public List<Player> getPlayers(){
 		return players;
 	}
 	
 	/**
-	 * 
-	 * @param color
-	 * @return
+	 * @brief find a player according to his color
+	 * @param color - Colorp, color of the player we want to find
+	 * @return Player, playerFound
 	 */
 	public Player findPlayer(Colorp color) {
 		Player playerFound =null;
@@ -383,9 +383,9 @@ public class Board extends JPanel{
 	}
 	
 	/**
-	 * 
-	 * @param p
-	 * @return
+	 * @brief verify if the player has finished
+	 * @param p - Player, the player we want to check if he finished the game
+	 * @return boolean , 
 	 */
     public boolean isFinish(Player p) {
         int PawnsEnded = 0;
@@ -398,7 +398,7 @@ public class Board extends JPanel{
     }
 	
     /**
-     * 
+     * @brief 
      */
     private void enableAction() {
     	action=true;
@@ -429,7 +429,7 @@ public class Board extends JPanel{
     }
     
     /**
-     * 
+     * @brief make all the pawns go to the barn
      */
     public void restartBoard() {
     	if(players.size() !=0) {
