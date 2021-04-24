@@ -172,7 +172,7 @@ public class Player {
 	
 	/**
 	 * @brief getter for finish line
-	 * @return List<Case>, end
+	 * @return List<Case>, end 
 	 */
 	public List<Case> getEnd() {
 		return end;
