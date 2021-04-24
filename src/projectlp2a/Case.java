@@ -17,13 +17,13 @@ import javax.swing.JLayeredPane;
  */
 @SuppressWarnings("serial")
 public class Case extends JButton {
-	private boolean safe; //<! 
-	private Colorp startColor; //<! 
-	private Colorp finishColor; //<! 
-	private int coordX; //<! 
-	private int coordY; //<! 
-	private int idCase; //<! 
-	private Board b; //<! 
+	private boolean safe; //!< 
+	private Colorp startColor; //!< 
+	private Colorp finishColor; //!<
+	private int coordX; //!< 
+	private int coordY; //!< 
+	private int idCase; //!< 
+	private Board b; //!< 
 	
 	
 	

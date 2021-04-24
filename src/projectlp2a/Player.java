@@ -16,7 +16,7 @@ public class Player {
 	private List<Pawn> pawns; //!< pawns represents the list of pawns belonging to the player
 	private List<Case> barn; //!< barn represents the cases of the player's barn
 	private List<Case> end; //!< end represents the cases of the player's ladder/stair/end + the case on the bottom of the ladder
-	private Colorp color; //<! color is just the color of the player
+	private Colorp color; //!< color is just the color of the player
 	
 	public Player(Case end, Colorp color, JLayeredPane jl, Board board) {
 		this.b = board;
