@@ -4,17 +4,13 @@ import java.util.*;
 import javax.swing.*;
 import javax.swing.Timer;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.Image;
-import java.awt.MouseInfo;
 /**
  * @class Board.java
  * @brief The class where all things linked with the movement on the board and outside happend.
