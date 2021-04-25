@@ -79,13 +79,7 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener, Ai
         this.board.addPawnMoveListener(this);
   
         
-        /*JLabel label = new JLabel("Yo la street !");
-        label.setBounds(800, 500, 100, 100);
-        label.setText("Yo la street");
-        jl.add(label, new Integer(100));
-        label.setVisible(true); */
         setTitle("Game of poney");
-        //setSize(735,765);
         setSize(500,500);
         setBackground(Color.black);
         setLocationRelativeTo(null);
@@ -116,32 +110,9 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener, Ai
 	}
 	
 	/**
-	 * @brief make all the players play
+	 * @brief main function where the program begins to run.
+	 * @param args
 	 */
-	private  void Turn() {
-		for(Player p : board.getPlayers()) {
-			TurnPlayer(p);
-			finished=board.isFinish(p);
-		}
-	}
-	
-	/**
-	 * @brief manage all the processing of the game
-	 */
-	protected void Game() {
-		finished=false;
-		if(board.getPlayers().size() == 4) {
-			while(!finished) {
-				Turn();
-			}
-		} else {
-			System.out.println("There is not enough players !");
-		}
-
-		
-	}
-	
-	
 	public static void main(String[] args) {
 		Main main = new Main();
 	
@@ -152,6 +123,20 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener, Ai
 
 	}
 
+	
+	/**
+	 * @brief Method for all the action listeners.
+	 * @details Detect if :
+	 * - the startGame button of the interface has been clicked.
+	 * - the die has been clicked.
+	 * - the start button of the menu has been clicked.
+	 * - the start with ai button of the button has been clicked.
+	 * - the quit button of the menu has been clicked.
+	 * - the theme button of the menu has been clicked.
+	 * - the resume button of the menu has been clicked.
+	 * - the options button of the interface has been clicked.
+	 * 
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand() == Actions.startGame.name()) {
@@ -266,7 +251,9 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener, Ai
 			menu.setVisible(true);
 		}
 	}
-
+	/**
+	 * @brief Method associated with the pawnMoveListener. Occurs when a pawn made a movement.
+	 */
 	@Override
 	public void pawnActionPerformed() {
 		if(gameStarted && dieRolled) {
@@ -348,8 +335,8 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener, Ai
 		}
 	}
 	/**
-	 * 
-	 * @return
+	 * @brief action to perform when a die is rolLed.
+	 * @return a boolean. True if the player can perform an action, false else.
 	 */
 	public boolean rollDieAction() {
 		if(gameStarted && (!isAi || !isCorrespondingAi(board.getPlayers().get((turn-1)%4)))) {
@@ -366,10 +353,12 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener, Ai
 		}
 		return false;
 	}
+	
+	
 	/**
-	 * 
-	 * @param p
-	 * @return
+	 * @brief Check if it exists a corresponding AI for the player p.
+	 * @param p - Player, player for which we check if he is controlled by an AI or not.
+	 * @return a boolean. True if it exists an ai for this player, false else.
 	 */
 	private boolean isCorrespondingAi(Player p) {
 		boolean correspondingAi=false;
@@ -381,7 +370,9 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener, Ai
 		return correspondingAi;
 	}
 
-
+	/**
+	 * @brief Method linked with the AiStruggleListener. If the ai has finished her turn, this method is called.
+	 */
 	@Override
 	public void aiFinished() {
 		window.getDie().getButton().setEnabled(false);

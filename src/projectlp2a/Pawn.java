@@ -91,7 +91,7 @@ public class Pawn extends JPanel {
 	}
 	
 	/**
-	 * @brief load the images of the pawns
+	 * @brief load the images of the pawn
 	 */
 	private void loadImage() {
 		ImageIcon pawnSpriteIcon = new ImageIcon("Image/pawn_sprite_"+color+".png");
@@ -101,7 +101,7 @@ public class Pawn extends JPanel {
 		pawnSprite.getHeight(null);
 	}
 	/**
-	 * @brief getter for relatives x coordinates
+	 * @brief getter for relative x coordinate
 	 * @return Integer, relativex
 	 */
 	public int getRelativeX() {
@@ -109,7 +109,7 @@ public class Pawn extends JPanel {
 	}
 	
 	/**
-	 * @brief getter for relatives y coordinates
+	 * @brief getter for relative y coordinate
 	 * @return Integer, relativey
 	 */
 	public int getRelativeY() {
@@ -141,7 +141,11 @@ public class Pawn extends JPanel {
         return pawnSprite;
     }
 
-    
+    /**
+     * @Override
+     * @brief override of paintComponent method.
+     * @param g
+     */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
@@ -150,18 +154,23 @@ public class Pawn extends JPanel {
         Toolkit.getDefaultToolkit().sync();
     }
    
+    
+    /**
+     * @brief Draw the pawn sprite at his origin position.
+     * @param g
+     */
    protected void doDrawing(Graphics g) {
         
         Graphics2D g2d = (Graphics2D) g;
 
         g2d.drawImage(this.getImage(), this.getX(), this.getY(), this);
-    }
+    }   
    
-   
-   public void detectPawn(KeyEvent e, int dieResult) {
-		   step();
-   }
-   
+   /**
+    * @brief Method that generate a movement considering the target given.
+    * @param finalX - Integer, x coordinate of the target.
+    * @param finalY - Integer, y coordinate of the target.
+    */
    public void move(int finalX, int finalY) {
 	   if((finalX != relativex)||(finalY !=relativey)){
 
@@ -181,6 +190,10 @@ public class Pawn extends JPanel {
 	   }
    }
    
+   
+   /**
+    * @brief Function that create a vector between the target and the current position. The it sets the dx and dy considering these vector.
+    */
    private void driveVector() {
 	   /* We create vector which observe the movement of the pawn */
 	   int xv = targetx-x;
@@ -218,6 +231,10 @@ public class Pawn extends JPanel {
        }
    }
    
+   
+   /**
+    * @brief Method that move the Pawn sprite of dx and dy respectively on x axis and y axis. 
+    */
    private void step() {
 	   x+=dx;
 	   y+=dy;
@@ -232,7 +249,7 @@ public class Pawn extends JPanel {
    }
    
    /**
-    * @brief getter for Colorp
+    * @brief getter for color
     * @return Color, color
     */
 	public Colorp getColor() {

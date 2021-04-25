@@ -29,6 +29,13 @@ public class Menu extends JPanel {
 	public JButton resumeButton; //!< The button to resume the game when it was paused.
 	public JButton themeButton; //!< The button to switch theme.
 	
+	
+	/**
+	 * @brief Default constructor for the Menu.
+	 * @details Generation of the menu with all the buttons. 
+	 * We use to GridBagLayout and two Pane. The first GridBagLayout is used for the first Panel to center in the frame.
+	 * The second GridBagLayout is used inside the firstPanel to set each button on top of each others.
+	 */
 	public Menu() {
 		super();
 		setBounds(0,0,500,500);
@@ -92,11 +99,20 @@ public class Menu extends JPanel {
 	
 	}
 	
+	
+	/**
+	 * @brief Change the text of the startButton to "Restart"
+	 */
 	public void changeToRestart() {
 		startButton.setText("Restart game");
 		startAiButton.setText("Restart a game with ai");
 	}
 	
+	
+	/**
+	 * @brief Change the text of the theme button : Dark if we are in light theme, Light theme if we are in Dark Theme.
+	 * @param isDarkTheme - boolean, show to the function in which mode we are.
+	 */
 	public void changeToDarkTheme(boolean isDarkTheme) {
 		if(isDarkTheme) {
 			themeButton.setText("Dark theme");

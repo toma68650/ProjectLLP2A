@@ -158,7 +158,6 @@ public class Board extends JPanel{
 	}
 	
 	/**
-	 * @method public void process()
 	 * @brief The method which will manage the movement of the pawns depending on the player who is playing
 	 */
 	public void process() {

@@ -30,6 +30,11 @@ public class FadePane extends JPanel {
     private float direction = -0.03f; //!< the little transparence delta change performed each time the timer run.
     private FadeLabel label; //!< the label with the text
     
+    
+    /**
+     * @brief Default constructor for FadePane
+     * @param text - the text to put on the fading label.
+     */
     public FadePane(String text) {
         setLayout(new BorderLayout());
         JLabel background = new JLabel();
@@ -58,16 +63,31 @@ public class FadePane extends JPanel {
         timer.start();
     }
     
+    
+    /**
+     * @brief Change the text on the fading label and display it.
+     * @param text - String, text to display.
+     * @param color - Color, color of the text.
+     */
     public void changeAnnounce(String text, Color color) {
     	label.setText(text);
     	label.setForeground(color);
     	resetAlpha();
     }
     
+    
+    /**
+     * @brief reset the opacity of the fading label to 1.
+     */
     private void resetAlpha() {
     	label.setAlpha(1);
     }
     
+    
+    /**
+     * @brief getter for the fading label.
+     * @return FadeLabel, label.
+     */
     public FadeLabel getFadeLabel() {
     	return label;
     }
@@ -83,6 +103,10 @@ public class FadePane extends JPanel {
 
         private float alpha; //!< the opacity of the FadeLabel.
 
+        /**
+         * @brief default constructor for FadeLabel.
+         * @param text - String, text to put on the fading label.
+         */
         public FadeLabel(String text) {
             setText(text);
             setBounds(0,0,735,735);
@@ -90,6 +114,11 @@ public class FadePane extends JPanel {
             setAlpha(1f);
         }
 
+        
+        /**
+         * @brief setter for alpha. Work only if the value given is different of the current alpha.
+         * @param value - float, value that alpha must take.
+         */
         public void setAlpha(float value) {
             if (alpha != value) {
             	float old = alpha;
@@ -99,10 +128,19 @@ public class FadePane extends JPanel {
             }
         }
 
+        
+        /**
+         * @brief getter for alpha.
+         * @return float, alpha.
+         */
         public float getAlpha() {
             return alpha;
         }
 
+        
+        /**
+         * @brief override of the paint method. 
+         */
         @Override
         public void paint(Graphics g) {
             // This is one of the few times I would directly override paint
@@ -114,6 +152,10 @@ public class FadePane extends JPanel {
             g2d.dispose();
         }
 
+        
+        /**
+         * @brief override of the paintComponent() method
+         */
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);

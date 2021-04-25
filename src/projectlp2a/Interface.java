@@ -165,6 +165,10 @@ public class Interface {
 		frame.add(options);
 	}
 	
+	
+	/**
+	 * @brief Method to initialize the rememberer label.
+	 */
 	private void initRememberer() {
 		rememberer = new JLabel();
 		rememberer.setBounds(771,160,180,50 );
@@ -175,36 +179,75 @@ public class Interface {
 		rememberer.setVisible(false);
 	}
 	
+	
+	/**
+	 * @brief Method to disable the rememberer.
+	 */
 	public void disableRememberer() {
 		rememberer.setVisible(false);
 	}
 	
+	
+	/**
+	 * @brief setter for the rememberer. Set the given text on the label with given color foreground.
+	 * @param text - String, text to put on the rememberer.
+	 * @param color - Color, color to give to the the rememberer foreground.
+	 */
 	public void setRemembererText(String text, Color color) {
 		rememberer.setText(text);
 		rememberer.setForeground(color);
 		rememberer.setVisible(true);
 	}
 	
+	
+	/**
+	 * @brief initialize the FadePane.
+	 * @param text - String, text to put on the FadePane.
+	 */
 	public void initAnnounce(String text) {
 		pane = new FadePane(text);
 	}
 	
+	
+	/**
+	 * @brief getter for pane.
+	 * @return FadePane, pane.
+	 */
 	public FadePane getPane() {
 		return pane;
 	}
 	
+	
+	/**
+	 * @brief getter for myDie.
+	 * @return Die, myDie.
+	 */
 	public Die getDie() {
 		return myDie;
 	}
 	
+	
+	/**
+	 * @brief getter for startGame button.
+	 * @return JButton, startGame.
+	 */
 	public JButton getStartGame() {
 		return startGame;
 	}
 	
+	
+	/**
+	 * @brief getter for colorNotClicked.
+	 * @return ArrayList<Player>, colorNotClicked.
+	 */
 	public ArrayList<Player> getColorNotClicked(){
 		return colorNotClicked;
 	}
 	
+	
+	/**
+	 * @brief Set all the color button on the interface invisible. Useful when one plays with AI.
+	 */
 	public void setInterfaceInvisible() {
 		GREEN.setVisible(false);
 		RED.setVisible(false);
@@ -212,6 +255,11 @@ public class Interface {
 		YELLOW.setVisible(false);
 	}
 	
+	
+	/**
+	 * @brief Restart all the things on the interface. Used when we want to restart a game.
+	 * @param b - Board, the board where we want to pick the players.
+	 */
 	public void restartInterface(Board b) {
 		colorNotClicked = new ArrayList<Player>();
 		colorNotClicked.add(b.greenP);
