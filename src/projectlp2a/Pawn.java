@@ -176,8 +176,6 @@ public class Pawn extends JPanel {
 		   /* Verify if the pawn moved */
 		   if((finalX != relativex)||(finalY !=relativey)) moved=true;
 	      
-	       System.out.println("value of dx : "+dx+"; value of dy : "+dy);
-	      
 	       relativex = finalX;
 	       relativey = finalY;
 	   }

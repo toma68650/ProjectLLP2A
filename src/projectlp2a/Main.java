@@ -140,6 +140,8 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener, Ai
 
 		
 	}
+	
+	
 	public static void main(String[] args) {
 		Main main = new Main();
 	
@@ -286,7 +288,7 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener, Ai
 						window.getDie().getButton().setEnabled(false);
 						board.action =false;
 						window.disableRememberer();
-						window.getPane().changeAnnounce("Congratulations, "+ board.getPlayers().get((turn-1)%4).getColor() + "You won this amazing game !!", colorText);
+						window.getPane().changeAnnounce(board.getPlayers().get((turn-1)%4).getColor() + " won this game !!", colorText);
 					} else {
 						nextTurn();
 					}

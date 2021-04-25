@@ -254,16 +254,16 @@ public class Board extends JPanel{
 	
 	/**
 	 * @brief add a PawnMoveListener in a list of listeners
-	 * @param l - 
+	 * @param l - PawnMoveListener, the listener added.
 	 */
 	public void addPawnMoveListener(PawnMoveListener l) {
 		listeners.add(l);
 	}
 	
 	/**
-	 * @brief verify is the movement proposed by the player is legal or not
-	 * @param p - Player, the player actually playing
-	 * @return boolean, true if the movement is legal
+	 * @brief verify if the player can do a legal move.
+	 * @param p - Player, the player currently playing
+	 * @return boolean, true if there is at least one legal move possible for the player.
 	 */
 	public boolean isLegalMove(Player p) {
 		int nbLegalMoves = 4;
@@ -297,7 +297,7 @@ public class Board extends JPanel{
 	}
 	
 	/**
-	 * @brief initialze the board
+	 * @brief initialize the board
 	 */
 	private void initBoard() {
 		
@@ -305,8 +305,6 @@ public class Board extends JPanel{
         setFocusable(true);
 
         setBounds(0,0,735, 735);
-        //timer = new Timer(DELAY, this);
-        //timer.start();
     }
 	
 	/**
@@ -330,7 +328,8 @@ public class Board extends JPanel{
 	}
 	
 	/**
-	 * 
+	 * @override
+	 * @brief Override of the paintComponent method.
 	 */
 	public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -341,8 +340,8 @@ public class Board extends JPanel{
     }
 	
 	/**
-	 * 
-	 * @param g
+	 * @brief Let the board be painted.
+	 * @param g - Graphics, the graphics on which the board is painted.
 	 */
 	protected void doDrawing(Graphics g) {
         
@@ -361,7 +360,7 @@ public class Board extends JPanel{
 	
 	/**
 	 * @brief getter for players
-	 * @return Player, players
+	 * @return List<Player>, players
 	 */
 	public List<Player> getPlayers(){
 		return players;
@@ -398,7 +397,7 @@ public class Board extends JPanel{
     }
 	
     /**
-     * @brief 
+     * @brief enable the action of the human player. (See the action listener of the timer in the constructor for more details.)
      */
     private void enableAction() {
     	action=true;
@@ -406,9 +405,9 @@ public class Board extends JPanel{
 	
     
     /**
-     * 
-     * @param p
-     * @param dieResult
+     * @brief Let the player set an action.
+     * @param p - Player, the player who sat the action.
+     * @param dieResult - Integer, result of die after the player rolled it.
      */
     public void setAction(Player p, int dieResult) {
     	focusedPlayer = p;
@@ -418,9 +417,10 @@ public class Board extends JPanel{
     }
     
     /**
-     * 
-     * @param p
-     * @param dieResult
+     * @brief Let the ai player set an action.
+     * @details It differs from setAction() because the focused case is set before this function is called. So we don't nee to detect it.
+     * @param p - Player, player who sat the action.
+     * @param dieResult - Integer, result of die after the player rolled it.
      */
     public void setActionAi(Player p, int dieResult) {
     	focusedPlayer = p;
