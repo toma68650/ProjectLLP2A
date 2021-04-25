@@ -98,16 +98,7 @@ public class AI {
 	
 	/**
 	 * @brief The thoughts of an AI.
-	 * @details For choosing a case, she will follow a particular algorithm : 
-	 * \code
-	 * 1. How much pawns are outside of the barn ?
-	 * 2. Less than two -> I will ty to get one out.
-	 * 3. Can I put a pawn in the end ?
-	 * 4. Can I put a pawn in a safe place ?
-	 * 5. Can I eat a pawn ?
-	 * 6. I can none of this action, I move the pawn which is closer from the end of the board.
-	 * \endcode
-	 * \n
+	 * @details For choosing a case, she will follow a particular algorithm : 1. How much pawns are outside of the barn ? 2. Less than two -> I will ty to get one out. 3. Can I put a pawn in the end ? 4. Can I put a pawn in a safe place ? 5. Can I eat a pawn ? 6. I can none of this action, I move the pawn which is closer from the end of the board.
 	 * @param board - the board that the ai will analyze. 
 	 * @param dieValue - An integer, the value obtained with the die.
 	 * @return A Case, the case chosen.

@@ -1,0 +1,169 @@
+\doxysection{projectlp2a.\+Main Class Reference}
+\label{classprojectlp2a_1_1_main}\index{projectlp2a.Main@{projectlp2a.Main}}
+
+
+Inheritance diagram for projectlp2a.\+Main\+:
+% FIG 0
+
+
+Collaboration diagram for projectlp2a.\+Main\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Main} ()
+\item 
+void \textbf{ action\+Performed} (Action\+Event e)
+\begin{DoxyCompactList}\small\item\em Method for all the action listeners. \end{DoxyCompactList}\item 
+void \textbf{ pawn\+Action\+Performed} ()
+\begin{DoxyCompactList}\small\item\em Method associated with the pawn\+Move\+Listener. Occurs when a pawn made a movement. \end{DoxyCompactList}\item 
+boolean \textbf{ roll\+Die\+Action} ()
+\begin{DoxyCompactList}\small\item\em action to perform when a die is rol\+Led. \end{DoxyCompactList}\item 
+void \textbf{ ai\+Finished} ()
+\begin{DoxyCompactList}\small\item\em Method linked with the \doxyref{Ai\+Struggle\+Listener}{p.}{interfaceprojectlp2a_1_1_ai_struggle_listener}. If the ai has finished her turn, this method is called. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \textbf{ main} (String[$\,$] args)
+\begin{DoxyCompactList}\small\item\em main function where the program begins to run. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Board} \textbf{ board}
+\begin{DoxyCompactList}\small\item\em The board used during the game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 21 of file Main.\+java.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{classprojectlp2a_1_1_main_abd39b0b52b4204a35fd6964093ac86a4}} 
+\index{projectlp2a.Main@{projectlp2a.Main}!Main@{Main}}
+\index{Main@{Main}!projectlp2a.Main@{projectlp2a.Main}}
+\doxysubsubsection{Main()}
+{\footnotesize\ttfamily projectlp2a.\+Main.\+Main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 41 of file Main.\+java.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{classprojectlp2a_1_1_main_a21c28eff137840ba83c9c00b64c27568}} 
+\index{projectlp2a.Main@{projectlp2a.Main}!actionPerformed@{actionPerformed}}
+\index{actionPerformed@{actionPerformed}!projectlp2a.Main@{projectlp2a.Main}}
+\doxysubsubsection{actionPerformed()}
+{\footnotesize\ttfamily void projectlp2a.\+Main.\+action\+Performed (\begin{DoxyParamCaption}\item[{Action\+Event}]{e }\end{DoxyParamCaption})}
+
+
+
+Method for all the action listeners. 
+
+Detect if \+:
+
+
+\begin{DoxyItemize}
+\item the start\+Game button of the interface has been clicked. the die has been clicked. the start button of the menu has been clicked. the start with ai button of the button has been clicked. the quit button of the menu has been clicked. the theme button of the menu has been clicked. the resume button of the menu has been clicked. the options button of the interface has been clicked. 
+\end{DoxyItemize}
+
+Definition at line 133 of file Main.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_main_a04a5662b15de3954368fe7baa197a878}} 
+\index{projectlp2a.Main@{projectlp2a.Main}!aiFinished@{aiFinished}}
+\index{aiFinished@{aiFinished}!projectlp2a.Main@{projectlp2a.Main}}
+\doxysubsubsection{aiFinished()}
+{\footnotesize\ttfamily void projectlp2a.\+Main.\+ai\+Finished (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Method linked with the \doxyref{Ai\+Struggle\+Listener}{p.}{interfaceprojectlp2a_1_1_ai_struggle_listener}. If the ai has finished her turn, this method is called. 
+
+
+
+Implements \textbf{ projectlp2a.\+Ai\+Struggle\+Listener} \doxyref{}{p.}{interfaceprojectlp2a_1_1_ai_struggle_listener_ae0e7612311697f2ac3775f9d405e46c4}.
+
+
+
+Definition at line 369 of file Main.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_main_a64f3cc705817cc8fc0eeb2b8d000f479}} 
+\index{projectlp2a.Main@{projectlp2a.Main}!main@{main}}
+\index{main@{main}!projectlp2a.Main@{projectlp2a.Main}}
+\doxysubsubsection{main()}
+{\footnotesize\ttfamily static void projectlp2a.\+Main.\+main (\begin{DoxyParamCaption}\item[{String[$\,$]}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+main function where the program begins to run. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 116 of file Main.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_main_a8abf8eacb754811fd1ee402be141ba5b}} 
+\index{projectlp2a.Main@{projectlp2a.Main}!pawnActionPerformed@{pawnActionPerformed}}
+\index{pawnActionPerformed@{pawnActionPerformed}!projectlp2a.Main@{projectlp2a.Main}}
+\doxysubsubsection{pawnActionPerformed()}
+{\footnotesize\ttfamily void projectlp2a.\+Main.\+pawn\+Action\+Performed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Method associated with the pawn\+Move\+Listener. Occurs when a pawn made a movement. 
+
+
+
+Implements \textbf{ projectlp2a.\+Pawn\+Move\+Listener} \doxyref{}{p.}{interfaceprojectlp2a_1_1_pawn_move_listener_a25f179cb74e268697e2e39937b0f9aa9}.
+
+
+
+Definition at line 250 of file Main.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_main_ac561e954c4eb76d3367c66785b3c3c30}} 
+\index{projectlp2a.Main@{projectlp2a.Main}!rollDieAction@{rollDieAction}}
+\index{rollDieAction@{rollDieAction}!projectlp2a.Main@{projectlp2a.Main}}
+\doxysubsubsection{rollDieAction()}
+{\footnotesize\ttfamily boolean projectlp2a.\+Main.\+roll\+Die\+Action (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+action to perform when a die is rol\+Led. 
+
+\begin{DoxyReturn}{Returns}
+a boolean. True if the player can perform an action, false else. 
+\end{DoxyReturn}
+
+
+Definition at line 333 of file Main.\+java.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{classprojectlp2a_1_1_main_a9f22b63f6ec13d98e6540229032728c1}} 
+\index{projectlp2a.Main@{projectlp2a.Main}!board@{board}}
+\index{board@{board}!projectlp2a.Main@{projectlp2a.Main}}
+\doxysubsubsection{board}
+{\footnotesize\ttfamily \textbf{ Board} projectlp2a.\+Main.\+board}
+
+
+
+The board used during the game. 
+
+
+
+Definition at line 24 of file Main.\+java.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Algat/\+Documents/\+Git\+Hub/\+Project\+LLP2\+A/src/projectlp2a/\textbf{ Main.\+java}\end{DoxyCompactItemize}

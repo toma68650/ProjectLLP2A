@@ -1,0 +1,291 @@
+\doxysection{projectlp2a.\+Pawn Class Reference}
+\label{classprojectlp2a_1_1_pawn}\index{projectlp2a.Pawn@{projectlp2a.Pawn}}
+
+
+Inheritance diagram for projectlp2a.\+Pawn\+:
+% FIG 0
+
+
+Collaboration diagram for projectlp2a.\+Pawn\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Pawn} (\textbf{ Colorp} color, JLayered\+Pane jl, int i, \textbf{ Case} c)
+\begin{DoxyCompactList}\small\item\em Constructor of \doxyref{Pawn}{p.}{classprojectlp2a_1_1_pawn}. \end{DoxyCompactList}\item 
+int \textbf{ get\+RelativeX} ()
+\begin{DoxyCompactList}\small\item\em getter for relative x coordinate \end{DoxyCompactList}\item 
+int \textbf{ get\+RelativeY} ()
+\begin{DoxyCompactList}\small\item\em getter for relative y coordinate \end{DoxyCompactList}\item 
+int \textbf{ getX} ()
+\begin{DoxyCompactList}\small\item\em getter for x coordinates \end{DoxyCompactList}\item 
+int \textbf{ getY} ()
+\begin{DoxyCompactList}\small\item\em getter for y coordinates \end{DoxyCompactList}\item 
+Image \textbf{ get\+Image} ()
+\begin{DoxyCompactList}\small\item\em getter for pawn\textquotesingle{}s Sprite \end{DoxyCompactList}\item 
+void \textbf{ paint\+Component} (Graphics g)
+\begin{DoxyCompactList}\small\item\em override of paint\+Component method. \end{DoxyCompactList}\item 
+void \textbf{ move} (int finalX, int finalY)
+\begin{DoxyCompactList}\small\item\em Method that generate a movement considering the target given. \end{DoxyCompactList}\item 
+void \textbf{ come\+Back\+Home} ()
+\begin{DoxyCompactList}\small\item\em make a pawn go to his barn \end{DoxyCompactList}\item 
+\textbf{ Colorp} \textbf{ get\+Color} ()
+\begin{DoxyCompactList}\small\item\em getter for color \end{DoxyCompactList}\item 
+boolean \textbf{ get\+Moved} ()
+\begin{DoxyCompactList}\small\item\em verify if a pawn has moved \end{DoxyCompactList}\item 
+void \textbf{ disable\+Moved} ()
+\begin{DoxyCompactList}\small\item\em make that a pawn can\textquotesingle{}t move \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ do\+Drawing} (Graphics g)
+\begin{DoxyCompactList}\small\item\em Draw the pawn sprite at his origin position. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 24 of file Pawn.\+java.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{classprojectlp2a_1_1_pawn_ac6d9d363df66769fe220ea55dc229f40}} 
+\index{projectlp2a.Pawn@{projectlp2a.Pawn}!Pawn@{Pawn}}
+\index{Pawn@{Pawn}!projectlp2a.Pawn@{projectlp2a.Pawn}}
+\doxysubsubsection{Pawn()}
+{\footnotesize\ttfamily projectlp2a.\+Pawn.\+Pawn (\begin{DoxyParamCaption}\item[{\textbf{ Colorp}}]{color,  }\item[{JLayered\+Pane}]{jl,  }\item[{int}]{i,  }\item[{\textbf{ Case}}]{c }\end{DoxyParamCaption})}
+
+
+
+Constructor of \doxyref{Pawn}{p.}{classprojectlp2a_1_1_pawn}. 
+
+@method public \doxyref{Pawn(\+Colorp color, JLayered\+Pane jl, int i, Case c)}{p.}{classprojectlp2a_1_1_pawn_ac6d9d363df66769fe220ea55dc229f40} 
+\begin{DoxyParams}{Parameters}
+{\em color} & -\/ \doxyref{Colorp}{p.}{enumprojectlp2a_1_1_colorp}, color of the \doxyref{Pawn}{p.}{classprojectlp2a_1_1_pawn} \\
+\hline
+{\em jl} & -\/ JLayered\+Pane, the container where the pawn will be stick to \\
+\hline
+{\em i} & -\/ index of the pawn in depth \\
+\hline
+{\em c} & -\/ the case where the \doxyref{Pawn}{p.}{classprojectlp2a_1_1_pawn} is summoned \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 58 of file Pawn.\+java.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{classprojectlp2a_1_1_pawn_a253dbea8138d9ad16942e2146176ae3c}} 
+\index{projectlp2a.Pawn@{projectlp2a.Pawn}!comeBackHome@{comeBackHome}}
+\index{comeBackHome@{comeBackHome}!projectlp2a.Pawn@{projectlp2a.Pawn}}
+\doxysubsubsection{comeBackHome()}
+{\footnotesize\ttfamily void projectlp2a.\+Pawn.\+come\+Back\+Home (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+make a pawn go to his barn 
+
+
+
+Definition at line 247 of file Pawn.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_pawn_a1b2bb0b8ee5894abdf2ce37e9fa04f8c}} 
+\index{projectlp2a.Pawn@{projectlp2a.Pawn}!disableMoved@{disableMoved}}
+\index{disableMoved@{disableMoved}!projectlp2a.Pawn@{projectlp2a.Pawn}}
+\doxysubsubsection{disableMoved()}
+{\footnotesize\ttfamily void projectlp2a.\+Pawn.\+disable\+Moved (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+make that a pawn can\textquotesingle{}t move 
+
+
+
+Definition at line 270 of file Pawn.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_pawn_a1cc1d7138a6bb7892f013c20eb5d12b1}} 
+\index{projectlp2a.Pawn@{projectlp2a.Pawn}!doDrawing@{doDrawing}}
+\index{doDrawing@{doDrawing}!projectlp2a.Pawn@{projectlp2a.Pawn}}
+\doxysubsubsection{doDrawing()}
+{\footnotesize\ttfamily void projectlp2a.\+Pawn.\+do\+Drawing (\begin{DoxyParamCaption}\item[{Graphics}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Draw the pawn sprite at his origin position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 162 of file Pawn.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_pawn_a440ef80395000b68d6159c295482d3d4}} 
+\index{projectlp2a.Pawn@{projectlp2a.Pawn}!getColor@{getColor}}
+\index{getColor@{getColor}!projectlp2a.Pawn@{projectlp2a.Pawn}}
+\doxysubsubsection{getColor()}
+{\footnotesize\ttfamily \textbf{ Colorp} projectlp2a.\+Pawn.\+get\+Color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter for color 
+
+\begin{DoxyReturn}{Returns}
+Color, color 
+\end{DoxyReturn}
+
+
+Definition at line 255 of file Pawn.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_pawn_af62064b01743031e16a9cc5f6dac7892}} 
+\index{projectlp2a.Pawn@{projectlp2a.Pawn}!getImage@{getImage}}
+\index{getImage@{getImage}!projectlp2a.Pawn@{projectlp2a.Pawn}}
+\doxysubsubsection{getImage()}
+{\footnotesize\ttfamily Image projectlp2a.\+Pawn.\+get\+Image (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter for pawn\textquotesingle{}s Sprite 
+
+\begin{DoxyReturn}{Returns}
+Image, pawn\+Sprite 
+\end{DoxyReturn}
+
+
+Definition at line 139 of file Pawn.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_pawn_ab2b77c2d76ef384821e60f2f5db153f1}} 
+\index{projectlp2a.Pawn@{projectlp2a.Pawn}!getMoved@{getMoved}}
+\index{getMoved@{getMoved}!projectlp2a.Pawn@{projectlp2a.Pawn}}
+\doxysubsubsection{getMoved()}
+{\footnotesize\ttfamily boolean projectlp2a.\+Pawn.\+get\+Moved (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+verify if a pawn has moved 
+
+\begin{DoxyReturn}{Returns}
+Boolean, moved 
+\end{DoxyReturn}
+
+
+Definition at line 263 of file Pawn.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_pawn_a256cc0b2b6e9c89f1641fde6677ff435}} 
+\index{projectlp2a.Pawn@{projectlp2a.Pawn}!getRelativeX@{getRelativeX}}
+\index{getRelativeX@{getRelativeX}!projectlp2a.Pawn@{projectlp2a.Pawn}}
+\doxysubsubsection{getRelativeX()}
+{\footnotesize\ttfamily int projectlp2a.\+Pawn.\+get\+RelativeX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter for relative x coordinate 
+
+\begin{DoxyReturn}{Returns}
+Integer, relativex 
+\end{DoxyReturn}
+
+
+Definition at line 107 of file Pawn.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_pawn_a9890990b40466a649ddb46ad3e9334f1}} 
+\index{projectlp2a.Pawn@{projectlp2a.Pawn}!getRelativeY@{getRelativeY}}
+\index{getRelativeY@{getRelativeY}!projectlp2a.Pawn@{projectlp2a.Pawn}}
+\doxysubsubsection{getRelativeY()}
+{\footnotesize\ttfamily int projectlp2a.\+Pawn.\+get\+RelativeY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter for relative y coordinate 
+
+\begin{DoxyReturn}{Returns}
+Integer, relativey 
+\end{DoxyReturn}
+
+
+Definition at line 115 of file Pawn.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_pawn_a6426c186d3395aaacd54a67aae650fc2}} 
+\index{projectlp2a.Pawn@{projectlp2a.Pawn}!getX@{getX}}
+\index{getX@{getX}!projectlp2a.Pawn@{projectlp2a.Pawn}}
+\doxysubsubsection{getX()}
+{\footnotesize\ttfamily int projectlp2a.\+Pawn.\+getX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter for x coordinates 
+
+\begin{DoxyReturn}{Returns}
+Integer, x 
+\end{DoxyReturn}
+
+
+Definition at line 123 of file Pawn.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_pawn_a19e713d901855affbcaafb27ec158e64}} 
+\index{projectlp2a.Pawn@{projectlp2a.Pawn}!getY@{getY}}
+\index{getY@{getY}!projectlp2a.Pawn@{projectlp2a.Pawn}}
+\doxysubsubsection{getY()}
+{\footnotesize\ttfamily int projectlp2a.\+Pawn.\+getY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter for y coordinates 
+
+\begin{DoxyReturn}{Returns}
+Integer, y 
+\end{DoxyReturn}
+
+
+Definition at line 131 of file Pawn.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_pawn_a8f01d4f819b63bdc0e43a3bd0bfae552}} 
+\index{projectlp2a.Pawn@{projectlp2a.Pawn}!move@{move}}
+\index{move@{move}!projectlp2a.Pawn@{projectlp2a.Pawn}}
+\doxysubsubsection{move()}
+{\footnotesize\ttfamily void projectlp2a.\+Pawn.\+move (\begin{DoxyParamCaption}\item[{int}]{finalX,  }\item[{int}]{finalY }\end{DoxyParamCaption})}
+
+
+
+Method that generate a movement considering the target given. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em finalX} & -\/ Integer, x coordinate of the target. \\
+\hline
+{\em finalY} & -\/ Integer, y coordinate of the target. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 174 of file Pawn.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_pawn_ad8b9bd887f4b0db1a554fd60262cce18}} 
+\index{projectlp2a.Pawn@{projectlp2a.Pawn}!paintComponent@{paintComponent}}
+\index{paintComponent@{paintComponent}!projectlp2a.Pawn@{projectlp2a.Pawn}}
+\doxysubsubsection{paintComponent()}
+{\footnotesize\ttfamily void projectlp2a.\+Pawn.\+paint\+Component (\begin{DoxyParamCaption}\item[{Graphics}]{g }\end{DoxyParamCaption})}
+
+
+
+override of paint\+Component method. 
+
+@\+Override 
+\begin{DoxyParams}{Parameters}
+{\em g} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 149 of file Pawn.\+java.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Algat/\+Documents/\+Git\+Hub/\+Project\+LLP2\+A/src/projectlp2a/\textbf{ Pawn.\+java}\end{DoxyCompactItemize}

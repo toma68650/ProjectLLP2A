@@ -1,0 +1,120 @@
+\doxysection{projectlp2a.\+AI Class Reference}
+\label{classprojectlp2a_1_1_a_i}\index{projectlp2a.AI@{projectlp2a.AI}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ AI} (\textbf{ Player} p, \textbf{ Die} die, \textbf{ Main} main)
+\begin{DoxyCompactList}\small\item\em default constructor for the class \doxyref{AI}{p.}{classprojectlp2a_1_1_a_i}. \end{DoxyCompactList}\item 
+void \textbf{ set\+Turn} ()
+\begin{DoxyCompactList}\small\item\em let the ai perform an action. \end{DoxyCompactList}\item 
+void \textbf{ make\+Turn} ()
+\begin{DoxyCompactList}\small\item\em The turn of an ai. \end{DoxyCompactList}\item 
+\textbf{ Player} \textbf{ get\+Player} ()
+\begin{DoxyCompactList}\small\item\em Getter for player\+Ai. \end{DoxyCompactList}\item 
+void \textbf{ add\+Listeners} (\textbf{ Ai\+Struggle\+Listener} listener)
+\begin{DoxyCompactList}\small\item\em Add a listener to the list of listeners that the \doxyref{AI}{p.}{classprojectlp2a_1_1_a_i} owns. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 18 of file AI.\+java.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{classprojectlp2a_1_1_a_i_afde504a3858d4fbb5acf593efd171b7b}} 
+\index{projectlp2a.AI@{projectlp2a.AI}!AI@{AI}}
+\index{AI@{AI}!projectlp2a.AI@{projectlp2a.AI}}
+\doxysubsubsection{AI()}
+{\footnotesize\ttfamily projectlp2a.\+AI.\+AI (\begin{DoxyParamCaption}\item[{\textbf{ Player}}]{p,  }\item[{\textbf{ Die}}]{die,  }\item[{\textbf{ Main}}]{main }\end{DoxyParamCaption})}
+
+
+
+default constructor for the class \doxyref{AI}{p.}{classprojectlp2a_1_1_a_i}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & -\/ a \doxyref{Player}{p.}{classprojectlp2a_1_1_player}, the player we want to attribute to this ai. \\
+\hline
+{\em die} & -\/ a \doxyref{Die}{p.}{classprojectlp2a_1_1_die}, the die that the \doxyref{AI}{p.}{classprojectlp2a_1_1_a_i} will used during the game. \\
+\hline
+{\em main} & -\/ a \doxyref{Main}{p.}{classprojectlp2a_1_1_main} object, it will be used to perform actions. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 34 of file AI.\+java.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{classprojectlp2a_1_1_a_i_a752d2ebfb40d46301feb1a822ce19ab0}} 
+\index{projectlp2a.AI@{projectlp2a.AI}!addListeners@{addListeners}}
+\index{addListeners@{addListeners}!projectlp2a.AI@{projectlp2a.AI}}
+\doxysubsubsection{addListeners()}
+{\footnotesize\ttfamily void projectlp2a.\+AI.\+add\+Listeners (\begin{DoxyParamCaption}\item[{\textbf{ Ai\+Struggle\+Listener}}]{listener }\end{DoxyParamCaption})}
+
+
+
+Add a listener to the list of listeners that the \doxyref{AI}{p.}{classprojectlp2a_1_1_a_i} owns. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em listener} & -\/ the listener to add. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 289 of file AI.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_a_i_a709f0a44e8aec2ea22a7b62df79869df}} 
+\index{projectlp2a.AI@{projectlp2a.AI}!getPlayer@{getPlayer}}
+\index{getPlayer@{getPlayer}!projectlp2a.AI@{projectlp2a.AI}}
+\doxysubsubsection{getPlayer()}
+{\footnotesize\ttfamily \textbf{ Player} projectlp2a.\+AI.\+get\+Player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter for player\+Ai. 
+
+\begin{DoxyReturn}{Returns}
+\doxyref{Player}{p.}{classprojectlp2a_1_1_player}, player\+Ai. 
+\end{DoxyReturn}
+
+
+Definition at line 281 of file AI.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_a_i_a76a23dd15e22e622aac05dd16f5c7252}} 
+\index{projectlp2a.AI@{projectlp2a.AI}!makeTurn@{makeTurn}}
+\index{makeTurn@{makeTurn}!projectlp2a.AI@{projectlp2a.AI}}
+\doxysubsubsection{makeTurn()}
+{\footnotesize\ttfamily void projectlp2a.\+AI.\+make\+Turn (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The turn of an ai. 
+
+The ai will roll the die, then choose a case. If she cannot do anything, she will struggle and then skip her turn. Else she will choose a \doxyref{Case}{p.}{classprojectlp2a_1_1_case} by \char`\"{}thinking\char`\"{} with Ai\+Thoughts (no she does not dream of electric sheep). She will not stop until she is done. 
+
+Definition at line 75 of file AI.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_a_i_ad5c95c02dfef6cd3b8949bcba7209d50}} 
+\index{projectlp2a.AI@{projectlp2a.AI}!setTurn@{setTurn}}
+\index{setTurn@{setTurn}!projectlp2a.AI@{projectlp2a.AI}}
+\doxysubsubsection{setTurn()}
+{\footnotesize\ttfamily void projectlp2a.\+AI.\+set\+Turn (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+let the ai perform an action. 
+
+
+
+Definition at line 63 of file AI.\+java.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Algat/\+Documents/\+Git\+Hub/\+Project\+LLP2\+A/src/projectlp2a/\textbf{ AI.\+java}\end{DoxyCompactItemize}

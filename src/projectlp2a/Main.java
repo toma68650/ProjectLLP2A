@@ -127,15 +127,7 @@ public class Main extends JFrame implements ActionListener, PawnMoveListener, Ai
 	/**
 	 * @brief Method for all the action listeners.
 	 * @details Detect if :
-	 * - the startGame button of the interface has been clicked.
-	 * - the die has been clicked.
-	 * - the start button of the menu has been clicked.
-	 * - the start with ai button of the button has been clicked.
-	 * - the quit button of the menu has been clicked.
-	 * - the theme button of the menu has been clicked.
-	 * - the resume button of the menu has been clicked.
-	 * - the options button of the interface has been clicked.
-	 * 
+	 * @details - the startGame button of the interface has been clicked. the die has been clicked. the start button of the menu has been clicked. the start with ai button of the button has been clicked. the quit button of the menu has been clicked. the theme button of the menu has been clicked. the resume button of the menu has been clicked. the options button of the interface has been clicked.
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {

@@ -1,0 +1,209 @@
+\doxysection{projectlp2a.\+Player Class Reference}
+\label{classprojectlp2a_1_1_player}\index{projectlp2a.Player@{projectlp2a.Player}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Player} (\textbf{ Case} end, \textbf{ Colorp} color, JLayered\+Pane jl, \textbf{ Board} board)
+\begin{DoxyCompactList}\small\item\em default constructor for a player \end{DoxyCompactList}\item 
+boolean \textbf{ move\+Performed} ()
+\begin{DoxyCompactList}\small\item\em verify if a pawn moved \end{DoxyCompactList}\item 
+\textbf{ Case} \textbf{ get\+Starting\+Case} ()
+\begin{DoxyCompactList}\small\item\em getter for starting case \end{DoxyCompactList}\item 
+void \textbf{ add\+Pawn} (\textbf{ Pawn} p)
+\begin{DoxyCompactList}\small\item\em add a pawn in a list of pawns \end{DoxyCompactList}\item 
+List$<$ \textbf{ Case} $>$ \textbf{ get\+End} ()
+\begin{DoxyCompactList}\small\item\em getter for finish line \end{DoxyCompactList}\item 
+List$<$ \textbf{ Case} $>$ \textbf{ get\+Barn} ()
+\begin{DoxyCompactList}\small\item\em getter for barn \end{DoxyCompactList}\item 
+List$<$ \textbf{ Pawn} $>$ \textbf{ get\+Pawns} ()
+\begin{DoxyCompactList}\small\item\em getter for a list of pawns \end{DoxyCompactList}\item 
+\textbf{ Colorp} \textbf{ get\+Color} ()
+\begin{DoxyCompactList}\small\item\em getter for \doxyref{Colorp}{p.}{enumprojectlp2a_1_1_colorp} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ set\+Starting\+Case} (\textbf{ Case} c)
+\begin{DoxyCompactList}\small\item\em setter for the starting case of the player \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 13 of file Player.\+java.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{classprojectlp2a_1_1_player_ade04af20a282e2112a0ddd809247c0e1}} 
+\index{projectlp2a.Player@{projectlp2a.Player}!Player@{Player}}
+\index{Player@{Player}!projectlp2a.Player@{projectlp2a.Player}}
+\doxysubsubsection{Player()}
+{\footnotesize\ttfamily projectlp2a.\+Player.\+Player (\begin{DoxyParamCaption}\item[{\textbf{ Case}}]{end,  }\item[{\textbf{ Colorp}}]{color,  }\item[{JLayered\+Pane}]{jl,  }\item[{\textbf{ Board}}]{board }\end{DoxyParamCaption})}
+
+
+
+default constructor for a player 
+
+
+\begin{DoxyParams}{Parameters}
+{\em end} & -\/ \doxyref{Case}{p.}{classprojectlp2a_1_1_case}, the end case of the player \\
+\hline
+{\em color} & -\/ Color, color of the player \\
+\hline
+{\em jl} & -\/ JLayered\+Pane used in the \doxyref{Main}{p.}{classprojectlp2a_1_1_main} class. \\
+\hline
+{\em board} & -\/ \doxyref{Board}{p.}{classprojectlp2a_1_1_board}, the main board. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 28 of file Player.\+java.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{classprojectlp2a_1_1_player_ab02899a82dd0dae6f0e5e5a46f6482e5}} 
+\index{projectlp2a.Player@{projectlp2a.Player}!addPawn@{addPawn}}
+\index{addPawn@{addPawn}!projectlp2a.Player@{projectlp2a.Player}}
+\doxysubsubsection{addPawn()}
+{\footnotesize\ttfamily void projectlp2a.\+Player.\+add\+Pawn (\begin{DoxyParamCaption}\item[{\textbf{ Pawn}}]{p }\end{DoxyParamCaption})}
+
+
+
+add a pawn in a list of pawns 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & -\/ \doxyref{Pawn}{p.}{classprojectlp2a_1_1_pawn}, pawn we want to add in the list \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 168 of file Player.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_player_a0b0e12262b24950b8e8947aa75ba3d48}} 
+\index{projectlp2a.Player@{projectlp2a.Player}!getBarn@{getBarn}}
+\index{getBarn@{getBarn}!projectlp2a.Player@{projectlp2a.Player}}
+\doxysubsubsection{getBarn()}
+{\footnotesize\ttfamily List$<$\textbf{ Case}$>$ projectlp2a.\+Player.\+get\+Barn (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter for barn 
+
+\begin{DoxyReturn}{Returns}
+List$<$\+Case$>$, barn 
+\end{DoxyReturn}
+
+
+Definition at line 186 of file Player.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_player_a94048b614d1e5b2377f190756e27dde3}} 
+\index{projectlp2a.Player@{projectlp2a.Player}!getColor@{getColor}}
+\index{getColor@{getColor}!projectlp2a.Player@{projectlp2a.Player}}
+\doxysubsubsection{getColor()}
+{\footnotesize\ttfamily \textbf{ Colorp} projectlp2a.\+Player.\+get\+Color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter for \doxyref{Colorp}{p.}{enumprojectlp2a_1_1_colorp} 
+
+\begin{DoxyReturn}{Returns}
+\doxyref{Colorp}{p.}{enumprojectlp2a_1_1_colorp}, color 
+\end{DoxyReturn}
+
+
+Definition at line 204 of file Player.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_player_aa0a61982e25277b76da72267575b99e0}} 
+\index{projectlp2a.Player@{projectlp2a.Player}!getEnd@{getEnd}}
+\index{getEnd@{getEnd}!projectlp2a.Player@{projectlp2a.Player}}
+\doxysubsubsection{getEnd()}
+{\footnotesize\ttfamily List$<$\textbf{ Case}$>$ projectlp2a.\+Player.\+get\+End (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter for finish line 
+
+\begin{DoxyReturn}{Returns}
+List$<$\+Case$>$, end 
+\end{DoxyReturn}
+
+
+Definition at line 177 of file Player.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_player_a70eb82774fdd8c7441b1a039707faec0}} 
+\index{projectlp2a.Player@{projectlp2a.Player}!getPawns@{getPawns}}
+\index{getPawns@{getPawns}!projectlp2a.Player@{projectlp2a.Player}}
+\doxysubsubsection{getPawns()}
+{\footnotesize\ttfamily List$<$\textbf{ Pawn}$>$ projectlp2a.\+Player.\+get\+Pawns (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter for a list of pawns 
+
+\begin{DoxyReturn}{Returns}
+List$<$\+Pawn$>$, pawns 
+\end{DoxyReturn}
+
+
+Definition at line 195 of file Player.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_player_a74ffe43b1f122ba4ca4a2abf4a35f42c}} 
+\index{projectlp2a.Player@{projectlp2a.Player}!getStartingCase@{getStartingCase}}
+\index{getStartingCase@{getStartingCase}!projectlp2a.Player@{projectlp2a.Player}}
+\doxysubsubsection{getStartingCase()}
+{\footnotesize\ttfamily \textbf{ Case} projectlp2a.\+Player.\+get\+Starting\+Case (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter for starting case 
+
+\begin{DoxyReturn}{Returns}
+\doxyref{Case}{p.}{classprojectlp2a_1_1_case}, starting\+Case 
+\end{DoxyReturn}
+
+
+Definition at line 159 of file Player.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_player_a7ff2838a66f6c32c4576480ff7a589e3}} 
+\index{projectlp2a.Player@{projectlp2a.Player}!movePerformed@{movePerformed}}
+\index{movePerformed@{movePerformed}!projectlp2a.Player@{projectlp2a.Player}}
+\doxysubsubsection{movePerformed()}
+{\footnotesize\ttfamily boolean projectlp2a.\+Player.\+move\+Performed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+verify if a pawn moved 
+
+\begin{DoxyReturn}{Returns}
+Boolean, moved 
+\end{DoxyReturn}
+
+
+Definition at line 132 of file Player.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_player_a6716b2e6649550d8d0dfeb2b5a7c2cc6}} 
+\index{projectlp2a.Player@{projectlp2a.Player}!setStartingCase@{setStartingCase}}
+\index{setStartingCase@{setStartingCase}!projectlp2a.Player@{projectlp2a.Player}}
+\doxysubsubsection{setStartingCase()}
+{\footnotesize\ttfamily void projectlp2a.\+Player.\+set\+Starting\+Case (\begin{DoxyParamCaption}\item[{\textbf{ Case}}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+setter for the starting case of the player 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & -\/ \doxyref{Case}{p.}{classprojectlp2a_1_1_case}, the case we want to be the starting case \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 150 of file Player.\+java.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Algat/\+Documents/\+Git\+Hub/\+Project\+LLP2\+A/src/projectlp2a/\textbf{ Player.\+java}\end{DoxyCompactItemize}

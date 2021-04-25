@@ -1,0 +1,410 @@
+\doxysection{projectlp2a.\+Board Class Reference}
+\label{classprojectlp2a_1_1_board}\index{projectlp2a.Board@{projectlp2a.Board}}
+
+
+Inheritance diagram for projectlp2a.\+Board\+:
+% FIG 0
+
+
+Collaboration diagram for projectlp2a.\+Board\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Board} (JFrame f1, JLayered\+Pane jl)
+\begin{DoxyCompactList}\small\item\em default constructor for a board \end{DoxyCompactList}\item 
+void \textbf{ process} ()
+\begin{DoxyCompactList}\small\item\em The method which will manage the movement of the pawns depending on the player who is playing. \end{DoxyCompactList}\item 
+void \textbf{ add\+Pawn\+Move\+Listener} (\textbf{ Pawn\+Move\+Listener} l)
+\begin{DoxyCompactList}\small\item\em add a \doxyref{Pawn\+Move\+Listener}{p.}{interfaceprojectlp2a_1_1_pawn_move_listener} in a list of listeners \end{DoxyCompactList}\item 
+boolean \textbf{ is\+Legal\+Move} (\textbf{ Player} p)
+\begin{DoxyCompactList}\small\item\em verify if the player can do a legal move. \end{DoxyCompactList}\item 
+Image \textbf{ get\+Image} ()
+\begin{DoxyCompactList}\small\item\em getter for Image \end{DoxyCompactList}\item 
+void \textbf{ paint\+Component} (Graphics g)
+\begin{DoxyCompactList}\small\item\em Override of the paint\+Component method. \end{DoxyCompactList}\item 
+void \textbf{ set\+Focused\+Case} (\textbf{ Case} c)
+\begin{DoxyCompactList}\small\item\em set the case the program will focus on \end{DoxyCompactList}\item 
+List$<$ \textbf{ Player} $>$ \textbf{ get\+Players} ()
+\begin{DoxyCompactList}\small\item\em getter for players \end{DoxyCompactList}\item 
+\textbf{ Player} \textbf{ find\+Player} (\textbf{ Colorp} color)
+\begin{DoxyCompactList}\small\item\em find a player according to his color \end{DoxyCompactList}\item 
+boolean \textbf{ is\+Finish} (\textbf{ Player} p)
+\begin{DoxyCompactList}\small\item\em verify if the player has finished \end{DoxyCompactList}\item 
+void \textbf{ set\+Action} (\textbf{ Player} p, int die\+Result)
+\begin{DoxyCompactList}\small\item\em Let the player set an action. \end{DoxyCompactList}\item 
+void \textbf{ set\+Action\+Ai} (\textbf{ Player} p, int die\+Result)
+\begin{DoxyCompactList}\small\item\em Let the ai player set an action. \end{DoxyCompactList}\item 
+void \textbf{ restart\+Board} ()
+\begin{DoxyCompactList}\small\item\em make all the pawns go to the barn \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ do\+Drawing} (Graphics g)
+\begin{DoxyCompactList}\small\item\em Let the board be painted. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+boolean \textbf{ action} = false
+\begin{DoxyCompactList}\small\item\em true if an action was started, false else. \end{DoxyCompactList}\item 
+\textbf{ Player} \textbf{ greenP}
+\begin{DoxyCompactList}\small\item\em The green player. \end{DoxyCompactList}\item 
+\textbf{ Player} \textbf{ blueP}
+\begin{DoxyCompactList}\small\item\em The blue player. \end{DoxyCompactList}\item 
+\textbf{ Player} \textbf{ yellowP}
+\begin{DoxyCompactList}\small\item\em The yellow player. \end{DoxyCompactList}\item 
+\textbf{ Player} \textbf{ redP}
+\begin{DoxyCompactList}\small\item\em the red player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 23 of file Board.\+java.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{classprojectlp2a_1_1_board_a9017c23e0716e28f71f0b806a6c690c6}} 
+\index{projectlp2a.Board@{projectlp2a.Board}!Board@{Board}}
+\index{Board@{Board}!projectlp2a.Board@{projectlp2a.Board}}
+\doxysubsubsection{Board()}
+{\footnotesize\ttfamily projectlp2a.\+Board.\+Board (\begin{DoxyParamCaption}\item[{JFrame}]{f1,  }\item[{JLayered\+Pane}]{jl }\end{DoxyParamCaption})}
+
+
+
+default constructor for a board 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f1} & -\/ JFrame, frame on which the game will be played on \\
+\hline
+{\em jl} & -\/ JLayered\+Pane, pane that will appear when to inform the user about events \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 48 of file Board.\+java.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{classprojectlp2a_1_1_board_abbd3a2c5d6091fe26ac288b46fa65185}} 
+\index{projectlp2a.Board@{projectlp2a.Board}!addPawnMoveListener@{addPawnMoveListener}}
+\index{addPawnMoveListener@{addPawnMoveListener}!projectlp2a.Board@{projectlp2a.Board}}
+\doxysubsubsection{addPawnMoveListener()}
+{\footnotesize\ttfamily void projectlp2a.\+Board.\+add\+Pawn\+Move\+Listener (\begin{DoxyParamCaption}\item[{\textbf{ Pawn\+Move\+Listener}}]{l }\end{DoxyParamCaption})}
+
+
+
+add a \doxyref{Pawn\+Move\+Listener}{p.}{interfaceprojectlp2a_1_1_pawn_move_listener} in a list of listeners 
+
+
+\begin{DoxyParams}{Parameters}
+{\em l} & -\/ \doxyref{Pawn\+Move\+Listener}{p.}{interfaceprojectlp2a_1_1_pawn_move_listener}, the listener added. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 254 of file Board.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_board_a6b2d9a491d398021adfc945125fd1029}} 
+\index{projectlp2a.Board@{projectlp2a.Board}!doDrawing@{doDrawing}}
+\index{doDrawing@{doDrawing}!projectlp2a.Board@{projectlp2a.Board}}
+\doxysubsubsection{doDrawing()}
+{\footnotesize\ttfamily void projectlp2a.\+Board.\+do\+Drawing (\begin{DoxyParamCaption}\item[{Graphics}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Let the board be painted. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & -\/ Graphics, the graphics on which the board is painted. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 341 of file Board.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_board_a5a5ede486b7cc9fa2d00373049ab88e7}} 
+\index{projectlp2a.Board@{projectlp2a.Board}!findPlayer@{findPlayer}}
+\index{findPlayer@{findPlayer}!projectlp2a.Board@{projectlp2a.Board}}
+\doxysubsubsection{findPlayer()}
+{\footnotesize\ttfamily \textbf{ Player} projectlp2a.\+Board.\+find\+Player (\begin{DoxyParamCaption}\item[{\textbf{ Colorp}}]{color }\end{DoxyParamCaption})}
+
+
+
+find a player according to his color 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & -\/ \doxyref{Colorp}{p.}{enumprojectlp2a_1_1_colorp}, color of the player we want to find \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\doxyref{Player}{p.}{classprojectlp2a_1_1_player}, player\+Found 
+\end{DoxyReturn}
+
+
+Definition at line 369 of file Board.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_board_a4142bd8b5ba62fa4965a1150e2d9d92e}} 
+\index{projectlp2a.Board@{projectlp2a.Board}!getImage@{getImage}}
+\index{getImage@{getImage}!projectlp2a.Board@{projectlp2a.Board}}
+\doxysubsubsection{getImage()}
+{\footnotesize\ttfamily Image projectlp2a.\+Board.\+get\+Image (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter for Image 
+
+\begin{DoxyReturn}{Returns}
+Image, board\+Image 
+\end{DoxyReturn}
+
+
+Definition at line 309 of file Board.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_board_ac9e5c47e63aa258419bd3ae037b07241}} 
+\index{projectlp2a.Board@{projectlp2a.Board}!getPlayers@{getPlayers}}
+\index{getPlayers@{getPlayers}!projectlp2a.Board@{projectlp2a.Board}}
+\doxysubsubsection{getPlayers()}
+{\footnotesize\ttfamily List$<$\textbf{ Player}$>$ projectlp2a.\+Board.\+get\+Players (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter for players 
+
+\begin{DoxyReturn}{Returns}
+List$<$\+Player$>$, players 
+\end{DoxyReturn}
+
+
+Definition at line 360 of file Board.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_board_a07e80b008b1307c44c7143651ba2d7c9}} 
+\index{projectlp2a.Board@{projectlp2a.Board}!isFinish@{isFinish}}
+\index{isFinish@{isFinish}!projectlp2a.Board@{projectlp2a.Board}}
+\doxysubsubsection{isFinish()}
+{\footnotesize\ttfamily boolean projectlp2a.\+Board.\+is\+Finish (\begin{DoxyParamCaption}\item[{\textbf{ Player}}]{p }\end{DoxyParamCaption})}
+
+
+
+verify if the player has finished 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & -\/ \doxyref{Player}{p.}{classprojectlp2a_1_1_player}, the player we want to check if he finished the game \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean , 
+\end{DoxyReturn}
+
+
+Definition at line 384 of file Board.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_board_acbc2047b4df8850c6b4444aa96e43928}} 
+\index{projectlp2a.Board@{projectlp2a.Board}!isLegalMove@{isLegalMove}}
+\index{isLegalMove@{isLegalMove}!projectlp2a.Board@{projectlp2a.Board}}
+\doxysubsubsection{isLegalMove()}
+{\footnotesize\ttfamily boolean projectlp2a.\+Board.\+is\+Legal\+Move (\begin{DoxyParamCaption}\item[{\textbf{ Player}}]{p }\end{DoxyParamCaption})}
+
+
+
+verify if the player can do a legal move. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & -\/ \doxyref{Player}{p.}{classprojectlp2a_1_1_player}, the player currently playing \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean, true if there is at least one legal move possible for the player. 
+\end{DoxyReturn}
+
+
+Definition at line 263 of file Board.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_board_a835b8171117fa20d47c715b1ff7dc605}} 
+\index{projectlp2a.Board@{projectlp2a.Board}!paintComponent@{paintComponent}}
+\index{paintComponent@{paintComponent}!projectlp2a.Board@{projectlp2a.Board}}
+\doxysubsubsection{paintComponent()}
+{\footnotesize\ttfamily void projectlp2a.\+Board.\+paint\+Component (\begin{DoxyParamCaption}\item[{Graphics}]{g }\end{DoxyParamCaption})}
+
+
+
+Override of the paint\+Component method. 
+
+@override 
+
+Definition at line 329 of file Board.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_board_a9b5e9c46d4065eb5e66e00ff02f83ea8}} 
+\index{projectlp2a.Board@{projectlp2a.Board}!process@{process}}
+\index{process@{process}!projectlp2a.Board@{projectlp2a.Board}}
+\doxysubsubsection{process()}
+{\footnotesize\ttfamily void projectlp2a.\+Board.\+process (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The method which will manage the movement of the pawns depending on the player who is playing. 
+
+
+
+Definition at line 163 of file Board.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_board_a8a12ed4b69ef3f9ee5e8d8192bda6afa}} 
+\index{projectlp2a.Board@{projectlp2a.Board}!restartBoard@{restartBoard}}
+\index{restartBoard@{restartBoard}!projectlp2a.Board@{projectlp2a.Board}}
+\doxysubsubsection{restartBoard()}
+{\footnotesize\ttfamily void projectlp2a.\+Board.\+restart\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+make all the pawns go to the barn 
+
+
+
+Definition at line 429 of file Board.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_board_a05ab1de5a7e8189387b970371305b143}} 
+\index{projectlp2a.Board@{projectlp2a.Board}!setAction@{setAction}}
+\index{setAction@{setAction}!projectlp2a.Board@{projectlp2a.Board}}
+\doxysubsubsection{setAction()}
+{\footnotesize\ttfamily void projectlp2a.\+Board.\+set\+Action (\begin{DoxyParamCaption}\item[{\textbf{ Player}}]{p,  }\item[{int}]{die\+Result }\end{DoxyParamCaption})}
+
+
+
+Let the player set an action. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & -\/ \doxyref{Player}{p.}{classprojectlp2a_1_1_player}, the player who sat the action. \\
+\hline
+{\em die\+Result} & -\/ Integer, result of die after the player rolled it. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 407 of file Board.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_board_ab6523116a6820f6145685506aaa08b44}} 
+\index{projectlp2a.Board@{projectlp2a.Board}!setActionAi@{setActionAi}}
+\index{setActionAi@{setActionAi}!projectlp2a.Board@{projectlp2a.Board}}
+\doxysubsubsection{setActionAi()}
+{\footnotesize\ttfamily void projectlp2a.\+Board.\+set\+Action\+Ai (\begin{DoxyParamCaption}\item[{\textbf{ Player}}]{p,  }\item[{int}]{die\+Result }\end{DoxyParamCaption})}
+
+
+
+Let the ai player set an action. 
+
+It differs from \doxyref{set\+Action()}{p.}{classprojectlp2a_1_1_board_a05ab1de5a7e8189387b970371305b143} because the focused case is set before this function is called. So we don\textquotesingle{}t nee to detect it. 
+\begin{DoxyParams}{Parameters}
+{\em p} & -\/ \doxyref{Player}{p.}{classprojectlp2a_1_1_player}, player who sat the action. \\
+\hline
+{\em die\+Result} & -\/ Integer, result of die after the player rolled it. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 420 of file Board.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_board_a207061e7791d4e72b07279d3146a592c}} 
+\index{projectlp2a.Board@{projectlp2a.Board}!setFocusedCase@{setFocusedCase}}
+\index{setFocusedCase@{setFocusedCase}!projectlp2a.Board@{projectlp2a.Board}}
+\doxysubsubsection{setFocusedCase()}
+{\footnotesize\ttfamily void projectlp2a.\+Board.\+set\+Focused\+Case (\begin{DoxyParamCaption}\item[{\textbf{ Case}}]{c }\end{DoxyParamCaption})}
+
+
+
+set the case the program will focus on 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & -\/ \doxyref{Case}{p.}{classprojectlp2a_1_1_case}, the case we want the program to focus on \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 352 of file Board.\+java.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{classprojectlp2a_1_1_board_a0a02967533080e2a04a28d6bc9fa72f3}} 
+\index{projectlp2a.Board@{projectlp2a.Board}!action@{action}}
+\index{action@{action}!projectlp2a.Board@{projectlp2a.Board}}
+\doxysubsubsection{action}
+{\footnotesize\ttfamily boolean projectlp2a.\+Board.\+action = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+true if an action was started, false else. 
+
+
+
+Definition at line 30 of file Board.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_board_abf4a45cc0657e7247606653a5fb879d7}} 
+\index{projectlp2a.Board@{projectlp2a.Board}!blueP@{blueP}}
+\index{blueP@{blueP}!projectlp2a.Board@{projectlp2a.Board}}
+\doxysubsubsection{blueP}
+{\footnotesize\ttfamily \textbf{ Player} projectlp2a.\+Board.\+blueP\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The blue player. 
+
+
+
+Definition at line 37 of file Board.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_board_a16a571ad52e02e9365ab005ea606aece}} 
+\index{projectlp2a.Board@{projectlp2a.Board}!greenP@{greenP}}
+\index{greenP@{greenP}!projectlp2a.Board@{projectlp2a.Board}}
+\doxysubsubsection{greenP}
+{\footnotesize\ttfamily \textbf{ Player} projectlp2a.\+Board.\+greenP\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The green player. 
+
+
+
+Definition at line 36 of file Board.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_board_ac3b4bb3a2b64344754b410affb149bec}} 
+\index{projectlp2a.Board@{projectlp2a.Board}!redP@{redP}}
+\index{redP@{redP}!projectlp2a.Board@{projectlp2a.Board}}
+\doxysubsubsection{redP}
+{\footnotesize\ttfamily \textbf{ Player} projectlp2a.\+Board.\+redP\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+the red player. 
+
+
+
+Definition at line 39 of file Board.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_board_a95857e9b4fee4a2154de6e4a7612bf97}} 
+\index{projectlp2a.Board@{projectlp2a.Board}!yellowP@{yellowP}}
+\index{yellowP@{yellowP}!projectlp2a.Board@{projectlp2a.Board}}
+\doxysubsubsection{yellowP}
+{\footnotesize\ttfamily \textbf{ Player} projectlp2a.\+Board.\+yellowP\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The yellow player. 
+
+
+
+Definition at line 38 of file Board.\+java.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Algat/\+Documents/\+Git\+Hub/\+Project\+LLP2\+A/src/projectlp2a/\textbf{ Board.\+java}\end{DoxyCompactItemize}

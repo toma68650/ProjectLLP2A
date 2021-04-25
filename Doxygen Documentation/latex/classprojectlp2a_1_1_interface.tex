@@ -1,0 +1,250 @@
+\doxysection{projectlp2a.\+Interface Class Reference}
+\label{classprojectlp2a_1_1_interface}\index{projectlp2a.Interface@{projectlp2a.Interface}}
+
+
+Collaboration diagram for projectlp2a.\+Interface\+:
+% FIG 0
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Interface} (JLayered\+Pane frame, \textbf{ Board} b)
+\item 
+void \textbf{ disable\+Rememberer} ()
+\begin{DoxyCompactList}\small\item\em Method to disable the rememberer. \end{DoxyCompactList}\item 
+void \textbf{ set\+Rememberer\+Text} (String text, Color color)
+\begin{DoxyCompactList}\small\item\em setter for the rememberer. Set the given text on the label with given color foreground. \end{DoxyCompactList}\item 
+void \textbf{ init\+Announce} (String text)
+\begin{DoxyCompactList}\small\item\em initialize the \doxyref{Fade\+Pane}{p.}{classprojectlp2a_1_1_fade_pane}. \end{DoxyCompactList}\item 
+\textbf{ Fade\+Pane} \textbf{ get\+Pane} ()
+\begin{DoxyCompactList}\small\item\em getter for pane. \end{DoxyCompactList}\item 
+\textbf{ Die} \textbf{ get\+Die} ()
+\begin{DoxyCompactList}\small\item\em getter for my\+Die. \end{DoxyCompactList}\item 
+JButton \textbf{ get\+Start\+Game} ()
+\begin{DoxyCompactList}\small\item\em getter for start\+Game button. \end{DoxyCompactList}\item 
+Array\+List$<$ \textbf{ Player} $>$ \textbf{ get\+Color\+Not\+Clicked} ()
+\begin{DoxyCompactList}\small\item\em getter for color\+Not\+Clicked. \end{DoxyCompactList}\item 
+void \textbf{ set\+Interface\+Invisible} ()
+\begin{DoxyCompactList}\small\item\em Set all the color button on the interface invisible. Useful when one plays with \doxyref{AI}{p.}{classprojectlp2a_1_1_a_i}. \end{DoxyCompactList}\item 
+void \textbf{ restart\+Interface} (\textbf{ Board} b)
+\begin{DoxyCompactList}\small\item\em Restart all the things on the interface. Used when we want to restart a game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+JButton \textbf{ start\+Game} =null
+\begin{DoxyCompactList}\small\item\em The button for starting a game. \end{DoxyCompactList}\item 
+JButton \textbf{ options} =null
+\begin{DoxyCompactList}\small\item\em The button used to choose an option. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 30 of file Interface.\+java.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{classprojectlp2a_1_1_interface_a55e195aee337faee8037fd59f81dd9dd}} 
+\index{projectlp2a.Interface@{projectlp2a.Interface}!Interface@{Interface}}
+\index{Interface@{Interface}!projectlp2a.Interface@{projectlp2a.Interface}}
+\doxysubsubsection{Interface()}
+{\footnotesize\ttfamily projectlp2a.\+Interface.\+Interface (\begin{DoxyParamCaption}\item[{JLayered\+Pane}]{frame,  }\item[{\textbf{ Board}}]{b }\end{DoxyParamCaption})}
+
+Create the application. 
+
+Definition at line 47 of file Interface.\+java.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{classprojectlp2a_1_1_interface_a9048fc66966e40f4e805c3b4bb438fdb}} 
+\index{projectlp2a.Interface@{projectlp2a.Interface}!disableRememberer@{disableRememberer}}
+\index{disableRememberer@{disableRememberer}!projectlp2a.Interface@{projectlp2a.Interface}}
+\doxysubsubsection{disableRememberer()}
+{\footnotesize\ttfamily void projectlp2a.\+Interface.\+disable\+Rememberer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Method to disable the rememberer. 
+
+
+
+Definition at line 186 of file Interface.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_interface_a91159df060ac80156e704f5886246afb}} 
+\index{projectlp2a.Interface@{projectlp2a.Interface}!getColorNotClicked@{getColorNotClicked}}
+\index{getColorNotClicked@{getColorNotClicked}!projectlp2a.Interface@{projectlp2a.Interface}}
+\doxysubsubsection{getColorNotClicked()}
+{\footnotesize\ttfamily Array\+List$<$\textbf{ Player}$>$ projectlp2a.\+Interface.\+get\+Color\+Not\+Clicked (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter for color\+Not\+Clicked. 
+
+\begin{DoxyReturn}{Returns}
+Array\+List$<$\+Player$>$, color\+Not\+Clicked. 
+\end{DoxyReturn}
+
+
+Definition at line 243 of file Interface.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_interface_ab6baf8e08fb5aa213b5726eb47503ea6}} 
+\index{projectlp2a.Interface@{projectlp2a.Interface}!getDie@{getDie}}
+\index{getDie@{getDie}!projectlp2a.Interface@{projectlp2a.Interface}}
+\doxysubsubsection{getDie()}
+{\footnotesize\ttfamily \textbf{ Die} projectlp2a.\+Interface.\+get\+Die (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter for my\+Die. 
+
+\begin{DoxyReturn}{Returns}
+\doxyref{Die}{p.}{classprojectlp2a_1_1_die}, my\+Die. 
+\end{DoxyReturn}
+
+
+Definition at line 225 of file Interface.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_interface_ad61bd0f595bbc8c7e1290ae8b696a173}} 
+\index{projectlp2a.Interface@{projectlp2a.Interface}!getPane@{getPane}}
+\index{getPane@{getPane}!projectlp2a.Interface@{projectlp2a.Interface}}
+\doxysubsubsection{getPane()}
+{\footnotesize\ttfamily \textbf{ Fade\+Pane} projectlp2a.\+Interface.\+get\+Pane (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter for pane. 
+
+\begin{DoxyReturn}{Returns}
+\doxyref{Fade\+Pane}{p.}{classprojectlp2a_1_1_fade_pane}, pane. 
+\end{DoxyReturn}
+
+
+Definition at line 216 of file Interface.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_interface_afb5f19aa030c7c05f1cf381e1bae9139}} 
+\index{projectlp2a.Interface@{projectlp2a.Interface}!getStartGame@{getStartGame}}
+\index{getStartGame@{getStartGame}!projectlp2a.Interface@{projectlp2a.Interface}}
+\doxysubsubsection{getStartGame()}
+{\footnotesize\ttfamily JButton projectlp2a.\+Interface.\+get\+Start\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter for start\+Game button. 
+
+\begin{DoxyReturn}{Returns}
+JButton, start\+Game. 
+\end{DoxyReturn}
+
+
+Definition at line 234 of file Interface.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_interface_a8bff2f9cdcb7e7542240ca7e1bddd523}} 
+\index{projectlp2a.Interface@{projectlp2a.Interface}!initAnnounce@{initAnnounce}}
+\index{initAnnounce@{initAnnounce}!projectlp2a.Interface@{projectlp2a.Interface}}
+\doxysubsubsection{initAnnounce()}
+{\footnotesize\ttfamily void projectlp2a.\+Interface.\+init\+Announce (\begin{DoxyParamCaption}\item[{String}]{text }\end{DoxyParamCaption})}
+
+
+
+initialize the \doxyref{Fade\+Pane}{p.}{classprojectlp2a_1_1_fade_pane}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & -\/ String, text to put on the \doxyref{Fade\+Pane}{p.}{classprojectlp2a_1_1_fade_pane}. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 207 of file Interface.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_interface_a17e20370eb19f51f14283f89da1c7c25}} 
+\index{projectlp2a.Interface@{projectlp2a.Interface}!restartInterface@{restartInterface}}
+\index{restartInterface@{restartInterface}!projectlp2a.Interface@{projectlp2a.Interface}}
+\doxysubsubsection{restartInterface()}
+{\footnotesize\ttfamily void projectlp2a.\+Interface.\+restart\+Interface (\begin{DoxyParamCaption}\item[{\textbf{ Board}}]{b }\end{DoxyParamCaption})}
+
+
+
+Restart all the things on the interface. Used when we want to restart a game. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b} & -\/ \doxyref{Board}{p.}{classprojectlp2a_1_1_board}, the board where we want to pick the players. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 263 of file Interface.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_interface_a557d98e4732f630b1f2d05e1a9cfd315}} 
+\index{projectlp2a.Interface@{projectlp2a.Interface}!setInterfaceInvisible@{setInterfaceInvisible}}
+\index{setInterfaceInvisible@{setInterfaceInvisible}!projectlp2a.Interface@{projectlp2a.Interface}}
+\doxysubsubsection{setInterfaceInvisible()}
+{\footnotesize\ttfamily void projectlp2a.\+Interface.\+set\+Interface\+Invisible (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Set all the color button on the interface invisible. Useful when one plays with \doxyref{AI}{p.}{classprojectlp2a_1_1_a_i}. 
+
+
+
+Definition at line 251 of file Interface.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_interface_a4f09e9d99df8665b7c7e5dafa63f8ee4}} 
+\index{projectlp2a.Interface@{projectlp2a.Interface}!setRemembererText@{setRemembererText}}
+\index{setRemembererText@{setRemembererText}!projectlp2a.Interface@{projectlp2a.Interface}}
+\doxysubsubsection{setRemembererText()}
+{\footnotesize\ttfamily void projectlp2a.\+Interface.\+set\+Rememberer\+Text (\begin{DoxyParamCaption}\item[{String}]{text,  }\item[{Color}]{color }\end{DoxyParamCaption})}
+
+
+
+setter for the rememberer. Set the given text on the label with given color foreground. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & -\/ String, text to put on the rememberer. \\
+\hline
+{\em color} & -\/ Color, color to give to the the rememberer foreground. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 196 of file Interface.\+java.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\label{classprojectlp2a_1_1_interface_ab03ed6763ed09d2a9978d0a3845a9d41}} 
+\index{projectlp2a.Interface@{projectlp2a.Interface}!options@{options}}
+\index{options@{options}!projectlp2a.Interface@{projectlp2a.Interface}}
+\doxysubsubsection{options}
+{\footnotesize\ttfamily JButton projectlp2a.\+Interface.\+options =null}
+
+
+
+The button used to choose an option. 
+
+
+
+Definition at line 35 of file Interface.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_interface_aa57d646b888e6c9de199c777c8029270}} 
+\index{projectlp2a.Interface@{projectlp2a.Interface}!startGame@{startGame}}
+\index{startGame@{startGame}!projectlp2a.Interface@{projectlp2a.Interface}}
+\doxysubsubsection{startGame}
+{\footnotesize\ttfamily JButton projectlp2a.\+Interface.\+start\+Game =null}
+
+
+
+The button for starting a game. 
+
+
+
+Definition at line 34 of file Interface.\+java.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Algat/\+Documents/\+Git\+Hub/\+Project\+LLP2\+A/src/projectlp2a/\textbf{ Interface.\+java}\end{DoxyCompactItemize}

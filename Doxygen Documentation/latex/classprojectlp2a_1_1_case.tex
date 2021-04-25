@@ -1,0 +1,228 @@
+\doxysection{projectlp2a.\+Case Class Reference}
+\label{classprojectlp2a_1_1_case}\index{projectlp2a.Case@{projectlp2a.Case}}
+
+
+Inheritance diagram for projectlp2a.\+Case\+:
+% FIG 0
+
+
+Collaboration diagram for projectlp2a.\+Case\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Case} (int coordX, int coordY, boolean safe, \textbf{ Colorp} start\+Color, \textbf{ Colorp} finish\+Color, JLayered\+Pane jl, \textbf{ Board} board, int i)
+\begin{DoxyCompactList}\small\item\em default constructor for a case. \end{DoxyCompactList}\item 
+int \textbf{ get\+Id\+Case} ()
+\begin{DoxyCompactList}\small\item\em getter for id\+Case. \end{DoxyCompactList}\item 
+int \textbf{ getX} ()
+\begin{DoxyCompactList}\small\item\em getter for coordX \end{DoxyCompactList}\item 
+int \textbf{ getY} ()
+\begin{DoxyCompactList}\small\item\em getter for coordY \end{DoxyCompactList}\item 
+\textbf{ Colorp} \textbf{ getfinish\+Color} ()
+\begin{DoxyCompactList}\small\item\em getter for finish\+Color. \end{DoxyCompactList}\item 
+\textbf{ Colorp} \textbf{ getstart\+Color} ()
+\begin{DoxyCompactList}\small\item\em getter for start\+Color. \end{DoxyCompactList}\item 
+boolean \textbf{ is\+Safe} ()
+\begin{DoxyCompactList}\small\item\em getter for safe. \end{DoxyCompactList}\item 
+boolean \textbf{ is\+Equal} (\textbf{ Case} c)
+\begin{DoxyCompactList}\small\item\em \doxyref{is\+Equal()}{p.}{classprojectlp2a_1_1_case_aca6bb8ca04f7292028b96e25d12a2204} \char`\"{}override\char`\"{}. \end{DoxyCompactList}\item 
+boolean \textbf{ is\+Pawn\+Standing} (\textbf{ Pawn} pa)
+\begin{DoxyCompactList}\small\item\em Chcek if pa is standing on this \doxyref{Case}{p.}{classprojectlp2a_1_1_case}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 19 of file Case.\+java.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\label{classprojectlp2a_1_1_case_a70435abdcc1cd71fc43fcdc2566703da}} 
+\index{projectlp2a.Case@{projectlp2a.Case}!Case@{Case}}
+\index{Case@{Case}!projectlp2a.Case@{projectlp2a.Case}}
+\doxysubsubsection{Case()}
+{\footnotesize\ttfamily projectlp2a.\+Case.\+Case (\begin{DoxyParamCaption}\item[{int}]{coordX,  }\item[{int}]{coordY,  }\item[{boolean}]{safe,  }\item[{\textbf{ Colorp}}]{start\+Color,  }\item[{\textbf{ Colorp}}]{finish\+Color,  }\item[{JLayered\+Pane}]{jl,  }\item[{\textbf{ Board}}]{board,  }\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+default constructor for a case. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coordX} & -\/ Integer, the relative X coordinate of the case. \\
+\hline
+{\em coordY} & -\/ Integer, the relative Y coordinate of the case. \\
+\hline
+{\em safe} & -\/ boolean, is the case a safe case ? \\
+\hline
+{\em start\+Color} & -\/ \doxyref{Colorp}{p.}{enumprojectlp2a_1_1_colorp}, is this case the start \doxyref{Case}{p.}{classprojectlp2a_1_1_case} for a player? And for which player? \\
+\hline
+{\em finish\+Color} & -\/ \doxyref{Colorp}{p.}{enumprojectlp2a_1_1_colorp}, is this case the finish \doxyref{Case}{p.}{classprojectlp2a_1_1_case} for a player? And for which player? \\
+\hline
+{\em jl} & -\/ JLayered\+Pane used in the \doxyref{Main}{p.}{classprojectlp2a_1_1_main} class. \\
+\hline
+{\em board} & -\/ \doxyref{Board}{p.}{classprojectlp2a_1_1_board}, the main board. \\
+\hline
+{\em i} & -\/ Integer, the index of this case. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 40 of file Case.\+java.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\label{classprojectlp2a_1_1_case_a106a1094531a1add21de8daa26bc6c19}} 
+\index{projectlp2a.Case@{projectlp2a.Case}!getfinishColor@{getfinishColor}}
+\index{getfinishColor@{getfinishColor}!projectlp2a.Case@{projectlp2a.Case}}
+\doxysubsubsection{getfinishColor()}
+{\footnotesize\ttfamily \textbf{ Colorp} projectlp2a.\+Case.\+getfinish\+Color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter for finish\+Color. 
+
+\begin{DoxyReturn}{Returns}
+\doxyref{Colorp}{p.}{enumprojectlp2a_1_1_colorp}, finish\+Color. 
+\end{DoxyReturn}
+
+
+Definition at line 102 of file Case.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_case_a72162fe62f9dcf62af55c8cbaaebfc74}} 
+\index{projectlp2a.Case@{projectlp2a.Case}!getIdCase@{getIdCase}}
+\index{getIdCase@{getIdCase}!projectlp2a.Case@{projectlp2a.Case}}
+\doxysubsubsection{getIdCase()}
+{\footnotesize\ttfamily int projectlp2a.\+Case.\+get\+Id\+Case (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter for id\+Case. 
+
+\begin{DoxyReturn}{Returns}
+Integer, id\+Case. 
+\end{DoxyReturn}
+
+
+Definition at line 76 of file Case.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_case_a85638d2604d27e9e21a3e16798736b6e}} 
+\index{projectlp2a.Case@{projectlp2a.Case}!getstartColor@{getstartColor}}
+\index{getstartColor@{getstartColor}!projectlp2a.Case@{projectlp2a.Case}}
+\doxysubsubsection{getstartColor()}
+{\footnotesize\ttfamily \textbf{ Colorp} projectlp2a.\+Case.\+getstart\+Color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter for start\+Color. 
+
+\begin{DoxyReturn}{Returns}
+\doxyref{Colorp}{p.}{enumprojectlp2a_1_1_colorp}, start\+Color. 
+\end{DoxyReturn}
+
+
+Definition at line 111 of file Case.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_case_a58ca6be5d73c71b44f94f36737aa0d92}} 
+\index{projectlp2a.Case@{projectlp2a.Case}!getX@{getX}}
+\index{getX@{getX}!projectlp2a.Case@{projectlp2a.Case}}
+\doxysubsubsection{getX()}
+{\footnotesize\ttfamily int projectlp2a.\+Case.\+getX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter for coordX 
+
+\begin{DoxyReturn}{Returns}
+Integer, coordX. 
+\end{DoxyReturn}
+
+
+Definition at line 84 of file Case.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_case_a1a74a809968ab2c59da10b69f8f9052f}} 
+\index{projectlp2a.Case@{projectlp2a.Case}!getY@{getY}}
+\index{getY@{getY}!projectlp2a.Case@{projectlp2a.Case}}
+\doxysubsubsection{getY()}
+{\footnotesize\ttfamily int projectlp2a.\+Case.\+getY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter for coordY 
+
+\begin{DoxyReturn}{Returns}
+Integer, coordY. 
+\end{DoxyReturn}
+
+
+Definition at line 93 of file Case.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_case_aca6bb8ca04f7292028b96e25d12a2204}} 
+\index{projectlp2a.Case@{projectlp2a.Case}!isEqual@{isEqual}}
+\index{isEqual@{isEqual}!projectlp2a.Case@{projectlp2a.Case}}
+\doxysubsubsection{isEqual()}
+{\footnotesize\ttfamily boolean projectlp2a.\+Case.\+is\+Equal (\begin{DoxyParamCaption}\item[{\textbf{ Case}}]{c }\end{DoxyParamCaption})}
+
+
+
+\doxyref{is\+Equal()}{p.}{classprojectlp2a_1_1_case_aca6bb8ca04f7292028b96e25d12a2204} \char`\"{}override\char`\"{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & -\/ \doxyref{Case}{p.}{classprojectlp2a_1_1_case}, the case to be compared with. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean. True if c has the same as this, false else. 
+\end{DoxyReturn}
+
+
+Definition at line 130 of file Case.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_case_a470993ab09a1d8ff98c9e5556d4e5277}} 
+\index{projectlp2a.Case@{projectlp2a.Case}!isPawnStanding@{isPawnStanding}}
+\index{isPawnStanding@{isPawnStanding}!projectlp2a.Case@{projectlp2a.Case}}
+\doxysubsubsection{isPawnStanding()}
+{\footnotesize\ttfamily boolean projectlp2a.\+Case.\+is\+Pawn\+Standing (\begin{DoxyParamCaption}\item[{\textbf{ Pawn}}]{pa }\end{DoxyParamCaption})}
+
+
+
+Chcek if pa is standing on this \doxyref{Case}{p.}{classprojectlp2a_1_1_case}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pa} & -\/ \doxyref{Pawn}{p.}{classprojectlp2a_1_1_pawn}, the pawn that we are looking for. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a boolean. True if pa is on this, false else. 
+\end{DoxyReturn}
+
+
+Definition at line 140 of file Case.\+java.
+
+\mbox{\label{classprojectlp2a_1_1_case_aba1357335c2122ee5e10dfdbbc572c1e}} 
+\index{projectlp2a.Case@{projectlp2a.Case}!isSafe@{isSafe}}
+\index{isSafe@{isSafe}!projectlp2a.Case@{projectlp2a.Case}}
+\doxysubsubsection{isSafe()}
+{\footnotesize\ttfamily boolean projectlp2a.\+Case.\+is\+Safe (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter for safe. 
+
+\begin{DoxyReturn}{Returns}
+boolean, safe. 
+\end{DoxyReturn}
+
+
+Definition at line 120 of file Case.\+java.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Algat/\+Documents/\+Git\+Hub/\+Project\+LLP2\+A/src/projectlp2a/\textbf{ Case.\+java}\end{DoxyCompactItemize}
